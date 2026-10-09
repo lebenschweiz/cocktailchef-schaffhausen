@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erika's Beauty Loft · Laser-Haarentfernung, Maniküre &amp; Nageldesign in Feuerthalen</title>
+<meta name="description" content="Erika's Beauty Loft in Feuerthalen bei Schaffhausen: dauerhafte Haarentfernung mit Diodenlaser der neusten Generation, Gel-Maniküre und Nageldesign. Transparente, faire Preise.">
+<meta name="theme-color" content="#f7efe9">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#fbf6f2;
+  --blush:#f3e1d9;
+  --blush-2:#ecd0c4;
+  --rose:#c98b7f;
+  --rose-deep:#a5655a;
+  --plum:#3b2530;
+  --plum-2:#5a3a48;
+  --text:#3b2530;
+  --muted:#7d6670;
+  --gold:#c9a36b;
+  --white:#fff;
+  --line:rgba(59,37,48,.12);
+  --radius:26px;
+  --maxw:1140px;
+  --shadow:0 24px 60px -30px rgba(91,48,58,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{
+  background:var(--cream);color:var(--text);
+  font-family:Manrope,system-ui,sans-serif;font-size:1rem;line-height:1.65;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;line-height:1.08;letter-spacing:-.01em;color:var(--plum)}
+h1{font-size:clamp(2.6rem,9vw,4.6rem)}
+h2{font-size:clamp(2.1rem,6.5vw,3.3rem)}
+h3{font-size:1.65rem}
+em{font-style:italic;color:var(--rose-deep)}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;
+  font-size:.74rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--rose-deep);
+}
+.eyebrow::before{content:"";width:26px;height:1.5px;background:currentColor}
+.lead{font-size:1.08rem;color:var(--muted);max-width:56ch}
+section{padding:84px 0}
+.section-head{max-width:640px;margin-bottom:40px}
+.section-head.center{margin-inline:auto;text-align:center}
+.section-head.center .eyebrow::after{content:"";width:26px;height:1.5px;background:currentColor}
+.section-head p{margin-top:14px}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:16px 28px;border-radius:999px;font-weight:600;font-size:.98rem;font-family:inherit;
+  border:1.5px solid transparent;cursor:pointer;transition:transform .25s,box-shadow .25s,background .25s,color .25s;
+}
+.btn-primary{background:var(--plum);color:var(--cream);box-shadow:0 14px 34px -14px rgba(59,37,48,.8)}
+.btn-primary:hover{transform:translateY(-2px);background:var(--plum-2)}
+.btn-ghost{border-color:var(--plum);color:var(--plum)}
+.btn-ghost:hover{background:var(--plum);color:var(--cream)}
+.btn svg{width:18px;height:18px}
+
+/* Markierung für Inhalte, die noch von der Originalseite übernommen werden müssen */
+.todo{
+  display:inline-block;padding:2px 10px;border-radius:999px;
+  background:#fff3c4;color:#7a5a00;border:1px dashed #d9b84a;
+  font:600 .72rem/1.6 Manrope,sans-serif;letter-spacing:.04em;white-space:nowrap;vertical-align:middle;
+}
+
+/* ---------- NAV ---------- */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;padding:14px 0;transition:background .3s,box-shadow .3s,padding .3s}
+.nav.scrolled{background:rgba(251,246,242,.9);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:10px 0}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;flex-direction:column;line-height:1}
+.logo b{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.55rem;color:var(--plum)}
+.logo small{font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:var(--rose-deep);margin-top:4px}
+.menu{display:none;gap:28px;align-items:center;font-size:.93rem;font-weight:500}
+.menu a:not(.btn){position:relative}
+.menu a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1.5px;background:var(--rose);transition:width .25s}
+.menu a:not(.btn):hover::after{width:100%}
+.menu .btn{padding:11px 20px;font-size:.88rem}
+.burger{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--white);display:grid;place-items:center;cursor:pointer}
+.burger span{display:block;width:18px;height:1.5px;background:var(--plum);position:relative;transition:background .2s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:1.5px;background:var(--plum);transition:transform .25s}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.nav.open .burger span{background:transparent}
+.nav.open .burger span::before{transform:translateY(6px) rotate(45deg)}
+.nav.open .burger span::after{transform:translateY(-6px) rotate(-45deg)}
+.mobile-menu{
+  display:grid;gap:4px;padding:0 20px;max-height:0;overflow:hidden;transition:max-height .35s,padding .35s;
+  background:rgba(251,246,242,.97);backdrop-filter:blur(14px);
+}
+.nav.open .mobile-menu{max-height:440px;padding:14px 20px 22px;box-shadow:0 20px 30px -24px rgba(59,37,48,.5)}
+.mobile-menu a:not(.btn){padding:12px 4px;border-bottom:1px solid var(--line);font-family:"Cormorant Garamond",serif;font-size:1.4rem;font-weight:600}
+.mobile-menu .btn{margin-top:14px}
+.nav.open{background:rgba(251,246,242,.97)}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;padding:118px 0 70px;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;width:620px;height:620px;right:-260px;top:-180px;border-radius:50%;
+  background:radial-gradient(circle,var(--blush-2),transparent 68%);z-index:-1;
+}
+.hero::after{
+  content:"";position:absolute;width:420px;height:420px;left:-200px;bottom:-160px;border-radius:50%;
+  background:radial-gradient(circle,#f1e4d3,transparent 70%);z-index:-1;
+}
+.hero-grid{display:grid;gap:44px;align-items:center}
+.hero h1 em{display:block}
+.hero .lead{margin:20px 0 30px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:30px;font-size:.88rem;color:var(--muted)}
+.hero-meta span{display:inline-flex;align-items:center;gap:8px}
+.hero-meta svg{width:17px;height:17px;color:var(--rose-deep)}
+.hero-visual{position:relative;max-width:460px;margin:0 auto;width:100%}
+.arch{
+  aspect-ratio:4/5;border-radius:999px 999px var(--radius) var(--radius);overflow:hidden;
+  background:linear-gradient(160deg,var(--blush) 0%,var(--blush-2) 55%,#d9b1a3 100%);
+  box-shadow:var(--shadow);position:relative;display:grid;place-items:center;
+}
+.arch img{width:100%;height:100%;object-fit:cover}
+.photo-ph{
+  position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:30px;
+  color:var(--plum-2);font-size:.85rem;
+}
+.photo-ph svg{width:54px;height:54px;margin:0 auto 10px;opacity:.55}
+.float-card{
+  position:absolute;background:var(--white);border-radius:18px;padding:14px 18px;box-shadow:var(--shadow);
+  display:flex;align-items:center;gap:12px;font-size:.85rem;line-height:1.3;
+}
+.float-card b{display:block;font-size:.95rem;color:var(--plum)}
+.float-card .ic{width:40px;height:40px;border-radius:50%;background:var(--blush);display:grid;place-items:center;flex:none}
+.float-card .ic svg{width:20px;height:20px;color:var(--rose-deep)}
+.fc-1{left:-8px;bottom:56px}
+.fc-2{right:-8px;top:40px}
+
+/* ---------- MARQUEE ---------- */
+.ribbon{background:var(--plum);color:var(--blush);padding:16px 0;overflow:hidden}
+.ribbon-track{display:flex;gap:44px;width:max-content;animation:slide 32s linear infinite;font-family:"Cormorant Garamond",serif;font-size:1.35rem;font-style:italic;white-space:nowrap}
+.ribbon-track span::after{content:"✦";margin-left:44px;color:var(--gold);font-style:normal;font-size:.9rem}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- TREATMENTS ---------- */
+.cards{display:grid;gap:22px}
+.card{
+  background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 0 var(--line);
+  display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s;
+}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.card-img{aspect-ratio:16/11;position:relative;overflow:hidden}
+.card-img.g1{background:linear-gradient(135deg,#f3dcd2,#e3b9ab)}
+.card-img.g2{background:linear-gradient(135deg,#f6e7dc,#e7c8b0)}
+.card-img.g3{background:linear-gradient(135deg,#efdfe6,#d4aebf)}
+.card-img .num{position:absolute;top:16px;left:18px;font-family:"Cormorant Garamond",serif;font-size:1rem;font-weight:700;color:var(--plum);background:rgba(255,255,255,.7);border-radius:999px;padding:3px 12px}
+.card-body{padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;flex:1}
+.card-body p{color:var(--muted)}
+.card ul{list-style:none;display:grid;gap:8px;font-size:.93rem}
+.card li{display:flex;gap:10px}
+.card li::before{content:"";flex:none;width:7px;height:7px;margin-top:9px;border-radius:50%;background:var(--rose)}
+.card .more{margin-top:auto;padding-top:8px;font-weight:600;color:var(--rose-deep);display:inline-flex;gap:8px;align-items:center}
+.card .more:hover{gap:12px}
+
+/* ---------- LASER ---------- */
+.laser{background:linear-gradient(180deg,var(--blush) 0%,var(--cream) 100%)}
+.laser-grid{display:grid;gap:44px;align-items:center}
+.benefits{display:grid;gap:16px;margin-top:30px}
+.benefit{display:flex;gap:16px;background:rgba(255,255,255,.7);border-radius:20px;padding:18px 20px}
+.benefit .ic{width:46px;height:46px;flex:none;border-radius:14px;background:var(--plum);display:grid;place-items:center}
+.benefit .ic svg{width:22px;height:22px;color:var(--blush)}
+.benefit b{display:block;color:var(--plum);margin-bottom:2px}
+.benefit p{font-size:.93rem;color:var(--muted)}
+.steps{counter-reset:s;display:grid;gap:14px}
+.step{counter-increment:s;background:var(--white);border-radius:20px;padding:22px 22px 22px 74px;position:relative;box-shadow:0 2px 0 var(--line)}
+.step::before{
+  content:counter(s);position:absolute;left:20px;top:20px;width:38px;height:38px;border-radius:50%;
+  display:grid;place-items:center;background:var(--blush);color:var(--rose-deep);
+  font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.25rem;
+}
+.step b{color:var(--plum);display:block;margin-bottom:2px}
+.step p{font-size:.93rem;color:var(--muted)}
+
+/* ---------- PRICES ---------- */
+.price-tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:26px;scrollbar-width:none}
+.price-tabs::-webkit-scrollbar{display:none}
+.price-tabs button{
+  flex:none;border:1.5px solid var(--line);background:var(--white);color:var(--plum);border-radius:999px;
+  padding:11px 20px;font:600 .9rem Manrope,sans-serif;cursor:pointer;transition:all .2s;
+}
+.price-tabs button[aria-selected="true"]{background:var(--plum);color:var(--cream);border-color:var(--plum)}
+.price-panel{background:var(--white);border-radius:var(--radius);padding:10px 22px;box-shadow:0 2px 0 var(--line)}
+.price-panel[hidden]{display:none}
+.price-row{display:flex;align-items:baseline;gap:12px;padding:16px 0;border-bottom:1px dashed var(--line)}
+.price-row:last-child{border-bottom:0}
+.price-row .name{font-weight:600;color:var(--plum)}
+.price-row .name small{display:block;font-weight:400;color:var(--muted);font-size:.85rem}
+.price-row .dots{flex:1;border-bottom:1px dotted rgba(59,37,48,.25);transform:translateY(-4px);min-width:16px}
+.price-row .price{font-family:"Cormorant Garamond",serif;font-size:1.35rem;font-weight:700;color:var(--rose-deep);white-space:nowrap}
+.price-note{margin-top:18px;font-size:.9rem;color:var(--muted);display:flex;gap:10px;align-items:flex-start}
+.price-note svg{width:18px;height:18px;flex:none;margin-top:3px;color:var(--rose-deep)}
+
+/* ---------- BEFORE / AFTER ---------- */
+.ba{background:var(--plum);color:var(--blush)}
+.ba h2,.ba .eyebrow{color:var(--cream)}
+.ba .lead{color:#d9c3c8}
+.ba-grid{display:grid;gap:18px;grid-template-columns:1fr 1fr}
+.ba-item{border-radius:20px;overflow:hidden;aspect-ratio:1;position:relative;background:linear-gradient(140deg,var(--plum-2),#6f4a59)}
+.ba-item .tag{position:absolute;left:12px;bottom:12px;background:rgba(251,246,242,.92);color:var(--plum);font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+.ba-item .photo-ph{color:#e9d6da}
+.ba .cta-row{margin-top:30px}
+.ba .btn-ghost{border-color:var(--blush);color:var(--blush)}
+.ba .btn-ghost:hover{background:var(--blush);color:var(--plum)}
+
+/* ---------- ABOUT ---------- */
+.about-grid{display:grid;gap:44px;align-items:center}
+.about-img{position:relative;max-width:420px;margin:0 auto;width:100%}
+.about-img .frame{aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden;background:linear-gradient(150deg,#ead6cc,#d6ada0);position:relative;box-shadow:var(--shadow)}
+.about-img::before{content:"";position:absolute;inset:18px -18px -18px 18px;border:1.5px solid var(--rose);border-radius:var(--radius);z-index:-1}
+.signature{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:2rem;color:var(--rose-deep);margin-top:18px}
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.badges span{background:var(--white);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:.85rem;font-weight:600}
+
+/* ---------- FAQ ---------- */
+.faq{display:grid;gap:12px;max-width:780px;margin:0 auto}
+details{background:var(--white);border-radius:20px;padding:4px 22px;box-shadow:0 2px 0 var(--line)}
+summary{list-style:none;cursor:pointer;padding:18px 34px 18px 0;font-weight:600;color:var(--plum);position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:1.6rem;font-weight:400;color:var(--rose-deep);transition:transform .25s}
+details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+details p{padding:0 0 20px;color:var(--muted)}
+
+/* ---------- CONTACT ---------- */
+.contact{background:linear-gradient(180deg,var(--cream) 0%,var(--blush) 100%)}
+.contact-grid{display:grid;gap:22px}
+.panel{background:var(--white);border-radius:var(--radius);padding:30px 26px;box-shadow:0 2px 0 var(--line)}
+.panel h3{margin-bottom:16px}
+.hours{width:100%;border-collapse:collapse}
+.hours td{padding:12px 0;border-bottom:1px dashed var(--line)}
+.hours tr:last-child td{border-bottom:0}
+.hours td:last-child{text-align:right;font-weight:600;color:var(--plum)}
+.hours tr.today td{color:var(--rose-deep)}
+.hours tr.today td:first-child::after{content:" · heute";font-size:.78rem;font-weight:600}
+.open-state{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;font-weight:600;margin-bottom:10px}
+.open-state i{width:9px;height:9px;border-radius:50%;background:#9aa;display:block}
+.open-state.on i{background:#4caf7a;box-shadow:0 0 0 4px rgba(76,175,122,.2)}
+.contact-list{display:grid;gap:16px}
+.contact-list a,.contact-list div{display:flex;gap:14px;align-items:center}
+.contact-list .ic{width:44px;height:44px;border-radius:50%;background:var(--blush);display:grid;place-items:center;flex:none}
+.contact-list .ic svg{width:20px;height:20px;color:var(--rose-deep)}
+.contact-list small{display:block;color:var(--muted);font-size:.8rem}
+.cta-panel{background:var(--plum);color:var(--blush)}
+.cta-panel h3{color:var(--cream)}
+.cta-panel p{color:#d9c3c8;margin-bottom:22px}
+.cta-panel .btn-primary{background:var(--blush);color:var(--plum)}
+.cta-panel .btn-primary:hover{background:var(--cream)}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--plum);color:#cdb8bf;padding:44px 0 110px;font-size:.88rem}
+footer .wrap{display:grid;gap:18px}
+footer .logo b{color:var(--cream)}
+footer .logo small{color:var(--gold)}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 20px}
+footer a:hover{color:var(--cream)}
+
+/* sticky mobile booking bar */
+.book-bar{
+  position:fixed;left:12px;right:12px;bottom:12px;z-index:40;display:flex;gap:10px;
+  transform:translateY(130%);transition:transform .35s;
+}
+.book-bar.show{transform:none}
+.book-bar .btn{flex:1;padding:15px 18px;box-shadow:0 16px 30px -12px rgba(59,37,48,.6)}
+.book-bar .btn-ghost{flex:none;width:54px;padding:0;background:var(--white);border-color:var(--white)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .ribbon-track{animation:none}
+  html{scroll-behavior:auto}
+}
+
+/* ---------- LARGER SCREENS ---------- */
+@media (min-width:720px){
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .ba-grid{grid-template-columns:repeat(4,1fr)}
+  .contact-grid{grid-template-columns:1fr 1fr}
+  .cta-panel{grid-column:1/-1}
+  footer .wrap{grid-template-columns:1fr auto;align-items:center}
+}
+@media (min-width:960px){
+  section{padding:110px 0}
+  .menu{display:flex}
+  .burger,.mobile-menu{display:none}
+  .hero{padding:150px 0 100px}
+  .hero-grid{grid-template-columns:1.1fr .9fr}
+  .cards{grid-template-columns:repeat(3,1fr)}
+  .laser-grid,.about-grid{grid-template-columns:1fr 1fr;gap:70px}
+  .about-img{order:-1}
+  .contact-grid{grid-template-columns:1fr 1fr 1fr}
+  .cta-panel{grid-column:auto}
+  .book-bar{display:none}
+  footer{padding-bottom:44px}
+}
+</style>
+</head>
+<body>
+
+<!-- SVG-Icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-laser" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 16v6M2 12h6M16 12h6M5 5l3.5 3.5M15.5 15.5L19 19M5 19l3.5-3.5M15.5 8.5L19 5"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.5"/></symbol>
+  <symbol id="i-photo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></symbol>
+</svg>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Erika's Beauty Loft, zum Seitenanfang">
+      <b>Erika's Beauty Loft</b>
+      <small>Feuerthalen · Schaffhausen</small>
+    </a>
+    <nav class="menu" aria-label="Hauptnavigation">
+      <a href="#behandlungen">Behandlungen</a>
+      <a href="#laser">Laser</a>
+      <a href="#preise">Preise</a>
+      <a href="#vorher-nachher">Vorher &amp; Nachher</a>
+      <a href="#ueber-mich">Über mich</a>
+      <a href="#kontakt" class="btn btn-primary">Termin buchen</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile Navigation">
+    <a href="#behandlungen">Behandlungen</a>
+    <a href="#laser">Laser-Haarentfernung</a>
+    <a href="#preise">Preise</a>
+    <a href="#vorher-nachher">Vorher &amp; Nachher</a>
+    <a href="#ueber-mich">Über mich</a>
+    <a href="#kontakt">Kontakt &amp; Öffnungszeiten</a>
+    <a href="#kontakt" class="btn btn-primary">Termin buchen</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <span class="eyebrow">Beauty Loft in Feuerthalen</span>
+      <h1>Glatte Haut. Schöne Nägel. <em>Zeit für dich.</em></h1>
+      <p class="lead">Dauerhafte Haarentfernung mit einem Diodenlaser der neusten Generation, gepflegte Gel-Maniküre und Nageldesign mit Liebe zum Detail. Mit transparenten, fairen Preisen und viel Zeit für dich.</p>
+      <div class="cta-row">
+        <a href="#kontakt" class="btn btn-primary"><svg><use href="#i-cal"/></svg>Termin vereinbaren</a>
+        <a href="#behandlungen" class="btn btn-ghost">Behandlungen entdecken</a>
+      </div>
+      <div class="hero-meta">
+        <span><svg><use href="#i-pin"/></svg>Feuerthalen, nahe Schaffhausen</span>
+        <span><svg><use href="#i-clock"/></svg>Mo–Fr bis 20 Uhr, Sa bis 14 Uhr</span>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="arch">
+        <!-- TODO: Titelbild von der bestehenden Seite (z.B. Studio oder Behandlung) einsetzen, sobald Erika die Bildrechte bestätigt hat -->
+        <div class="photo-ph"><div><svg><use href="#i-photo"/></svg>Titelbild aus dem Studio<br><span class="todo">Bild folgt</span></div></div>
+      </div>
+      <div class="float-card fc-1">
+        <div class="ic"><svg><use href="#i-laser"/></svg></div>
+        <div><b>Diodenlaser</b>neuste Generation</div>
+      </div>
+      <div class="float-card fc-2">
+        <div class="ic"><svg><use href="#i-tag"/></svg></div>
+        <div><b>Faire Preise</b>transparent &amp; klar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ribbon" aria-hidden="true">
+  <div class="ribbon-track">
+    <span>Dauerhafte Haarentfernung</span><span>Gel-Maniküre</span><span>Nageldesign</span><span>Diodenlaser</span><span>Feuerthalen</span>
+    <span>Dauerhafte Haarentfernung</span><span>Gel-Maniküre</span><span>Nageldesign</span><span>Diodenlaser</span><span>Feuerthalen</span>
+  </div>
+</div>
+
+<!-- BEHANDLUNGEN -->
+<section id="behandlungen">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Behandlungen</span>
+      <h2>Was ich für dich <em>tun darf</em></h2>
+      <p class="lead" style="margin-inline:auto">Drei Schwerpunkte, mit Sorgfalt und Ruhe ausgeführt, damit du dich vom ersten Moment an wohlfühlst.</p>
+    </div>
+    <div class="cards">
+      <article class="card reveal">
+        <div class="card-img g1"><span class="num">01</span><div class="photo-ph"><div><svg><use href="#i-photo"/></svg><span class="todo">Bild folgt</span></div></div></div>
+        <div class="card-body">
+          <h3>Dauerhafte Haarentfernung</h3>
+          <p>Schluss mit Rasieren und Wachsen: Der Diodenlaser der neusten Generation entfernt unerwünschte Haare sanft und nachhaltig.</p>
+          <ul>
+            <li>Für Gesicht und Körper</li>
+            <li>Für Frauen und Männer <span class="todo">bestätigen</span></li>
+          </ul>
+          <a href="#laser" class="more">So funktioniert's <svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="card-img g2"><span class="num">02</span><div class="photo-ph"><div><svg><use href="#i-photo"/></svg><span class="todo">Bild folgt</span></div></div></div>
+        <div class="card-body">
+          <h3>Maniküre mit Gel-Lack</h3>
+          <p>Gepflegte Hände mit langanhaltendem Glanz. Nagelhaut, Form und Farbe werden sorgfältig und genau auf dich abgestimmt.</p>
+          <ul>
+            <li>Langanhaltender Gel-Lack</li>
+            <li>Sorgfältige Pflege von Nagelhaut und Form</li>
+          </ul>
+          <a href="#preise" class="more">Zu den Preisen <svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="card-img g3"><span class="num">03</span><div class="photo-ph"><div><svg><use href="#i-photo"/></svg><span class="todo">Bild folgt</span></div></div></div>
+        <div class="card-body">
+          <h3>Nageldesign</h3>
+          <p>Von dezent und elegant bis verspielt und auffällig: Nageldesign, das zu dir, deinem Stil und deinem Anlass passt.</p>
+          <ul>
+            <li>Individuelle Designs</li>
+            <li>Für jeden Anlass</li>
+          </ul>
+          <a href="#vorher-nachher" class="more">Ergebnisse ansehen <svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- LASER -->
+<section id="laser" class="laser">
+  <div class="wrap laser-grid">
+    <div class="reveal">
+      <span class="eyebrow">Laser-Haarentfernung</span>
+      <h2>Endlich <em>glatte Haut</em>, ohne tägliches Rasieren</h2>
+      <p class="lead" style="margin-top:16px">Ich arbeite mit einem Diodenlaser der neusten Generation. Er zielt gezielt auf die Haarwurzel und schont dabei die umliegende Haut.</p>
+      <div class="benefits">
+        <div class="benefit"><div class="ic"><svg><use href="#i-laser"/></svg></div><div><b>Moderne Technologie</b><p>Diodenlaser der neusten Generation für wirksame und angenehme Behandlungen.</p></div></div>
+        <div class="benefit"><div class="ic"><svg><use href="#i-shield"/></svg></div><div><b>Fundierte Ausbildung</b><p>Ausgebildet an der VNISSG-Schule, mit Erfahrung und viel Sorgfalt.</p></div></div>
+        <div class="benefit"><div class="ic"><svg><use href="#i-tag"/></svg></div><div><b>Transparente Preise</b><p>Du weisst vorher, was es kostet. Gute Ergebnisse, ohne zu viel zu bezahlen.</p></div></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <h3 style="margin-bottom:18px">So läuft deine Behandlung ab</h3>
+      <div class="steps">
+        <div class="step"><b>Beratung</b><p>Wir besprechen deine Wünsche, deinen Haut- und Haartyp und die passenden Zonen.</p></div>
+        <div class="step"><b>Vorbereitung</b><p>Die Zone wird vor dem Termin rasiert. Ich sage dir genau, worauf du achten solltest.</p></div>
+        <div class="step"><b>Behandlung</b><p>Der Laser arbeitet schnell und präzise. Die meisten empfinden es als gut auszuhalten.</p></div>
+        <div class="step"><b>Folgetermine</b><p>Haare wachsen in Phasen, deshalb braucht es mehrere Sitzungen in Abständen für ein dauerhaftes Ergebnis.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREISE -->
+<section id="preise">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Preise</span>
+      <h2>Transparent &amp; <em>fair</em></h2>
+      <p class="lead" style="margin-inline:auto">Gute Ergebnisse, ohne zu viel zu bezahlen. Alle Preise in CHF.</p>
+    </div>
+    <div class="reveal" style="max-width:780px;margin:0 auto">
+      <div class="price-tabs" role="tablist" aria-label="Preiskategorien">
+        <button role="tab" aria-selected="true" aria-controls="p-laser" id="t-laser">Haarentfernung</button>
+        <button role="tab" aria-selected="false" aria-controls="p-mani" id="t-mani">Maniküre</button>
+        <button role="tab" aria-selected="false" aria-controls="p-design" id="t-design">Nageldesign</button>
+      </div>
+      <!-- TODO: Preisliste 1:1 von erikas-beautyloft.ch übernehmen (Zonen, Behandlungen, Dauer, Preise) -->
+      <div class="price-panel" role="tabpanel" id="p-laser" aria-labelledby="t-laser">
+        <div class="price-row"><span class="name">Behandlungszonen<small>werden von der bestehenden Preisliste übernommen</small></span><span class="dots"></span><span class="todo">Preise folgen</span></div>
+      </div>
+      <div class="price-panel" role="tabpanel" id="p-mani" aria-labelledby="t-mani" hidden>
+        <div class="price-row"><span class="name">Maniküre mit Gel-Lack<small>Details von der bestehenden Preisliste</small></span><span class="dots"></span><span class="todo">Preis folgt</span></div>
+      </div>
+      <div class="price-panel" role="tabpanel" id="p-design" aria-labelledby="t-design" hidden>
+        <div class="price-row"><span class="name">Nageldesign<small>Details von der bestehenden Preisliste</small></span><span class="dots"></span><span class="todo">Preis folgt</span></div>
+      </div>
+      <p class="price-note"><svg><use href="#i-info"/></svg><span>Du bist unsicher, welche Behandlung passt? Ich berate dich gerne persönlich, bevor wir starten.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- VORHER / NACHHER -->
+<section id="vorher-nachher" class="ba">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Vorher &amp; Nachher</span>
+      <h2>Ergebnisse, die <em style="color:var(--blush-2)">für sich sprechen</em></h2>
+      <p class="lead">Ein Blick auf echte Behandlungen aus dem Beauty Loft.</p>
+    </div>
+    <!-- TODO: Vorher/Nachher-Bilder von erikas-beautyloft.ch/beforeafter einsetzen, sobald Erika die Bildrechte bestätigt hat -->
+    <div class="ba-grid reveal">
+      <div class="ba-item"><div class="photo-ph"><div><svg><use href="#i-photo"/></svg><span class="todo">Bild folgt</span></div></div><span class="tag">Vorher</span></div>
+      <div class="ba-item"><div class="photo-ph"><div><svg><use href="#i-photo"/></svg><span class="todo">Bild folgt</span></div></div><span class="tag">Nachher</span></div>
+      <div class="ba-item"><div class="photo-ph"><div><svg><use href="#i-photo"/></svg><span class="todo">Bild folgt</span></div></div><span class="tag">Vorher</span></div>
+      <div class="ba-item"><div class="photo-ph"><div><svg><use href="#i-photo"/></svg><span class="todo">Bild folgt</span></div></div><span class="tag">Nachher</span></div>
+    </div>
+    <div class="cta-row">
+      <a href="#kontakt" class="btn btn-ghost">Das möchte ich auch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ÜBER MICH -->
+<section id="ueber-mich">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="eyebrow">Über mich</span>
+      <h2>Hallo, ich bin <em>Erika</em></h2>
+      <p class="lead" style="margin-top:16px">Ich habe meine Ausbildung an der VNISSG-Schule gemacht und dort ein solides Fundament an Wissen und Können aufgebaut. Heute verbinde ich dieses Know-how mit moderner Technik und viel Herz.</p>
+      <p style="margin-top:14px;color:var(--muted)">In meinem Beauty Loft in Feuerthalen nehme ich mir Zeit für dich. Mein Ziel: Ergebnisse, die dich begeistern, zu Preisen, die fair bleiben.</p>
+      <!-- TODO: persönlichen Text von der Seite «Über mich» sinngemäss ergänzen -->
+      <div class="badges">
+        <span>Ausbildung VNISSG</span>
+        <span>Diodenlaser neuste Generation</span>
+        <span>Persönliche Beratung</span>
+      </div>
+      <p class="signature">Erika</p>
+    </div>
+    <div class="about-img reveal">
+      <div class="frame">
+        <!-- TODO: Porträt von Erika einsetzen -->
+        <div class="photo-ph"><div><svg><use href="#i-photo"/></svg>Porträt von Erika<br><span class="todo">Bild folgt</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Gut zu wissen</span>
+      <h2>Häufige <em>Fragen</em></h2>
+    </div>
+    <div class="faq reveal">
+      <details>
+        <summary>Wie viele Sitzungen braucht es für die Laser-Haarentfernung?</summary>
+        <p>Haare wachsen in verschiedenen Phasen, und der Laser wirkt nur auf aktiv wachsende Haare. Deshalb braucht es mehrere Sitzungen. Wie viele es bei dir sind, hängt von Zone, Haar- und Hauttyp ab. Das klären wir in der Beratung.</p>
+      </details>
+      <details>
+        <summary>Tut die Behandlung weh?</summary>
+        <p>Die meisten Kundinnen und Kunden empfinden die Behandlung mit dem Diodenlaser als gut auszuhalten, oft wird sie mit einem leichten Wärmegefühl beschrieben. Wir passen die Einstellungen an dich an.</p>
+      </details>
+      <details>
+        <summary>Wie bereite ich mich auf den Termin vor?</summary>
+        <p>Die zu behandelnde Zone sollte vorher rasiert, aber nicht gewachst oder epiliert sein. Alle Details erhältst du bei der Terminbuchung.</p>
+      </details>
+      <details>
+        <summary>Wie lange hält Gel-Lack?</summary>
+        <p>Gel-Lack hält deutlich länger als normaler Nagellack und bleibt über Wochen glänzend. Gerne zeige ich dir, wie du deine Nägel zwischen den Terminen am besten pflegst.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt" class="contact">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Kontakt</span>
+      <h2>Ich freue mich <em>auf dich</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="panel reveal">
+        <h3>Öffnungszeiten</h3>
+        <div class="open-state" id="open-state"><i></i><span>Öffnungszeiten</span></div>
+        <table class="hours" id="hours">
+          <tr data-days="1,2,3,4,5"><td>Montag – Freitag</td><td>08:00 – 20:00</td></tr>
+          <tr data-days="6"><td>Samstag</td><td>09:00 – 14:00</td></tr>
+          <tr data-days="0"><td>Sonntag</td><td>geschlossen</td></tr>
+        </table>
+      </div>
+      <div class="panel reveal">
+        <h3>So erreichst du mich</h3>
+        <!-- TODO: Adresse, Telefon, E-Mail und Social-Media-Links von erikas-beautyloft.ch übernehmen -->
+        <div class="contact-list">
+          <div><span class="ic"><svg><use href="#i-pin"/></svg></span><span><small>Adresse</small>Feuerthalen <span class="todo">Strasse folgt</span></span></div>
+          <div><span class="ic"><svg><use href="#i-phone"/></svg></span><span><small>Telefon / WhatsApp</small><span class="todo">Nummer folgt</span></span></div>
+          <div><span class="ic"><svg><use href="#i-mail"/></svg></span><span><small>E-Mail</small><span class="todo">Adresse folgt</span></span></div>
+        </div>
+      </div>
+      <div class="panel cta-panel reveal">
+        <h3>Bereit für deinen Termin?</h3>
+        <p>Ob Laser, Maniküre oder Nageldesign: Melde dich, und wir finden einen Termin, der dir passt. Bei Fragen berate ich dich gerne vorab.</p>
+        <!-- TODO: Link zur Online-Buchung bzw. Telefonnummer eintragen -->
+        <a href="#kontakt" class="btn btn-primary"><svg><use href="#i-cal"/></svg>Termin anfragen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="logo"><b>Erika's Beauty Loft</b><small>Feuerthalen · Schaffhausen</small></a>
+    <nav aria-label="Footer">
+      <a href="#behandlungen">Behandlungen</a>
+      <a href="#preise">Preise</a>
+      <a href="#kontakt">Kontakt</a>
+      <!-- TODO: Impressum und Datenschutz von der bestehenden Seite übernehmen -->
+      <a href="#" aria-disabled="true">Impressum <span class="todo">folgt</span></a>
+      <a href="#" aria-disabled="true">Datenschutz <span class="todo">folgt</span></a>
+    </nav>
+    <p>© <span id="year"></span> Erika's Beauty Loft</p>
+  </div>
+</footer>
+
+<div class="book-bar" id="book-bar">
+  <a href="#kontakt" class="btn btn-primary"><svg><use href="#i-cal"/></svg>Termin buchen</a>
+  <a href="#kontakt" class="btn btn-ghost" aria-label="Kontakt"><svg><use href="#i-phone"/></svg></a>
+</div>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav'),burger=document.getElementById('burger'),bar=document.getElementById('book-bar');
+  function onScroll(){
+    var y=window.scrollY;
+    nav.classList.toggle('scrolled',y>20);
+    bar.classList.toggle('show',y>window.innerHeight*.7);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  burger.addEventListener('click',function(){
+    var open=nav.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open);
+    burger.setAttribute('aria-label',open?'Menü schliessen':'Menü öffnen');
+  });
+  document.querySelectorAll('.mobile-menu a').forEach(function(a){
+    a.addEventListener('click',function(){nav.classList.remove('open');burger.setAttribute('aria-expanded','false')});
+  });
+
+  // Preis-Tabs
+  var tabs=document.querySelectorAll('.price-tabs [role=tab]');
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(){
+      tabs.forEach(function(o){
+        var sel=o===t;o.setAttribute('aria-selected',sel);
+        document.getElementById(o.getAttribute('aria-controls')).hidden=!sel;
+      });
+    });
+  });
+
+  // Öffnungszeiten: heutigen Tag hervorheben, offen/geschlossen anzeigen
+  var hours={1:[8,20],2:[8,20],3:[8,20],4:[8,20],5:[8,20],6:[9,14]};
+  var now=new Date(),d=now.getDay(),h=now.getHours()+now.getMinutes()/60;
+  document.querySelectorAll('#hours tr').forEach(function(r){
+    if(r.dataset.days.split(',').indexOf(String(d))>-1) r.classList.add('today');
+  });
+  var st=document.getElementById('open-state'),slot=hours[d],isOpen=slot&&h>=slot[0]&&h<slot[1];
+  st.classList.toggle('on',!!isOpen);
+  st.querySelector('span').textContent=isOpen?'Jetzt geöffnet':'Gerade geschlossen';
+
+  document.getElementById('year').textContent=now.getFullYear();
+
+  // sanftes Einblenden
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+  }else{
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')});
+  }
+})();
+</script>
+</body>
+</html>
