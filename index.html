@@ -302,7 +302,8 @@ section{padding:120px 0;position:relative}
 .event:hover{transform:translateY(-8px) rotate(-.6deg)}
 .event::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--bgx);transition:transform .6s}
 .event:hover::before{transform:scale(1.12)}
-.event::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.75))}
+.event::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.85))}
+.event .emoji{filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}
 .event .emoji{font-size:2.6rem;position:absolute;top:22px;left:22px;transition:transform .4s}
 .event:hover .emoji{transform:scale(1.2) rotate(-10deg)}
 .event h3{font-size:1.5rem}
@@ -646,10 +647,10 @@ footer{border-top:1px solid var(--line);padding:50px 0 34px;color:var(--muted);f
       <span class="cheers-chip">🥂 Für jeden Geschmack – mit &amp; ohne Alkohol</span>
     </figure>
     <div class="events">
-      <div class="event reveal" style="--bgx:linear-gradient(160deg,#ff9f1c,#ff4d6d)"><span class="emoji">💍</span><h3>Hochzeit</h3><p>Der Hingucker am schönsten Tag.</p></div>
-      <div class="event reveal d1" style="--bgx:linear-gradient(160deg,#2ec4ff,#6a4cff)"><span class="emoji">🎂</span><h3>Geburtstag</h3><p>Runde Zahlen verdienen runde Drinks.</p></div>
-      <div class="event reveal d2" style="--bgx:linear-gradient(160deg,#ffcc1a,#ff7a1c)"><span class="emoji">🏢</span><h3>Firmenfest</h3><p>Teamevent mit Wow-Effekt.</p></div>
-      <div class="event reveal d3" style="--bgx:linear-gradient(160deg,#ff4d9a,#7b2cbf)"><span class="emoji">🎉</span><h3>Vereinsfest</h3><p>Schnell bedient, auch bei vielen Gästen.</p></div>
+      <div class="event reveal" style="--bgx:url(assets/events/hochzeit.jpg) center/cover,linear-gradient(160deg,#ff9f1c,#ff4d6d)"><span class="emoji">💍</span><h3>Hochzeit</h3><p>Der Hingucker am schönsten Tag.</p></div>
+      <div class="event reveal d1" style="--bgx:url(assets/events/geburtstag.jpg) center/cover,linear-gradient(160deg,#2ec4ff,#6a4cff)"><span class="emoji">🎂</span><h3>Geburtstag</h3><p>Runde Zahlen verdienen runde Drinks.</p></div>
+      <div class="event reveal d2" style="--bgx:url(assets/events/firmenfest.jpg) center/cover,linear-gradient(160deg,#ffcc1a,#ff7a1c)"><span class="emoji">🏢</span><h3>Firmenfest</h3><p>Teamevent mit Wow-Effekt.</p></div>
+      <div class="event reveal d3" style="--bgx:url(assets/events/vereinsfest.jpg) center/cover,linear-gradient(160deg,#ff4d9a,#7b2cbf)"><span class="emoji">🎉</span><h3>Vereinsfest</h3><p>Schnell bedient, auch bei vielen Gästen.</p></div>
     </div>
   </div>
 </section>
