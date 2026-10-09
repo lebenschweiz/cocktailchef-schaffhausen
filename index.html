@@ -418,6 +418,9 @@ footer{border-top:1px solid var(--line);padding:50px 0 34px;color:var(--muted);f
   .nav-links,.nav .btn{display:none}
   .logo-loc{display:none}
   .burger{display:block}
+  .nav .wrap{display:grid;grid-template-columns:42px 1fr 42px}
+  .nav .logo{grid-column:2;justify-self:center}
+  .burger{grid-column:3}
   .nav-links.open{
     display:flex;flex-direction:column;position:fixed;top:64px;left:16px;right:16px;padding:24px;gap:18px;
     background:rgba(22,19,14,.97);border:1px solid var(--line);border-radius:20px;font-size:1.1rem
