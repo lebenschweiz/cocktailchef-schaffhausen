@@ -87,6 +87,14 @@ footer .logo-img{height:110px}
 .blob.b2{width:420px;height:420px;background:var(--pink);bottom:-160px;left:-120px;opacity:.35;animation:float 18s ease-in-out infinite reverse}
 .blob.b3{width:300px;height:300px;background:var(--blue);top:40%;left:45%;opacity:.18;animation:float 22s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.08)}66%{transform:translate(-30px,25px) scale(.95)}}
+.hero-photo{display:none}
+@media (max-width:960px){
+  .hero-photo{display:block;position:absolute;left:0;right:0;top:0;height:max(100svh,640px);
+    background:linear-gradient(180deg,rgba(13,11,8,.42) 0%,rgba(13,11,8,.55) 55%,rgba(13,11,8,.9) 85%,var(--bg) 100%),url(assets/hero-mobile.jpg) 50% 30%/cover no-repeat}
+  .hero .blob{opacity:.25}
+  .hero h1,.hero p.lead,.hero-eyebrow,.hero-meta{text-shadow:0 2px 14px rgba(0,0,0,.55)}
+  .hero p.lead{color:#e9dfcb}
+}
 .grain{position:absolute;inset:0;opacity:.06;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
@@ -294,9 +302,9 @@ section{padding:120px 0;position:relative}
 .finder-result{font-family:Fraunces,serif;color:var(--gold);font-weight:700;font-size:1.25rem;min-height:1.6em;margin-top:6px}
 
 /* ---------- EVENTS ---------- */
-.events{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.events{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
 .event{
-  aspect-ratio:3/4;border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;justify-content:flex-end;
+  aspect-ratio:3/4;border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;justify-content:flex-end;
   position:relative;overflow:hidden;border:1px solid var(--line);isolation:isolate;transition:transform .4s
 }
 .event:hover{transform:translateY(-8px) rotate(-.6deg)}
@@ -306,7 +314,8 @@ section{padding:120px 0;position:relative}
 .event .emoji{filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}
 .event .emoji{font-size:2.6rem;position:absolute;top:22px;left:22px;transition:transform .4s}
 .event:hover .emoji{transform:scale(1.2) rotate(-10deg)}
-.event h3{font-size:1.5rem}
+.event h3{font-size:clamp(1.05rem,1.4vw,1.25rem)}
+@media (max-width:960px){.event h3{font-size:1.5rem}}
 .event p{font-size:.88rem;color:rgba(255,255,255,.75)}
 
 .cheers{position:relative;margin:0 0 22px;border-radius:28px;overflow:hidden;aspect-ratio:21/9;border:1px solid var(--line)}
@@ -420,6 +429,7 @@ footer{border-top:1px solid var(--line);padding:50px 0 34px;color:var(--muted);f
   .gal-sticker{width:88px;height:88px;font-size:.7rem}.gal-sticker b{font-size:1.5rem}
   .stats{grid-template-columns:repeat(2,1fr)}
   .events{grid-template-columns:repeat(2,1fr)}
+  .event:last-child:nth-child(odd){grid-column:1/-1;aspect-ratio:16/9}
   .contact-grid{grid-template-columns:1fr}
   .finder{grid-template-columns:1fr;text-align:center;justify-items:center}
 }
@@ -484,6 +494,7 @@ footer{border-top:1px solid var(--line);padding:50px 0 34px;color:var(--muted);f
 
 <!-- HERO -->
 <section class="hero" id="top">
+  <div class="hero-photo" aria-hidden="true"></div>
   <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
   <div class="grain"></div>
   <div class="wrap hero-grid">
@@ -585,9 +596,10 @@ footer{border-top:1px solid var(--line);padding:50px 0 34px;color:var(--muted);f
     </figure>
     <div class="events">
       <div class="event reveal" style="--bgx:url(assets/events/hochzeit.jpg) center/cover,linear-gradient(160deg,#ff9f1c,#ff4d6d)"><span class="emoji">💍</span><h3>Hochzeit</h3><p>Der Hingucker am schönsten Tag.</p></div>
-      <div class="event reveal d1" style="--bgx:url(assets/events/geburtstag.jpg) center/cover,linear-gradient(160deg,#2ec4ff,#6a4cff)"><span class="emoji">🎂</span><h3>Geburtstag</h3><p>Runde Zahlen verdienen runde Drinks.</p></div>
-      <div class="event reveal d2" style="--bgx:url(assets/events/firmenfest.jpg) center/cover,linear-gradient(160deg,#ffcc1a,#ff7a1c)"><span class="emoji">🏢</span><h3>Firmenfest</h3><p>Teamevent mit Wow-Effekt.</p></div>
+      <div class="event reveal d1" style="--bgx:url(assets/events/geburtstag.jpg?v=2) center/cover,linear-gradient(160deg,#2ec4ff,#6a4cff)"><span class="emoji">🎂</span><h3>Geburtstag</h3><p>Runde Zahlen verdienen runde Drinks.</p></div>
+      <div class="event reveal d2" style="--bgx:url(assets/events/firmenfest.jpg?v=2) center/cover,linear-gradient(160deg,#ffcc1a,#ff7a1c)"><span class="emoji">🏢</span><h3>Firmenfest</h3><p>Teamevent mit Wow-Effekt.</p></div>
       <div class="event reveal d3" style="--bgx:url(assets/events/vereinsfest.jpg) center/cover,linear-gradient(160deg,#ff4d9a,#7b2cbf)"><span class="emoji">🎉</span><h3>Vereinsfest</h3><p>Schnell bedient, auch bei vielen Gästen.</p></div>
+      <div class="event reveal d3" style="--bgx:url(assets/events/weihnachten.jpg) center 40%/cover,linear-gradient(160deg,#c1121f,#1b4332)"><span class="emoji">🎄</span><h3>Weihnachtsfeier</h3><p>Festliche Drinks für die schönste Zeit im Jahr.</p></div>
     </div>
   </div>
 </section>
@@ -695,7 +707,7 @@ footer{border-top:1px solid var(--line);padding:50px 0 34px;color:var(--muted);f
           <div class="field"><label for="f-phone">Telefon</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="+41 …"></div>
           <div class="field"><label for="f-date">Datum</label><input id="f-date" type="date"></div>
           <div class="field"><label for="f-type">Anlass</label>
-            <select id="f-type"><option>Hochzeit</option><option>Geburtstag</option><option>Firmenfest</option><option>Vereinsfest</option><option>Anderes</option></select>
+            <select id="f-type"><option>Hochzeit</option><option>Geburtstag</option><option>Firmenfest</option><option>Vereinsfest</option><option>Weihnachtsfeier</option><option>Anderes</option></select>
           </div>
           <div class="field"><label for="f-guests">Gäste (ca.)</label><input id="f-guests" type="number" min="1" placeholder="z. B. 80"></div>
           <div class="field full"><label for="f-msg">Nachricht</label><textarea id="f-msg" placeholder="Ort, Uhrzeit, Wünsche …"></textarea></div>
@@ -931,7 +943,7 @@ function burst(){
 }
 
 // ---------- WORD ROTATOR ----------
-const words=["Hochzeit","Geburtstag","Firmenfeier","Gartenparty","Vereinsfest"];
+const words=["Hochzeit","Geburtstag","Firmenfeier","Gartenparty","Vereinsfest","Weihnachtsfeier"];
 let wi=0; const rot=document.getElementById("rotator");
 setInterval(()=>{wi=(wi+1)%words.length;rot.innerHTML=`<span>${words[wi]}</span>`},2400);
 
