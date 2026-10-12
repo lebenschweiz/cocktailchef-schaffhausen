@@ -981,39 +981,100 @@ window.addEventListener("scroll",()=>{
   cheersImg.style.transform=`translateY(${p*-40}px)`;
 },{passive:true});
 
-// ---------- PARTY MUSIC (selbst erzeugt, lizenzfrei) ----------
+// ---------- LOUNGE MUSIC (selbst erzeugt, lizenzfrei) ----------
+// Deep-House / Bar-Lounge: weiche Kick, Shaker, warme E-Piano-Akkorde (Moll-9 / Maj-9),
+// Sub-Bass und eine dezente Glocken-Melodie mit Hall und Echo.
 const Music=(()=>{
-  let ctx,master,noise,timer,step=0,next=0,playing=false;
-  const BPM=118, S16=60/BPM/4, VOL=.16;
-  // Am - F - C - G, je ein Takt
-  const prog=[[57,60,64],[53,57,60],[48,52,55],[55,59,62]], bassRoot=[45,41,48,43];
+  let ctx,master,comp,bus,rev,dly,noise,timer,step=0,next=0,playing=false;
+  const BPM=116, S16=60/BPM/4, VOL=.38;
+  // Dm9 – G13 – Cmaj9 – Am9 (ohne Grundton, den spielt der Bass)
+  const chords=[[53,57,60,64],[53,59,64,69],[52,55,59,62],[55,60,64,71]];
+  const roots=[38,43,36,45];
+  const scale=[69,72,74,76,79,81,84]; // A-Moll-Pentatonik für die Melodie
   const hz=m=>440*Math.pow(2,(m-69)/12);
+  function impulse(sec,decay){
+    const len=ctx.sampleRate*sec, b=ctx.createBuffer(2,len,ctx.sampleRate);
+    for(let c=0;c<2;c++){const d=b.getChannelData(c);for(let i=0;i<len;i++) d[i]=(Math.random()*2-1)*Math.pow(1-i/len,decay)}
+    return b;
+  }
   function init(){
     ctx=new (window.AudioContext||window.webkitAudioContext)();
     master=ctx.createGain(); master.gain.value=0;
-    const lp=ctx.createBiquadFilter(); lp.type="lowpass"; lp.frequency.value=5200;
-    master.connect(lp).connect(ctx.destination);
-    noise=ctx.createBuffer(1,ctx.sampleRate*.5,ctx.sampleRate);
+    comp=ctx.createDynamicsCompressor();
+    comp.threshold.value=-18; comp.knee.value=12; comp.ratio.value=4; comp.attack.value=.01; comp.release.value=.2;
+    const out=ctx.createGain(); out.gain.value=1.1; // Make-up-Gain nach dem Kompressor
+    const lim=ctx.createDynamicsCompressor(); // Limiter gegen Übersteuern
+    lim.threshold.value=-6; lim.knee.value=0; lim.ratio.value=20; lim.attack.value=.002; lim.release.value=.1;
+    master.connect(comp).connect(out).connect(lim).connect(ctx.destination);
+    bus=ctx.createGain(); bus.connect(master);
+    // Hall
+    rev=ctx.createConvolver(); rev.buffer=impulse(2.6,3.2);
+    const revGain=ctx.createGain(); revGain.gain.value=.32; rev.connect(revGain).connect(master);
+    // Echo (punktierte Achtel)
+    dly=ctx.createDelay(1); dly.delayTime.value=S16*3;
+    const fb=ctx.createGain(); fb.gain.value=.32; const dlf=ctx.createBiquadFilter(); dlf.type="lowpass"; dlf.frequency.value=2400;
+    const dlyOut=ctx.createGain(); dlyOut.gain.value=.35;
+    dly.connect(dlf).connect(fb).connect(dly); dlf.connect(dlyOut).connect(master);
+    noise=ctx.createBuffer(1,ctx.sampleRate,ctx.sampleRate);
     const d=noise.getChannelData(0); for(let i=0;i<d.length;i++) d[i]=Math.random()*2-1;
   }
-  function env(g,t,a,peak,dec){g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(peak,t+a);g.gain.exponentialRampToValueAtTime(0.0001,t+a+dec)}
-  function kick(t){const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.setValueAtTime(140,t);o.frequency.exponentialRampToValueAtTime(42,t+.12);env(g,t,.003,.9,.32);o.connect(g).connect(master);o.start(t);o.stop(t+.4)}
-  function hat(t,v){const n=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=ctx.createGain();n.buffer=noise;f.type="highpass";f.frequency.value=8000;env(g,t,.002,v,.045);n.connect(f).connect(g).connect(master);n.start(t);n.stop(t+.08)}
-  function clap(t){const n=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=ctx.createGain();n.buffer=noise;f.type="bandpass";f.frequency.value=1600;f.Q.value=.8;env(g,t,.004,.22,.16);n.connect(f).connect(g).connect(master);n.start(t);n.stop(t+.22)}
-  function bass(t,m){const o=ctx.createOscillator(),f=ctx.createBiquadFilter(),g=ctx.createGain();o.type="sawtooth";o.frequency.value=hz(m);f.type="lowpass";f.frequency.value=380;env(g,t,.01,.32,.17);o.connect(f).connect(g).connect(master);o.start(t);o.stop(t+.22)}
-  function stab(t,ch){const f=ctx.createBiquadFilter(),g=ctx.createGain();f.type="lowpass";f.frequency.setValueAtTime(2200,t);f.frequency.exponentialRampToValueAtTime(600,t+.25);env(g,t,.008,.11,.28);f.connect(g).connect(master);
-    ch.forEach(m=>[-6,6].forEach(dt=>{const o=ctx.createOscillator();o.type="sawtooth";o.frequency.value=hz(m+12);o.detune.value=dt;o.connect(f);o.start(t);o.stop(t+.35)}))}
-  function pad(t,ch){const f=ctx.createBiquadFilter(),g=ctx.createGain(),len=S16*16;f.type="lowpass";f.frequency.value=900;g.gain.setValueAtTime(0.0001,t);g.gain.linearRampToValueAtTime(.05,t+.6);g.gain.linearRampToValueAtTime(0.0001,t+len);f.connect(g).connect(master);
-    ch.forEach(m=>{const o=ctx.createOscillator();o.type="triangle";o.frequency.value=hz(m);o.connect(f);o.start(t);o.stop(t+len+.05)})}
+  function voice(g,{dry=1,wet=0,echo=0}={}){
+    if(dry) g.connect(bus);
+    if(wet){const s=ctx.createGain();s.gain.value=wet;g.connect(s).connect(rev)}
+    if(echo){const s=ctx.createGain();s.gain.value=echo;g.connect(s).connect(dly)}
+  }
+  function env(p,t,a,peak,dec){p.setValueAtTime(0.0001,t);p.exponentialRampToValueAtTime(peak,t+a);p.exponentialRampToValueAtTime(0.0001,t+a+dec)}
+  function kick(t){const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.setValueAtTime(110,t);o.frequency.exponentialRampToValueAtTime(45,t+.09);
+    env(g.gain,t,.002,.85,.38);o.connect(g);voice(g);o.start(t);o.stop(t+.45)}
+  function shaker(t,v){const n=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=ctx.createGain();n.buffer=noise;n.playbackRate.value=1.3;
+    f.type="bandpass";f.frequency.value=7500;f.Q.value=1.2;env(g.gain,t,.006,v,.05);n.connect(f).connect(g);voice(g);n.start(t,Math.random()*.5);n.stop(t+.09)}
+  function hat(t){const n=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=ctx.createGain();n.buffer=noise;
+    f.type="highpass";f.frequency.value=9000;env(g.gain,t,.004,.13,.16);n.connect(f).connect(g);voice(g,{wet:.15});n.start(t,Math.random()*.5);n.stop(t+.22)}
+  function rim(t){const o=ctx.createOscillator(),f=ctx.createBiquadFilter(),g=ctx.createGain();o.type="triangle";o.frequency.value=1700;
+    f.type="bandpass";f.frequency.value=1900;f.Q.value=3;env(g.gain,t,.001,.16,.05);o.connect(f).connect(g);voice(g,{wet:.4});o.start(t);o.stop(t+.08)}
+  function bass(t,m,len){const o=ctx.createOscillator(),o2=ctx.createOscillator(),f=ctx.createBiquadFilter(),g=ctx.createGain();
+    o.type="sine";o.frequency.value=hz(m);o2.type="triangle";o2.frequency.value=hz(m);
+    const g2=ctx.createGain();g2.gain.value=.35;f.type="lowpass";f.frequency.value=600;
+    g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(.55,t+.015);g.gain.setValueAtTime(.55,t+len*.7);g.gain.exponentialRampToValueAtTime(0.0001,t+len);
+    o.connect(g);o2.connect(g2).connect(g);g.connect(f);voice(f);o.start(t);o2.start(t);o.stop(t+len+.05);o2.stop(t+len+.05)}
+  // E-Piano (FM, Rhodes-ähnlich)
+  function epiano(t,ch,len,vel){
+    ch.forEach((m,k)=>{
+      const c=ctx.createOscillator(),mo=ctx.createOscillator(),mg=ctx.createGain(),g=ctx.createGain(),tr=ctx.createOscillator(),tg=ctx.createGain();
+      const f=hz(m), tt=t+k*.012; // leichtes Anschlagen nacheinander
+      c.frequency.value=f; mo.frequency.value=f; c.detune.value=(k%2?4:-4);
+      mg.gain.setValueAtTime(f*1.6,tt); mg.gain.exponentialRampToValueAtTime(f*.08,tt+.5);
+      mo.connect(mg).connect(c.frequency);
+      tr.frequency.value=5; tg.gain.value=.12; // Tremolo
+      g.gain.setValueAtTime(0.0001,tt); g.gain.exponentialRampToValueAtTime(vel,tt+.008); g.gain.exponentialRampToValueAtTime(vel*.35,tt+.35); g.gain.exponentialRampToValueAtTime(0.0001,tt+len);
+      tr.connect(tg).connect(g.gain);
+      c.connect(g); voice(g,{wet:.45,echo:.25});
+      [c,mo,tr].forEach(o=>{o.start(tt);o.stop(tt+len+.1)});
+    });
+  }
+  // weicher Pad-Teppich
+  function pad(t,ch,len){const f=ctx.createBiquadFilter(),g=ctx.createGain();f.type="lowpass";f.frequency.value=1100;
+    g.gain.setValueAtTime(0.0001,t);g.gain.linearRampToValueAtTime(.05,t+1);g.gain.linearRampToValueAtTime(0.0001,t+len);f.connect(g);voice(g,{wet:.6});
+    ch.forEach(m=>[-7,7].forEach(dt=>{const o=ctx.createOscillator();o.type="sawtooth";o.frequency.value=hz(m);o.detune.value=dt;o.connect(f);o.start(t);o.stop(t+len+.05)}))}
+  // Glocke / Marimba-artige Melodie
+  function bell(t,m,v){const c=ctx.createOscillator(),mo=ctx.createOscillator(),mg=ctx.createGain(),g=ctx.createGain(),f=hz(m);
+    c.frequency.value=f;mo.frequency.value=f*3.5;mg.gain.setValueAtTime(f*.9,t);mg.gain.exponentialRampToValueAtTime(1,t+.6);mo.connect(mg).connect(c.frequency);
+    env(g.gain,t,.004,v,1.1);c.connect(g);voice(g,{wet:.55,echo:.45});c.start(t);mo.start(t);c.stop(t+1.3);mo.stop(t+1.3)}
+  const keyHits=[[3,.24,.5],[10,.2,.45],[14,.16,.3]];        // E-Piano-Synkopen pro Takt [16tel, Länge, Lautstärke]
+  const bassHits=[[0,.22],[3,.12],[6,.22],[10,.12],[11,.22]];   // Bass-Pattern
+  let melody=[];
+  function newMelody(){melody=[];for(let s=0;s<32;s++){ if(s%2===0&&Math.random()<.22) melody.push([s,scale[Math.floor(Math.random()*scale.length)]]) }}
   function schedule(){
-    while(next<ctx.currentTime+.12){
-      const s=step%16, bar=Math.floor(step/16)%4, t=next;
+    while(next<ctx.currentTime+.15){
+      const s=step%16, barN=Math.floor(step/16), bar=barN%4, t=next, intro=barN<2;
       if(s%4===0) kick(t);
-      if(s===4||s===12) clap(t);
-      if(s%4===2) hat(t,.12); else if(s%2===1) hat(t,.035);
-      if(s%4===2||s===15) bass(t,bassRoot[bar]+(s===15?12:0));
-      if(s===6||s===14) stab(t,prog[bar]);
-      if(s===0) pad(t,prog[bar]);
+      if(s===4||s===12) rim(t);
+      if(s%4===2) hat(t);
+      shaker(t,s%2?.05:.09);
+      if(!intro) bassHits.forEach(([b,l])=>{ if(b===s) bass(t,roots[bar]+(b===6?12:0),l) });
+      keyHits.forEach(([k,l,v])=>{ if(k===s) epiano(t,chords[bar],l*8,v*.5) });
+      if(s===0){ pad(t,chords[bar],S16*16); if(bar===0) newMelody() }
+      if(barN%8>=4) melody.forEach(([ms,m])=>{ if(ms===(step%32)) bell(t,m,.12) });
       next+=S16; step++;
     }
   }
@@ -1026,23 +1087,33 @@ const Music=(()=>{
     duck(on){ if(ctx&&playing) fade(on?0:VOL,.5) }
   };
 })();
+// iOS: ein stummes <audio> schaltet die Audio-Session auf Wiedergabe – sonst bleibt
+// Web Audio bei aktivem Stummschalter des iPhones unhörbar.
+const silentAudio=new Audio("data:audio/wav;base64,UklGRrQBAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YZABAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA"); silentAudio.loop=true; silentAudio.setAttribute("playsinline","");
 const musicBtn=document.getElementById("music"), musicLbl=document.getElementById("musicLbl");
-function setMusicUI(on){musicBtn.classList.toggle("on",on);musicBtn.setAttribute("aria-pressed",on);musicBtn.setAttribute("aria-label",on?"Partymusik ausschalten":"Partymusik einschalten");musicLbl.textContent=on?"Musik aus":"Musik an"}
+function setMusicUI(on){musicBtn.classList.toggle("on",on);musicBtn.setAttribute("aria-pressed",on);musicBtn.setAttribute("aria-label",on?"Musik ausschalten":"Musik einschalten");musicLbl.textContent=on?"Musik aus":"Musik an"}
 let musicTouched=false;
-musicBtn.addEventListener("click",()=>{ musicTouched=true; Music.audible?Music.stop():Music.start(); setMusicUI(Music.playing) });
+musicBtn.addEventListener("click",()=>{
+  musicTouched=true;
+  if(Music.audible){Music.stop();silentAudio.pause()} else {Music.start();silentAudio.play().catch(()=>{})}
+  setMusicUI(Music.playing);
+});
 // Beim Aufruf direkt starten. Browser erlauben Ton oft erst nach der ersten
 // Interaktion – dann startet die Musik beim ersten Tippen/Klicken/Tastendruck.
 function autoMusic(){
-  if(musicTouched||matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+  if(musicTouched) return;
   try{ Music.start(); setMusicUI(true) }catch(e){}
 }
 autoMusic();
-const unlockEvents=["pointerdown","keydown","touchend"];
+const unlockEvents=["pointerdown","touchend","click","keydown"];
 function unlockMusic(e){
-  unlockEvents.forEach(t=>removeEventListener(t,unlockMusic,true));
-  if(e.target.closest&&e.target.closest("#music")) return;
-  if(!musicTouched&&Music.playing) Music.start(); else autoMusic();
+  if(e.target.closest&&e.target.closest("#music")) return; // der Musik-Knopf regelt das selbst
+  if(musicTouched||!Music.playing) return removeUnlock();
+  Music.start(); silentAudio.play().catch(()=>{});
+  // Erst entfernen, wenn der Ton wirklich läuft (Safari akzeptiert nur bestimmte Events)
+  setTimeout(()=>{ if(Music.audible) removeUnlock() },150);
 }
+function removeUnlock(){unlockEvents.forEach(t=>removeEventListener(t,unlockMusic,true))}
 unlockEvents.forEach(t=>addEventListener(t,unlockMusic,true));
 // Musik ausblenden, solange das Video mit Ton laeuft
 mv.addEventListener("play",()=>Music.duck(!mv.muted));
