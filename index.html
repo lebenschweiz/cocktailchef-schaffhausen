@@ -1252,13 +1252,13 @@ lb.addEventListener("touchend",e=>{if(tx===null)return;const dx=e.changedTouches
 // ---------- KONTAKTFORMULAR (EmailJS) ----------
 // Werte aus dem EmailJS-Dashboard eintragen (emailjs.com → Email Services / Email Templates / Account).
 // Solange sie leer sind, öffnet das Formular wie bisher das E-Mail-Programm.
-const EMAILJS = { serviceId:"", templateId:"", publicKey:"" };
+const EMAILJS = { serviceId:"service_v4xto6a", templateId:"template_cocktailanfrage", publicKey:"6Ra4TSz45CcgUI88j" };
 const CONTACT_MAIL = "schaffhausen@cocktailchef-anlage.ch";
 const form=document.getElementById("form"), fStatus=document.getElementById("f-status"), fBtn=document.getElementById("f-submit");
 const fv=id=>document.getElementById(id).value.trim();
 function showStatus(type,html){fStatus.className="form-status show "+type;fStatus.innerHTML=html}
 function formData(){
-  return { name:fv("f-name"), email:fv("f-email"), phone:fv("f-phone")||"–", date:fv("f-date")||"–",
+  return { name:fv("f-name"), email:fv("f-email"), phone:fv("f-phone")||"–", date:fv("f-date")?fv("f-date").split("-").reverse().join("."):"–",
     event_type:fv("f-type"), guests:fv("f-guests")||"–", message:fv("f-msg")||"–" };
 }
 function mailtoLink(d){
