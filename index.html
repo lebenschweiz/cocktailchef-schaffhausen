@@ -223,20 +223,44 @@ section{padding:120px 0;position:relative}
 #galerie{background:#faca00;color:#1a1204;overflow:hidden}
 #galerie .eyebrow{color:#1a1204}
 #galerie .sec-head p{color:rgba(26,18,4,.72)}
-.gal-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center}
-.gal-list{list-style:none;display:grid;gap:14px;margin:30px 0 34px}
-.gal-list li{display:flex;gap:14px;align-items:center;font-weight:600}
-.gal-list li span{width:38px;height:38px;flex:0 0 38px;border-radius:50%;display:grid;place-items:center;background:#1a1204;color:#faca00;font-size:1.05rem}
 .btn-dark{background:#1a1204;color:#faca00;box-shadow:0 14px 30px -12px rgba(26,18,4,.6)}
 .btn-dark:hover{transform:translateY(-3px);box-shadow:0 20px 40px -14px rgba(26,18,4,.7)}
-.gal-photo{position:relative;perspective:1000px}
-.gal-photo img{width:100%;height:auto;transition:transform .2s ease-out;transform-style:preserve-3d;animation:galFloat 7s ease-in-out infinite;will-change:transform}
-@keyframes galFloat{0%,100%{translate:0 0}50%{translate:0 -14px}}
-.gal-sticker{position:absolute;top:4%;right:2%;width:110px;height:110px;border-radius:50%;display:grid;place-items:center;text-align:center;
-  background:#1a1204;color:#faca00;font:800 .82rem/1.15 Inter;letter-spacing:.04em;text-transform:uppercase;transform:rotate(12deg);
-  box-shadow:0 14px 30px -10px rgba(0,0,0,.5);animation:stick 4s ease-in-out infinite}
-.gal-sticker b{display:block;font-family:Fraunces,serif;font-size:1.9rem;letter-spacing:0}
-@keyframes stick{0%,100%{transform:rotate(12deg) scale(1)}50%{transform:rotate(4deg) scale(1.06)}}
+#galerie .sec-head{margin-bottom:28px}
+.g-filter{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:28px}
+.g-filter button{border:2px solid #1a1204;background:transparent;color:#1a1204;font:600 .9rem Inter;padding:9px 18px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
+.g-filter button:hover{background:rgba(26,18,4,.08)}
+.g-filter button.on{background:#1a1204;color:#faca00}
+.g-wrap{position:relative}
+.g-grid{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:4px 2px 16px}
+.g-grid::-webkit-scrollbar{display:none}
+.g-nav{position:absolute;top:calc(50% - 8px);transform:translateY(-50%);z-index:2;width:52px;height:52px;border-radius:50%;border:0;cursor:pointer;
+  background:#1a1204;color:#faca00;font-size:1.6rem;display:grid;place-items:center;box-shadow:0 10px 24px -8px rgba(26,18,4,.6);transition:opacity .2s,transform .2s}
+.g-nav:hover{transform:translateY(-50%) scale(1.08)}
+.g-nav[disabled]{opacity:0;pointer-events:none}
+.g-prev{left:-22px}.g-next{right:-22px}
+.g-count{text-align:center;font-weight:700;font-size:.9rem;color:rgba(26,18,4,.7);margin-top:4px}
+.g-item{display:block;flex:0 0 calc((100% - 32px)/3);aspect-ratio:4/5;scroll-snap-align:start;margin:0;padding:0;border:0;border-radius:16px;overflow:hidden;cursor:zoom-in;background:#1a1204;position:relative;
+  box-shadow:0 12px 30px -16px rgba(26,18,4,.7);animation:cardIn .5s both cubic-bezier(.2,.8,.2,1)}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.8,.2,1),filter .3s}
+.g-item:hover img{transform:scale(1.05);filter:brightness(1.05)}
+.g-item span{position:absolute;left:0;right:0;bottom:0;padding:26px 12px 10px;font-size:.8rem;font-weight:600;color:#fff;text-align:left;
+  background:linear-gradient(180deg,transparent,rgba(0,0,0,.7));opacity:0;transform:translateY(6px);transition:.3s}
+.g-item:hover span,.g-item:focus-visible span{opacity:1;transform:none}
+.g-more{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:22px}
+.btn-outline-dark{border:2px solid #1a1204;color:#1a1204;background:transparent}
+.btn-outline-dark:hover{background:rgba(26,18,4,.08);transform:translateY(-3px)}
+/* Lightbox */
+.lb{position:fixed;inset:0;z-index:120;display:grid;grid-template-rows:auto 1fr auto;background:rgba(8,6,4,.94);backdrop-filter:blur(6px);
+  opacity:0;pointer-events:none;transition:opacity .3s}
+.lb.open{opacity:1;pointer-events:auto}
+.lb-top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;color:var(--muted);font-size:.9rem}
+.lb-stage{position:relative;display:grid;place-items:center;min-height:0;padding:0 64px;touch-action:pan-y}
+.lb-stage img{max-width:100%;max-height:calc(100vh - 150px);max-height:calc(100svh - 150px);object-fit:contain;border-radius:12px;box-shadow:0 30px 80px -30px #000;animation:popIn .35s cubic-bezier(.2,.9,.3,1.2)}
+.lb-cap{text-align:center;padding:14px 18px 22px;font-family:Fraunces,serif;font-size:1.2rem;font-weight:700}
+.lb-btn{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(28,24,18,.85);color:var(--text);cursor:pointer;font-size:1.4rem;display:grid;place-items:center;transition:background .2s}
+.lb-btn:hover{background:rgba(255,204,26,.2)}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%)}
+.lb-prev{left:10px}.lb-next{right:10px}
 .wave{position:absolute;left:0;width:100%;height:60px;display:block}
 .wave.top{top:-1px}.wave.bot{bottom:-1px;transform:scaleY(-1)}
 
@@ -424,19 +448,23 @@ footer{border-top:1px solid var(--line);padding:50px 0 34px;color:var(--muted);f
   .hero-cta,.hero-meta{justify-content:center}
   .glass-stage{max-width:480px;margin:0 auto;width:100%}
   .steps{grid-template-columns:1fr}
-  .gal-grid{grid-template-columns:1fr;text-align:center}
-  .gal-list{justify-items:center}
-  .gal-sticker{width:88px;height:88px;font-size:.7rem}.gal-sticker b{font-size:1.5rem}
   .stats{grid-template-columns:repeat(2,1fr)}
   .events{grid-template-columns:repeat(2,1fr)}
   .event:last-child:nth-child(odd){grid-column:1/-1;aspect-ratio:16/9}
   .contact-grid{grid-template-columns:1fr}
   .finder{grid-template-columns:1fr;text-align:center;justify-items:center}
+  .g-item{flex-basis:calc((100% - 16px)/2)}
+  .g-prev{left:-8px}.g-next{right:-8px}.g-nav{width:44px;height:44px}
+  .lb-stage{padding:0 8px}.lb-prev,.lb-next{top:auto;bottom:-58px;transform:none}.lb-cap{padding-bottom:70px}
 }
 @media (max-width:820px){
   .nav-links,.nav .btn{display:none}
   .logo-loc{display:none}
   .burger{display:block}
+  .foot{flex-direction:column;align-items:center;text-align:center}
+  .foot nav{justify-content:center}
+  .copy{text-align:center}
+  footer{padding-bottom:110px}
   .nav .wrap{display:grid;grid-template-columns:42px 1fr 42px}
   .nav .logo{grid-column:2;justify-self:center}
   .burger{grid-column:3}
@@ -453,6 +481,7 @@ footer{border-top:1px solid var(--line);padding:50px 0 34px;color:var(--muted);f
   .cheers img{object-position:45% 50%}
   .cheers::after{background:linear-gradient(180deg,transparent 35%,rgba(13,11,8,.9) 100%)}
   .cheers-chip{top:14px;right:14px;left:14px;text-align:center;font-size:.76rem}
+  .g-item{flex-basis:80%;border-radius:12px}
   .event{padding:16px}.event h3{font-size:1.15rem}.event p{display:none}
   form{grid-template-columns:1fr}
   .contact-card{padding:26px}
@@ -650,25 +679,28 @@ footer{border-top:1px solid var(--line);padding:50px 0 34px;color:var(--muted);f
 <!-- GALERIE -->
 <section id="galerie">
   <svg class="wave top" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H1440V20C1200 60 960 0 720 25S240 55 0 20Z" fill="#0d0b08"/></svg>
-  <div class="wrap gal-grid">
-    <div class="reveal">
+  <div class="wrap">
+    <div class="sec-head center reveal">
       <span class="eyebrow">Galerie</span>
-      <div class="sec-head" style="margin:14px 0 0">
-        <h2>Frisch gemixt.<br>Direkt ins Glas.</h2>
-        <p>So sieht's aus, wenn die Cocktailchef-Anlage loslegt: Drink auswählen, Glas drunter – und schon wird angestossen.</p>
-      </div>
-      <ul class="gal-list">
-        <li><span>⚡</span>In wenigen Sekunden fertig gemixt</li>
-        <li><span>🎯</span>Jeder Cocktail exakt dosiert</li>
-        <li><span>🥂</span>Gäste bedienen sich selbst</li>
-      </ul>
+      <h2>Frisch gemixt.<br>Direkt ins Glas.</h2>
+      <p>Eindrücke von unseren Events, der Anlage und den Cocktails – tippe auf ein Bild für die grosse Ansicht.</p>
+    </div>
+    <div class="g-filter reveal" id="gFilter">
+      <button class="on" data-cat="all">Alle</button>
+      <button data-cat="events">Events &amp; Gäste</button>
+      <button data-cat="anlage">Die Anlage</button>
+      <button data-cat="cocktails">Cocktails</button>
+    </div>
+    <div class="g-wrap">
+      <button class="g-nav g-prev" id="gPrev" type="button" aria-label="Vorherige Bilder">‹</button>
+      <div class="g-grid" id="gGrid"></div>
+      <button class="g-nav g-next" id="gNext" type="button" aria-label="Weitere Bilder">›</button>
+    </div>
+    <p class="g-count" id="gCount"></p>
+    <div class="g-more">
       <a href="#kontakt" class="btn btn-dark">Anlage für mein Event anfragen
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
-    </div>
-    <div class="gal-photo reveal d1" id="galPhoto">
-      <img src="assets/galerie.png" alt="Cocktailchef-Anlage füllt einen Cocktail ab, Gäste stossen mit bunten Drinks an" width="773" height="669" loading="lazy">
-      <div class="gal-sticker"><span><b>28</b>Cocktails</span></div>
     </div>
   </div>
   <svg class="wave bot" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H1440V20C1200 60 960 0 720 25S240 55 0 20Z" fill="#0d0b08"/></svg>
@@ -746,6 +778,16 @@ footer{border-top:1px solid var(--line);padding:50px 0 34px;color:var(--muted);f
 <a href="tel:+41783210165" class="fab" id="fab" aria-label="Anrufen">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
 </a>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Bildergalerie">
+  <div class="lb-top"><span id="lbCount"></span><button class="lb-btn" id="lbClose" aria-label="Schliessen">×</button></div>
+  <div class="lb-stage" id="lbStage">
+    <button class="lb-btn lb-prev" id="lbPrev" aria-label="Vorheriges Bild">‹</button>
+    <img id="lbImg" alt="">
+    <button class="lb-btn lb-next" id="lbNext" aria-label="Nächstes Bild">›</button>
+  </div>
+  <div class="lb-cap" id="lbCap"></div>
+</div>
 
 <div class="modal" id="modal" role="dialog" aria-modal="true">
   <div class="modal-box">
@@ -1140,15 +1182,64 @@ document.querySelectorAll(".logo-img").forEach(l=>{
   l.addEventListener("animationend",()=>l.classList.remove("spin"));
 });
 
-// gallery tilt
-const gp=document.getElementById("galPhoto"), gimg=gp.querySelector("img");
-if(fine){
-  gp.addEventListener("pointermove",e=>{
-    const r=gp.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
-    gimg.style.transform=`rotateY(${x*12}deg) rotateX(${-y*10}deg) scale(1.03)`;
-  });
-  gp.addEventListener("pointerleave",()=>gimg.style.transform="");
+// ---------- GALERIE ----------
+const G=[
+  ["events","assets/galerie/gruppe.jpg","Gute Laune an der Cocktailchef-Bar"],
+  ["events","assets/anstossen.jpg","Prost! Gäste stossen an"],
+  ["events","assets/anlage-4.jpg","Bunte Drinks für alle Gäste"],
+  ["events","assets/galerie/weihnachten.jpg","Weihnachtlicher Cocktail"],
+  ["anlage","assets/anlage-1.jpg","Die Cocktailchef-Anlage"],
+  ["anlage","assets/anlage-2.jpg","Frisch gemixt in Sekunden"],
+  ["anlage","assets/anlage-3.jpg","Der Ausschank in Aktion"],
+  ...[...PHOTOS].sort((a,b)=>a-b).map(n=>["cocktails",`assets/cocktails/${n}.jpg`,`Nr. ${n} · ${DRINKS.find(d=>d.no===n).name}`])
+].map(([cat,src,title])=>({cat,src,title,thumb:"assets/galerie/thumbs/"+src.replace("assets/","").replace("/","-")}));
+const gGrid=document.getElementById("gGrid"), gFilter=document.getElementById("gFilter"), gPrev=document.getElementById("gPrev"), gNext=document.getElementById("gNext"), gCount=document.getElementById("gCount");
+let gCat="all", gList=G;
+function renderGallery(){
+  if(gCat==="all"){ // Kategorien abwechselnd mischen
+    const by=["events","anlage","cocktails"].map(c=>G.filter(x=>x.cat===c)); gList=[];
+    for(let i=0;by.some(l=>i<l.length);i++) by.forEach(l=>{ if(l[i]) gList.push(l[i]) });
+  } else gList=G.filter(x=>x.cat===gCat);
+  gGrid.innerHTML=gList.map((x,i)=>`<button class="g-item" type="button" data-i="${i}" style="animation-delay:${Math.min(i*40,500)}ms" aria-label="${x.title} – gross anzeigen"><img src="${x.thumb}" alt="${x.title}" loading="lazy"><span>${x.title}</span></button>`).join("");
+  gGrid.style.scrollBehavior="auto"; gGrid.scrollLeft=0; gGrid.style.scrollBehavior="";
+  gUpdate();
 }
+gFilter.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
+  gFilter.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));gCat=b.dataset.cat;renderGallery()});
+// Blättern: immer eine "Seite" (max. 3 Bilder) weiter
+function gStep(){const it=gGrid.querySelector(".g-item");return it?it.getBoundingClientRect().width+16:gGrid.clientWidth}
+function gVisible(){return Math.max(1,Math.round(gGrid.clientWidth/gStep()))}
+function gUpdate(){
+  const st=gStep(), first=Math.round(gGrid.scrollLeft/st), vis=gVisible(), n=gList.length;
+  gPrev.disabled=gGrid.scrollLeft<4; gNext.disabled=gGrid.scrollLeft+gGrid.clientWidth>=gGrid.scrollWidth-4;
+  gCount.textContent=n?`${first+1}${vis>1?"–"+Math.min(first+vis,n):""} von ${n}`:"";
+}
+gPrev.onclick=()=>gGrid.scrollBy({left:-gStep()*gVisible()});
+gNext.onclick=()=>gGrid.scrollBy({left:gStep()*gVisible()});
+gGrid.addEventListener("scroll",()=>requestAnimationFrame(gUpdate),{passive:true});
+addEventListener("resize",gUpdate);
+renderGallery();
+// Lightbox
+const lb=document.getElementById("lb"), lbImg=document.getElementById("lbImg"), lbCap=document.getElementById("lbCap"), lbCount=document.getElementById("lbCount");
+let lbI=0;
+function lbShow(i){
+  lbI=(i+gList.length)%gList.length; const x=gList[lbI];
+  lbImg.style.animation="none"; void lbImg.offsetWidth; lbImg.style.animation="";
+  lbImg.src=x.src; lbImg.alt=x.title; lbCap.textContent=x.title; lbCount.textContent=`${lbI+1} / ${gList.length}`;
+  [1,-1].forEach(d=>{const n=gList[(lbI+d+gList.length)%gList.length];if(n)(new Image).src=n.src}); // Nachbarn vorladen
+}
+function lbOpen(i){lbShow(i);lb.classList.add("open");document.body.style.overflow="hidden"}
+function lbClose(){lb.classList.remove("open");document.body.style.overflow=""}
+gGrid.addEventListener("click",e=>{const b=e.target.closest(".g-item");if(b)lbOpen(+b.dataset.i)});
+document.getElementById("lbPrev").onclick=()=>lbShow(lbI-1);
+document.getElementById("lbNext").onclick=()=>lbShow(lbI+1);
+document.getElementById("lbClose").onclick=lbClose;
+lb.addEventListener("click",e=>{if(e.target===lb||e.target.id==="lbStage")lbClose()});
+document.addEventListener("keydown",e=>{if(!lb.classList.contains("open"))return;
+  if(e.key==="Escape")lbClose(); else if(e.key==="ArrowLeft")lbShow(lbI-1); else if(e.key==="ArrowRight")lbShow(lbI+1)});
+let tx=null;
+lb.addEventListener("touchstart",e=>{tx=e.touches[0].clientX},{passive:true});
+lb.addEventListener("touchend",e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;tx=null;if(Math.abs(dx)>45)lbShow(lbI+(dx<0?1:-1))});
 
 // ---------- KONTAKTFORMULAR (EmailJS) ----------
 // Werte aus dem EmailJS-Dashboard eintragen (emailjs.com → Email Services / Email Templates / Account).
