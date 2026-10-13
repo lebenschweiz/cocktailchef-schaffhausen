@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Impressum – Cocktailchef Schweiz</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0b08;--card:#1c1812;--line:rgba(255,220,120,.14);--text:#f6efe2;--muted:#b9ad97;--gold:#ffcc1a;--gold-2:#ff9f1c}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line);padding:12px 0}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo img{height:72px;width:auto;clip-path:ellipse(45% 43.5% at 50% 50%);display:block}
+.back{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid var(--line);text-decoration:none;font-weight:600;font-size:.92rem}
+.back:hover{border-color:rgba(255,204,26,.5);color:var(--gold)}
+main.wrap{padding:56px 20px 80px}
+.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+h1{font-family:Fraunces,Georgia,serif;font-weight:900;font-size:clamp(2.2rem,6vw,3.4rem);line-height:1.05;margin:10px 0 32px}
+h2{font-family:Fraunces,Georgia,serif;font-size:1.3rem;margin:0 0 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px 30px;margin-bottom:18px}
+.card p{color:var(--muted)}
+.card p strong{color:var(--text)}
+.card a{color:var(--gold);text-decoration:none}
+.card a:hover{text-decoration:underline}
+footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:.85rem;text-align:center}
+@media (max-width:560px){.logo img{height:60px}.card{padding:22px 20px}main.wrap{padding:40px 20px 60px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="index.html"><img src="assets/logo.png" alt="Cocktailchef Logo"></a>
+    <a class="back" href="index.html">← Zur Startseite</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <span class="eyebrow">Rechtliches</span>
+  <h1>Impressum</h1>
+
+  <div class="card">
+    <h2>Kontaktadresse</h2>
+    <p>
+      <strong>Cocktailchef Schweiz</strong><br>
+      Erika Hartung<br>
+      Hauptstrasse 16<br>
+      8246 Langwiesen<br>
+      Schweiz
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Kontakt</h2>
+    <p>E-Mail: <a href="mailto:schaffhausen@cocktailchef-anlage.ch">schaffhausen@cocktailchef-anlage.ch</a></p>
+  </div>
+
+  <div class="card">
+    <h2>Verantwortlich für den Inhalt</h2>
+    <p>Erika Hartung, Hauptstrasse 16, 8246 Langwiesen</p>
+  </div>
+</main>
+
+<footer>© <span id="year"></span> Cocktailchef Schweiz</footer>
+<script>document.getElementById("year").textContent=new Date().getFullYear();</script>
+</body>
+</html>
