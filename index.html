@@ -486,6 +486,14 @@ footer{border-top:1px solid var(--line);padding:50px 0 34px;color:var(--muted);f
   form{grid-template-columns:1fr}
   .contact-card{padding:26px}
   .search{min-width:0;flex:1 1 100%}
+  .menu-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .drink{flex-direction:column;gap:6px;padding:14px 12px 30px;border-radius:14px}
+  .drink svg{flex:0 0 auto;height:46px!important;width:auto}
+  .drink h3{font-size:1rem;line-height:1.15;hyphens:auto;overflow-wrap:anywhere}
+  .drink p{font-size:.76rem;line-height:1.4}
+  .drink .no{font-size:.68rem}
+  .badge-free{top:10px;right:10px;font-size:.6rem;padding:3px 7px}
+  .has-photo{left:12px;right:auto;bottom:10px;font-size:.66rem}
   .tabs{width:100%}.tab{flex:1;padding:11px 10px}
   .orbit-chip{font-size:.72rem;padding:7px 11px}
   .press{right:-14px;width:84px;height:84px}
@@ -511,9 +519,9 @@ footer{border-top:1px solid var(--line);padding:50px 0 34px;color:var(--muted);f
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="#so-gehts">So geht's</a>
-      <a href="#events">Events</a>
+      <a href="#events" hidden>Events</a>
       <a href="#karte">Cocktailkarte</a>
-      <a href="#galerie">Galerie</a>
+      <a href="#galerie" hidden>Galerie</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
     <a href="#kontakt" class="btn btn-primary">Jetzt anfragen</a>
@@ -608,7 +616,7 @@ footer{border-top:1px solid var(--line);padding:50px 0 34px;color:var(--muted);f
 </section>
 
 <!-- EVENTS -->
-<section id="events">
+<section id="events" hidden><!-- vorübergehend ausgeblendet: "hidden" entfernen zum Einblenden -->
   <div class="wrap">
     <div class="sec-head center reveal">
       <span class="eyebrow">Für jeden Anlass</span>
@@ -677,7 +685,7 @@ footer{border-top:1px solid var(--line);padding:50px 0 34px;color:var(--muted);f
 </section>
 
 <!-- GALERIE -->
-<section id="galerie">
+<section id="galerie" hidden><!-- vorübergehend ausgeblendet: "hidden" entfernen zum Einblenden -->
   <svg class="wave top" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H1440V20C1200 60 960 0 720 25S240 55 0 20Z" fill="#0d0b08"/></svg>
   <div class="wrap">
     <div class="sec-head center reveal">
@@ -761,7 +769,7 @@ footer{border-top:1px solid var(--line);padding:50px 0 34px;color:var(--muted);f
       <a href="#top" class="logo"><img class="logo-img" src="assets/logo.png" alt="Cocktailchef Logo"><span class="logo-loc">Schweiz</span></a>
       <nav>
         <a href="#karte">Cocktailkarte</a>
-        <a href="#galerie">Galerie</a>
+        <a href="#galerie" hidden>Galerie</a>
           <a href="#kontakt">Standort</a>
         <a href="#">Datenschutz</a>
         <a href="#">Impressum</a>
