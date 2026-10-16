@@ -101,43 +101,40 @@ section{padding:84px 0}
 .nav.open{background:rgba(251,246,242,.97)}
 
 /* ---------- HERO ---------- */
-.hero{position:relative;padding:118px 0 70px;overflow:hidden}
-.hero::before{
-  content:"";position:absolute;width:620px;height:620px;right:-260px;top:-180px;border-radius:50%;
-  background:radial-gradient(circle,var(--blush-2),transparent 68%);z-index:-1;
-}
-.hero::after{
-  content:"";position:absolute;width:420px;height:420px;left:-200px;bottom:-160px;border-radius:50%;
-  background:radial-gradient(circle,#f1e4d3,transparent 70%);z-index:-1;
-}
-.hero-grid{display:grid;gap:44px;align-items:center}
-.hero h1 em{display:block}
-.hero .lead{margin:20px 0 30px}
-.cta-row{display:flex;flex-wrap:wrap;gap:12px}
-.hero-meta{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:30px;font-size:.88rem;color:var(--muted)}
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 0 28px;overflow:hidden;color:var(--cream);background:var(--plum)}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04);animation:heroZoom 18s ease-out forwards}
+@keyframes heroZoom{to{transform:scale(1)}}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,22,30,.55) 0%,rgba(40,22,30,.15) 35%,rgba(40,22,30,.55) 65%,rgba(40,22,30,.92) 100%),radial-gradient(120% 80% at 0% 100%,rgba(165,101,90,.45),transparent 60%)}
+.hero-inner{position:relative;width:100%}
+.hero .eyebrow{color:var(--blush-2);padding-right:50px}
+.hero h1{color:var(--cream);font-size:clamp(3rem,11vw,6.2rem);text-shadow:0 2px 30px rgba(0,0,0,.25)}
+.hero h1 em{display:block;color:var(--blush-2)}
+.hero .lead{margin:20px 0 30px;color:rgba(251,246,242,.86);max-width:52ch}
+.hero .btn-primary{background:var(--cream);color:var(--plum)}
+.hero .btn-primary:hover{background:var(--blush)}
+.hero .btn-ghost{border-color:rgba(251,246,242,.7);color:var(--cream);backdrop-filter:blur(6px)}
+.hero .btn-ghost:hover{background:var(--cream);color:var(--plum)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:26px;font-size:.88rem;color:rgba(251,246,242,.8)}
 .hero-meta span{display:inline-flex;align-items:center;gap:8px}
-.hero-meta svg{width:17px;height:17px;color:var(--rose-deep)}
-.hero-visual{position:relative;max-width:460px;margin:0 auto;width:100%}
-.arch{
-  aspect-ratio:4/5;border-radius:999px 999px var(--radius) var(--radius);overflow:hidden;
-  background:linear-gradient(160deg,var(--blush) 0%,var(--blush-2) 55%,#d9b1a3 100%);
-  box-shadow:var(--shadow);position:relative;display:grid;place-items:center;
-}
-.arch img{width:100%;height:100%;object-fit:cover}
-.photo-ph{
-  position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:30px;
-  color:var(--plum-2);font-size:.85rem;
-}
-.photo-ph svg{width:54px;height:54px;margin:0 auto 10px;opacity:.55}
-.float-card{
-  position:absolute;background:var(--white);border-radius:18px;padding:14px 18px;box-shadow:var(--shadow);
-  display:flex;align-items:center;gap:12px;font-size:.85rem;line-height:1.3;
-}
-.float-card b{display:block;font-size:.95rem;color:var(--plum)}
-.float-card .ic{width:40px;height:40px;border-radius:50%;background:var(--blush);display:grid;place-items:center;flex:none}
-.float-card .ic svg{width:20px;height:20px;color:var(--rose-deep)}
-.fc-1{left:-8px;bottom:56px}
-.fc-2{right:-8px;top:40px}
+.hero-meta svg{width:17px;height:17px;color:var(--blush-2)}
+.hero-stats{position:relative;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:38px}
+.hero-stats div{background:rgba(251,246,242,.1);border:1px solid rgba(251,246,242,.22);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:18px;padding:14px 16px}
+.hero-stats b{display:block;font-family:"Cormorant Garamond",serif;font-size:1.5rem;line-height:1.1;color:var(--cream)}
+.hero-stats span{font-size:.78rem;color:rgba(251,246,242,.75)}
+.hero-toggle{position:absolute;right:20px;top:96px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(251,246,242,.5);background:rgba(40,22,30,.3);cursor:pointer;display:grid;place-items:center}
+.hero-toggle span{width:10px;height:12px;border-left:3px solid var(--cream);border-right:3px solid var(--cream)}
+.hero-toggle.paused span{width:0;height:0;border:0;border-left:11px solid var(--cream);border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
+.nav:not(.scrolled):not(.open) .logo b,.nav:not(.scrolled):not(.open) .menu a:not(.btn){color:var(--cream)}
+.nav:not(.scrolled):not(.open) .logo small{color:var(--blush-2)}
+.nav:not(.scrolled):not(.open) .menu .btn-primary{background:var(--cream);color:var(--plum)}
+
+/* ---------- STUDIO ---------- */
+.studio{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+.studio figure{margin:0;border-radius:var(--radius);overflow:hidden;position:relative;aspect-ratio:3/4;box-shadow:var(--shadow)}
+.studio figure:nth-child(odd){transform:translateY(18px)}
+.studio img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.studio figure:hover img{transform:scale(1.05)}
+.studio figcaption{position:absolute;left:12px;bottom:12px;background:rgba(251,246,242,.92);color:var(--plum);font-size:.75rem;font-weight:700;letter-spacing:.06em;padding:5px 12px;border-radius:999px}
 
 /* ---------- MARQUEE ---------- */
 .ribbon{background:var(--plum);color:var(--blush);padding:16px 0;overflow:hidden}
@@ -310,6 +307,7 @@ footer a:hover{color:var(--cream)}
 @media (min-width:720px){
   .cards{grid-template-columns:repeat(2,1fr)}
   .ba-grid{grid-template-columns:repeat(3,1fr)}
+  .hero-toggle{top:auto;bottom:40px;right:28px}
   .gallery{grid-template-columns:repeat(3,1fr)}
   .quotes{grid-template-columns:repeat(3,1fr)}
   .contact-grid{grid-template-columns:1fr 1fr}
@@ -320,8 +318,9 @@ footer a:hover{color:var(--cream)}
   section{padding:110px 0}
   .menu{display:flex}
   .burger,.mobile-menu{display:none}
-  .hero{padding:150px 0 100px}
-  .hero-grid{grid-template-columns:1.1fr .9fr}
+  .hero{padding:150px 0 40px}
+  .hero-stats{grid-template-columns:repeat(4,1fr);gap:14px}
+  .studio{grid-template-columns:repeat(4,1fr);gap:18px}
   .cards{grid-template-columns:repeat(3,1fr)}
   .laser-grid,.about-grid{grid-template-columns:1fr 1fr;gap:70px}
   .about-img{order:-1}
@@ -386,34 +385,31 @@ footer a:hover{color:var(--cream)}
 
 <!-- HERO -->
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div class="reveal">
-      <span class="eyebrow">Beauty Loft in Langwiesen · Feuerthalen</span>
-      <h1>Glatte Haut. Schöne Nägel. <em>Zeit für dich.</em></h1>
-      <p class="lead">Schönheit beginnt mit einem guten Gefühl in der eigenen Haut. Bei mir erwarten dich dauerhafte Haarentfernung mit Diodenlaser der neusten Generation, Gel-Maniküre mit Design und eine ruhige Stunde nur für dich. Schon ab der ersten Sitzung siehst du den Unterschied.</p>
-      <div class="cta-row">
-        <a href="https://wa.me/41782235962" class="btn btn-primary" target="_blank" rel="noopener"><svg><use href="#i-cal"/></svg>Termin per WhatsApp</a>
-        <a href="#behandlungen" class="btn btn-ghost">Behandlungen entdecken</a>
-      </div>
-      <div class="hero-meta">
-        <span><svg><use href="#i-pin"/></svg>Hauptstrasse 16, 8246 Langwiesen</span>
-        <span><svg><use href="#i-clock"/></svg>Mo–Fr bis 20 Uhr, Sa bis 14 Uhr</span>
-      </div>
+  <video class="hero-bg" id="hero-video" autoplay muted loop playsinline preload="metadata" poster="img/hero-poster.jpg" aria-hidden="true">
+    <!-- Video von der bisherigen Wix-Seite. Sobald video.wixstatic.com freigegeben ist, lokal unter img/ ablegen. -->
+    <source src="https://video.wixstatic.com/video/3aff11_1ef84b33afdf4bcfa62d22d63d0f1abf/720p/mp4/file.mp4" type="video/mp4">
+  </video>
+  <div class="hero-shade" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Beauty Loft in Langwiesen · Feuerthalen</span>
+    <h1>Glatte Haut.<br>Schöne Nägel.<em>Zeit für dich.</em></h1>
+    <p class="lead">Dauerhafte Haarentfernung mit Diodenlaser der neusten Generation, Gel-Maniküre mit Design und eine ruhige Stunde nur für dich. Den Unterschied siehst du schon nach der ersten Sitzung.</p>
+    <div class="cta-row">
+      <a href="https://wa.me/41782235962" class="btn btn-primary" target="_blank" rel="noopener"><svg><use href="#i-cal"/></svg>Termin per WhatsApp</a>
+      <a href="#preise" class="btn btn-ghost">Preise ansehen</a>
     </div>
-    <div class="hero-visual reveal">
-      <div class="arch">
-        <img src="img/hero.jpg" alt="Erika bei einer Laser-Behandlung im Beauty Loft" width="933" height="1400" fetchpriority="high">
-      </div>
-      <div class="float-card fc-1">
-        <div class="ic"><svg><use href="#i-laser"/></svg></div>
-        <div><b>Diodenlaser</b>neuste Generation</div>
-      </div>
-      <div class="float-card fc-2">
-        <div class="ic"><svg><use href="#i-tag"/></svg></div>
-        <div><b>Ab 40 CHF</b>pro Zone</div>
-      </div>
+    <div class="hero-meta">
+      <span><svg><use href="#i-pin"/></svg>Hauptstrasse 16, 8246 Langwiesen</span>
+      <span><svg><use href="#i-clock"/></svg>Mo–Fr 8–20 Uhr · Sa 9–14 Uhr</span>
     </div>
   </div>
+  <div class="wrap hero-stats" aria-label="Auf einen Blick">
+    <div><b>ab 40 CHF</b><span>pro Laser-Zone</span></div>
+    <div><b>10–25 %</b><span>weniger Haare nach Sitzung 1</span></div>
+    <div><b>Diodenlaser</b><span>neuste Generation</span></div>
+    <div><b>Gel-Lack</b><span>hält oft 4 Wochen und mehr</span></div>
+  </div>
+  <button class="hero-toggle" id="hero-toggle" type="button" aria-label="Video pausieren"><span></span></button>
 </section>
 
 <div class="ribbon" aria-hidden="true">
@@ -422,6 +418,23 @@ footer a:hover{color:var(--cream)}
     <span>Dauerhafte Haarentfernung</span><span>Gel-Maniküre</span><span>Nageldesign</span><span>Diodenlaser</span><span>Feuerthalen</span>
   </div>
 </div>
+
+<!-- STUDIO -->
+<section id="studio">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Das Loft</span>
+      <h2>Ein Ort, an dem du <em>loslassen</em> kannst</h2>
+      <p class="lead">Hell, ruhig und mit Blick ins Grüne: Im Beauty Loft in Langwiesen gönnst du dir eine Auszeit, und ich nehme mir Zeit nur für dich.</p>
+    </div>
+    <div class="studio reveal">
+      <figure><img src="img/studio-1.jpg" alt="Maniküre-Platz mit Blick ins Grüne" width="666" height="1000" loading="lazy"><figcaption>Maniküre</figcaption></figure>
+      <figure><img src="img/studio-3.jpg" alt="Behandlungsraum mit Diodenlaser" width="462" height="1000" loading="lazy"><figcaption>Laser-Raum</figcaption></figure>
+      <figure><img src="img/hero.jpg" alt="Erika bei einer Behandlung" width="933" height="1400" loading="lazy"><figcaption>Mit Erika</figcaption></figure>
+      <figure><img src="img/studio-2.jpg" alt="Empfang im Beauty Loft" width="462" height="1000" loading="lazy"><figcaption>Empfang</figcaption></figure>
+    </div>
+  </div>
+</section>
 
 <!-- BEHANDLUNGEN -->
 <section id="behandlungen">
@@ -761,6 +774,12 @@ footer a:hover{color:var(--cream)}
   st.querySelector('span').textContent=isOpen?'Jetzt geöffnet':'Gerade geschlossen';
 
   document.getElementById('year').textContent=now.getFullYear();
+
+  // Hero-Video: Pause-Knopf, bei reduzierter Bewegung gar nicht abspielen
+  var v=document.getElementById('hero-video'),tg=document.getElementById('hero-toggle');
+  function setPaused(p){tg.classList.toggle('paused',p);tg.setAttribute('aria-label',p?'Video abspielen':'Video pausieren')}
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){v.removeAttribute('autoplay');v.pause();setPaused(true)}
+  tg.addEventListener('click',function(){if(v.paused){v.play();setPaused(false)}else{v.pause();setPaused(true)}});
 
   // sanftes Einblenden
   if('IntersectionObserver' in window){
