@@ -474,3 +474,36 @@ h1, h2, h3, p { margin: 0; font-weight: 400; }
   .vn-grid { grid-template-columns: 1fr; }
   .vn-grid img { margin-bottom: 20px; }
 }
+
+/* Einblend-Effekte wie im Original: Einblenden und leichtes Vergrössern beim Scrollen */
+.anim [data-anim] { will-change: opacity, transform; }
+.anim [data-anim="expand"] { opacity: 0; transform: scale(.8); }
+.anim [data-anim="reveal"] { clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%); }
+.anim [data-anim="glide"] { transform: translateX(-100vw); }
+.anim [data-anim].in {
+  opacity: 1;
+  transform: none;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  transition: opacity 1.2s linear, transform 1.2s cubic-bezier(.645, .045, .355, 1), clip-path 1.2s cubic-bezier(.645, .045, .355, 1);
+}
+
+/* Bilder: beim Überfahren sanft heranzoomen und abdunkeln */
+.zoom { overflow: hidden; }
+.zoom img, .galerie-grid img, .galerie-grid video, .vn-grid img, .studio .track img {
+  transition: transform .5s cubic-bezier(.18, .73, .63, 1), filter .5s;
+}
+.galerie-grid > *, .vn-grid img, .studio .track img { overflow: hidden; }
+.galerie-grid img:hover, .galerie-grid .vid:hover video, .vn-grid img:hover, .studio .track img:hover {
+  transform: scale(1.07);
+  filter: brightness(85%) contrast(115%);
+}
+.galerie-grid { overflow: hidden; }
+.galerie-grid > img, .galerie-grid > .vid { clip-path: inset(0); }
+.vn-grid img { clip-path: inset(0 round 8px); }
+
+/* Studio-Fotos laufen ständig langsam durch */
+.studio .track { scroll-snap-type: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim [data-anim] { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+}
