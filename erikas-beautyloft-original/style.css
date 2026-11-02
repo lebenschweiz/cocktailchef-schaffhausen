@@ -1261,3 +1261,6 @@ img[data-zoom] { cursor: zoom-in; }
 .white .btn[href*="wa.me"], .hero .btn[href*="wa.me"], .white .btn-review { background: rgba(244,239,233,.7); }
 .ueber-modern .school img { width: 170px; flex: none; }
 @media (max-width: 1000px) { .ueber-modern .school img { width: 150px; } }
+.l-arrow { pointer-events: none; }
+.leistungen li { cursor: pointer; }
+.bh-item { scroll-margin-top: 110px; }
