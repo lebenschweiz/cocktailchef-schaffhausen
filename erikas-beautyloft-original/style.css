@@ -1354,3 +1354,7 @@ img[data-zoom] { cursor: zoom-in; }
 .galerie-grid > img[src*="laser-09"], .galerie-grid > img[src*="laser-10"] { grid-column: span 1 !important; grid-row: span 1 !important; }
 .galerie-grid > img[src*="laser-01"] { grid-column: span 2 !important; grid-row: span 2 !important; }
 .galerie-grid > .tall { object-position: center 30%; }
+.book-dialog .q-name { margin-bottom: 6px; }
+.book-dialog .q-name-input { width: 100%; padding: 12px 14px; border: 1px solid rgba(187,133,9,.45); border-radius: 10px; font: inherit; font-size: 15px; background: #fff; }
+.book-dialog .q-name-input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(226,181,70,.25); }
+.book-dialog .q-name-input { padding: 12px 14px !important; height: auto !important; margin-bottom: 10px; }

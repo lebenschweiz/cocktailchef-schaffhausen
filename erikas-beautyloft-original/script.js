@@ -148,6 +148,8 @@ if (bookLinks.length && typeof HTMLDialogElement === 'function') {
   dlg.innerHTML = `
     <button class="close" type="button" aria-label="Schliessen">×</button>
     <h2>Termin buchen</h2>
+    <fieldset class="q q-name"><legend>Wie heissen Sie?</legend>
+      <input class="q-name-input" type="text" placeholder="Vorname und Nachname" autocomplete="name"></fieldset>
     <p>Welche Zonen möchten Sie behandeln lassen?</p>
     ${groups.map(([title, items]) => `<fieldset><legend>${title}</legend>${items.map(([z, p]) =>
       `<label><input type="checkbox" value="${esc(z)}"><span>${esc(z)}</span><em>${p}</em></label>`).join('')}</fieldset>`).join('')}
@@ -168,12 +170,14 @@ if (bookLinks.length && typeof HTMLDialogElement === 'function') {
   const go = dlg.querySelector('.wa-go');
   const boxes = [...dlg.querySelectorAll('input[type=checkbox]')];
   const q2text = dlg.querySelector('.q2-text');
+  const nameIn = dlg.querySelector('.q-name-input');
   const q3date = dlg.querySelector('.q3-date');
   q3date.min = new Date().toISOString().slice(0, 10);
   const val = n => (dlg.querySelector(`input[name=${n}]:checked`) || {}).value;
   const update = () => {
     const chosen = boxes.filter(b => b.checked).map(b => b.value);
-    const lines = [intro];
+    const nm = nameIn.value.trim();
+    const lines = [nm ? `Hallo, ich heisse ${nm} und möchte einen Termin für eine Laser-Haarentfernung vereinbaren.` : intro];
     if (chosen.length) lines.push(`Zonen: ${chosen.join(', ')}`);
     const q1 = val('q1'), q2 = val('q2');
     q2text.hidden = q2 !== 'Ja';
@@ -191,6 +195,7 @@ if (bookLinks.length && typeof HTMLDialogElement === 'function') {
   boxes.forEach(b => b.addEventListener('change', update));
   dlg.querySelectorAll('input[type=radio]').forEach(r => r.addEventListener('change', update));
   q2text.addEventListener('input', update);
+  nameIn.addEventListener('input', update);
   q3date.addEventListener('change', update);
   dlg.querySelector('.q-info').addEventListener('click', () => dlg.close());
   update();
