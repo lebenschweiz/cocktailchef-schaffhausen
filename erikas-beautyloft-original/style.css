@@ -1004,3 +1004,22 @@ img[data-zoom] { cursor: zoom-in; }
   font-size: 12px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase;
   background: linear-gradient(135deg, #d9ab3c 0%, #bb8509 55%, #9a6c06 100%); box-shadow: 0 8px 22px rgba(187, 133, 9, .35);
 }
+
+/* Logo: goldener Glanz, der langsam darüberläuft */
+.wordmark .wm-name, .wordmark .wm-sub {
+  background: linear-gradient(105deg, #4f4538 0%, #4f4538 38%, #bb8509 46%, #f6dc8f 50%, #bb8509 54%, #4f4538 62%, #4f4538 100%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: wm-shine 6s ease-in-out infinite;
+}
+.wordmark .wm-sub { animation-delay: .25s; }
+.wordmark .wm-tri { animation: wm-glow 6s ease-in-out infinite; }
+.wordmark .wm-sub i { animation: wm-line 6s ease-in-out infinite; }
+@keyframes wm-shine { 0%, 15% { background-position: 100% 0; } 55%, 100% { background-position: 0 0; } }
+@keyframes wm-glow { 0%, 20%, 60%, 100% { filter: none; } 35% { filter: drop-shadow(0 0 4px rgba(246,220,143,.95)) drop-shadow(0 0 9px rgba(187,133,9,.6)); } }
+@keyframes wm-line { 0%, 20%, 60%, 100% { box-shadow: none; } 38% { box-shadow: 0 0 6px 1px rgba(246,220,143,.9); } }
+.wordmark:hover .wm-name, .wordmark:hover .wm-sub { animation-duration: 2.5s; }
+@media (prefers-reduced-motion: reduce) {
+  .wordmark .wm-name, .wordmark .wm-sub, .wordmark .wm-tri, .wordmark .wm-sub i { animation: none; }
+}
