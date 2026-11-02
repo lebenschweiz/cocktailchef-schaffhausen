@@ -1358,3 +1358,5 @@ img[data-zoom] { cursor: zoom-in; }
 .book-dialog .q-name-input { width: 100%; padding: 12px 14px; border: 1px solid rgba(187,133,9,.45); border-radius: 10px; font: inherit; font-size: 15px; background: #fff; }
 .book-dialog .q-name-input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(226,181,70,.25); }
 .book-dialog .q-name-input { padding: 12px 14px !important; height: auto !important; margin-bottom: 10px; }
+.g-badge-mini { margin: 16px auto 0; padding: 9px 18px; gap: 10px; transform: scale(.92); }
+@media (max-width: 1000px) { .g-badge-mini { flex-wrap: nowrap; padding: 8px 14px; gap: 8px; } }
