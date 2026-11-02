@@ -909,3 +909,39 @@ img[data-zoom] { cursor: zoom-in; }
 .v-card.playing .v-play { display: none; }
 .v-card figcaption { position: relative; margin-top: 30px; text-align: center; font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: #9a6c06; }
 @media (max-width: 1000px) { .bewertungen .videos { gap: 34px; } .v-card::before { inset: 12px -12px -12px 12px; } .videos-head h3 { font-size: 30px; } }
+
+/* Leistungen als Karten-Knöpfe */
+.leistungen .grid { gap: 60px; align-items: center; }
+.leistungen ul { margin: 0; display: grid; gap: 18px; }
+.leistungen li {
+  position: relative; height: auto; gap: 22px; padding: 28px 30px; border: 1px solid rgba(187, 133, 9, .3);
+  border-radius: 18px; background: rgba(255, 255, 255, .75); box-shadow: 0 8px 24px rgba(47, 42, 37, .07);
+  transition: transform .3s, box-shadow .3s, background .3s, border-color .3s;
+}
+.leistungen li:hover { transform: translateY(-3px); background: #fff; border-color: var(--gold); box-shadow: 0 14px 32px rgba(47, 42, 37, .13); }
+.leistungen li span {
+  flex: 0 0 52px; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center;
+  border: 1px solid var(--gold); color: #9a6c06; font-family: "Cormorant Garamond", serif; font-size: 22px;
+  transition: background .3s, color .3s;
+}
+.leistungen li:hover span { background: var(--gold); color: #fff; }
+.leistungen li a { flex: 1; font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; font-size: 30px; line-height: 1.2; color: #4f4538; }
+.leistungen li a::after { content: ""; position: absolute; inset: 0; border-radius: 18px; }
+.leistungen li a:hover { text-decoration: none; }
+.l-arrow { flex: 0 0 auto; width: 26px; height: 26px; transition: transform .3s; }
+.l-arrow svg { width: 26px; height: 26px; stroke: var(--gold); fill: none; stroke-width: 1.6; }
+.leistungen li:hover .l-arrow { transform: translateX(6px); }
+.leistungen .media { position: relative; overflow: visible; background: none; }
+.leistungen .media::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; border: 1px solid rgba(187, 133, 9, .55); border-radius: 22px; }
+.leistungen .media video { position: relative; border-radius: 22px; box-shadow: 0 16px 36px rgba(47, 42, 37, .2); }
+@media (max-width: 1000px) {
+  .leistungen .grid { gap: 30px; }
+  .leistungen ul { gap: 12px; }
+  .leistungen li { padding: 18px 18px; gap: 14px; }
+  .leistungen li span { flex-basis: 40px; width: 40px; height: 40px; font-size: 18px; }
+  .leistungen li a { font-size: 22px; }
+  .leistungen .media { width: calc(100% - 12px); }
+  .leistungen .media::before { inset: 12px -12px -12px 12px; }
+}
+@media (min-width: 1001px) { .leistungen .grid { grid-template-columns: 1fr 500px; padding-right: 20px; } .leistungen .media { width: 500px; height: 430px; } }
+.leistungen .media video { background: #6d625a url(img/leistungen-poster.jpg) center / cover; }
