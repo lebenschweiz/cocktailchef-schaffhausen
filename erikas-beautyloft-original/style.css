@@ -633,3 +633,19 @@ img[data-zoom] { cursor: zoom-in; }
   .promo-txt { font-size: 10px; }
 }
 @media (prefers-reduced-motion: reduce) { .promo { animation: none; } }
+
+/* Schriftzug-Logo */
+.wordmark { display: inline-flex; flex-direction: column; align-items: flex-start; line-height: 1; color: #4f4538; text-decoration: none; }
+.wordmark .wm-name { font-family: "Montserrat", sans-serif; font-weight: 200; font-size: 38px; letter-spacing: .08em; }
+.wordmark .wm-sub { font-family: "Montserrat", sans-serif; font-weight: 400; font-size: 9.5px; letter-spacing: .62em; color: var(--gold); margin-top: 6px; white-space: nowrap; }
+.wordmark .wm-sub i { font-style: normal; font-size: .8em; position: relative; top: -.1em; }
+.wordmark-hell { color: #f3ece4; }
+.wordmark-hell .wm-name { font-size: 40px; }
+@media (max-width: 1000px) {
+  .header .wordmark .wm-name { font-size: 27px; }
+  .header .wordmark .wm-sub { font-size: 7.5px; margin-top: 4px; }
+}
+.wordmark .wm-sub { color: #9a6c06; font-weight: 500; }
+.wordmark-hell .wm-name { font-weight: 300; }
+.wordmark-hell .wm-sub { color: #fff; }
+.header .wordmark { margin-right: 46px; }
