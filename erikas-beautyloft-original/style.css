@@ -1229,3 +1229,5 @@ img[data-zoom] { cursor: zoom-in; }
 .leistungen li:hover .l-arrow { background: var(--champ); border-color: rgba(187,133,9,.6); }
 .leistungen li:hover .l-arrow svg { stroke: var(--espresso); }
 @media (prefers-reduced-motion: reduce) { .btn-review::after, .mobile-nav a[href*="wa.me"]::after { animation: none; } }
+.ueber-modern .school { display: block; padding: 0; background: none; border: 0; box-shadow: none; margin: 0 0 22px; }
+.ueber-modern .school img { width: 72px; mix-blend-mode: multiply; }
