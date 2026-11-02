@@ -1119,3 +1119,11 @@ img[data-zoom] { cursor: zoom-in; }
 }
 @media (prefers-reduced-motion: reduce) { .hero h1 { animation: none; } }
 .avatar { background: #c9b9ad; }
+
+/* Hero-Überschrift: elegante Schrift */
+.hero h1 { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; text-transform: none; font-size: 44px; line-height: 1.15; letter-spacing: .01em; max-width: 900px; padding-bottom: 6px; }
+.hero h1 .loc { display: block; margin-top: 16px; font-family: "Montserrat", sans-serif; font-style: normal; font-weight: 500; font-size: 12.5px; letter-spacing: .38em; text-transform: uppercase; }
+@media (max-width: 1000px) {
+  .hero h1 { font-family: "Cormorant Garamond", serif; font-size: 27px; font-weight: 500; line-height: 1.2; padding: 30px 20px 10px; }
+  .hero h1 .loc { font-size: 9.5px; letter-spacing: .24em; margin-top: 12px; }
+}
