@@ -1478,3 +1478,5 @@ img[data-zoom] { cursor: zoom-in; }
 .text-page p { margin-bottom: 12px; } .text-page a { color: #9a6c06; }
 .text-page .small-note { margin-top: 30px; font-size: 12px; color: #8a7f72; }
 .footer .legal { display: inline-flex; gap: 18px; flex-wrap: wrap; }
+/* Fusszeile: WhatsApp & Instagram gelb wie oben */
+.footer .soc a { background: linear-gradient(135deg, rgba(248,226,160,.95), rgba(232,192,92,.9)) !important; color: #3b342c !important; box-shadow: inset 0 0 0 1px rgba(255,255,255,.7), 0 6px 16px rgba(187,133,9,.22) !important; }
