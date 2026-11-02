@@ -1348,3 +1348,9 @@ img[data-zoom] { cursor: zoom-in; }
 .book-dialog .q3-date { width: 100%; margin-top: 8px; padding: 10px 12px; border: 1px solid rgba(187,133,9,.35); border-radius: 8px; font: inherit; font-size: 14px; background: #fff; }
 .book-dialog .q-sub { margin: 14px 0 8px; font-size: 13px; font-weight: 500; color: var(--text); }
 .book-dialog .chips label { padding-left: 8px; padding-right: 8px; gap: 8px; }
+
+/* Galerie: alle Kacheln gleich gross, nur das Laser-Gerät gross */
+.galerie-grid > *, .galerie-grid > :nth-child(7n+1), .galerie-grid > .tall,
+.galerie-grid > img[src*="laser-09"], .galerie-grid > img[src*="laser-10"] { grid-column: span 1 !important; grid-row: span 1 !important; }
+.galerie-grid > img[src*="laser-01"] { grid-column: span 2 !important; grid-row: span 2 !important; }
+.galerie-grid > .tall { object-position: center 30%; }
