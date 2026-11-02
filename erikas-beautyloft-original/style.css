@@ -1259,3 +1259,5 @@ img[data-zoom] { cursor: zoom-in; }
 .hero .btn[href*="wa.me"] { color: #3b342c; }
 .btn[href*="wa.me"], .book-dialog .wa-go, .mobile-nav a[href*="wa.me"], .btn-review, .to-top { box-shadow: var(--glass-ring), 0 0 0 1px rgba(59,52,44,.14), 0 8px 24px rgba(47,42,37,.12); }
 .white .btn[href*="wa.me"], .hero .btn[href*="wa.me"], .white .btn-review { background: rgba(244,239,233,.7); }
+.ueber-modern .school img { width: 170px; flex: none; }
+@media (max-width: 1000px) { .ueber-modern .school img { width: 150px; } }
