@@ -1376,3 +1376,34 @@ img[data-zoom] { cursor: zoom-in; }
 .bewertungen.white .card { background: #fff; }
 .bewertungen .v-band { margin-top: 60px; padding: 60px 0 70px; background: #fff; box-shadow: 0 0 0 100vmax #fff; clip-path: inset(0 -100vmax); }
 @media (max-width: 1000px) { .bewertungen .v-band { margin-top: 44px; padding: 44px 0 50px; } }
+.promo-tag { position: relative; z-index: 1; font-size: 11px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; margin-bottom: 5px; padding: 2px 9px; border-radius: 20px; background: rgba(255,255,255,.28); }
+@media (max-width: 1000px) { .promo-tag { font-size: 8.5px; margin-bottom: 3px; padding: 1px 6px; } }
+@media (max-width: 1000px) { .promo-pct { font-size: 28px; } .promo-txt { font-size: 9px; } }
+
+/* Gutschein */
+.gutschein { padding: 90px 0; }
+.gs-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; max-width: 1040px; margin: 0 auto; }
+.gs-card { position: relative; aspect-ratio: 1.6; border-radius: 18px; padding: 30px 34px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: #fff; overflow: hidden;
+  background: linear-gradient(135deg, #c9a24a 0%, #e9cf86 38%, #b8892a 70%, #dcbc6b 100%); box-shadow: 0 30px 60px rgba(120,86,20,.28), inset 0 0 0 1px rgba(255,255,255,.35); transform: rotate(-4deg); transition: transform .5s; }
+.gs-card:hover { transform: rotate(0) scale(1.02); }
+.gs-card::before { content: ""; position: absolute; inset: 12px; border: 1px solid rgba(255,255,255,.55); border-radius: 12px; }
+.gs-card::after { content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent); transform: skewX(-20deg); animation: gs-shine 4.5s ease-in-out infinite; }
+@keyframes gs-shine { 0%, 55% { left: -60%; } 100% { left: 130%; } }
+.gs-k { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 26px; text-shadow: 0 1px 2px rgba(0,0,0,.15); }
+.gs-logo { font-family: "Cormorant Garamond", serif; font-size: 44px; letter-spacing: .25em; margin: 6px 0 0 .25em; text-shadow: 0 1px 3px rgba(0,0,0,.18); }
+.gs-sub { font-size: 11px; letter-spacing: .4em; text-transform: uppercase; }
+.gs-amt { margin-top: 18px; padding: 6px 18px; border-radius: 30px; background: rgba(255,255,255,.25); font-size: 15px; letter-spacing: .15em; }
+.gs-text h2 { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; font-size: 44px; margin: 8px 0 16px; }
+.gs-text p { line-height: 1.75; margin-bottom: 18px; }
+.gs-list { list-style: none; padding: 0; margin: 0 0 28px; }
+.gs-list li { position: relative; padding: 9px 0 9px 26px; border-bottom: 1px solid rgba(187,133,9,.22); font-size: 14px; }
+.gs-list li::before { content: "✦"; position: absolute; left: 0; color: var(--gold); }
+@media (max-width: 1000px) {
+  .gutschein { padding: 56px 0; }
+  .gs-wrap { grid-template-columns: 1fr; gap: 44px; }
+  .gs-card { max-width: 340px; width: 100%; margin: 0 auto; padding: 22px; }
+  .gs-logo { font-size: 32px; } .gs-k { font-size: 21px; }
+  .gs-text { text-align: center; } .gs-text h2 { font-size: 34px; } .gs-list { text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) { .gs-card::after { animation: none; } }
+@media (max-width: 1000px) { .gs-wrap { padding: 0 20px; } }
