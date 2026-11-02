@@ -1370,3 +1370,9 @@ img[data-zoom] { cursor: zoom-in; }
 .page:has(.bh-modern) { padding-bottom: 0; }
 .bh-modern .bh-rev .bh-list li { border-color: rgba(187,133,9,.3); }
 @media (max-width: 1000px) { .bh-modern .bh-item.bh-rev { padding: 50px 0; } }
+
+/* Kundenstimmen beige, Video-Bewertungen weiss */
+.bewertungen.white { background: var(--beige); padding-bottom: 0; }
+.bewertungen.white .card { background: #fff; }
+.bewertungen .v-band { margin-top: 60px; padding: 60px 0 70px; background: #fff; box-shadow: 0 0 0 100vmax #fff; clip-path: inset(0 -100vmax); }
+@media (max-width: 1000px) { .bewertungen .v-band { margin-top: 44px; padding: 44px 0 50px; } }
