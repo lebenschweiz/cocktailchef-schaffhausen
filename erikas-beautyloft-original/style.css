@@ -1105,3 +1105,16 @@ img[data-zoom] { cursor: zoom-in; }
 .galerie-grid { container-type: inline-size; grid-auto-rows: calc((100cqw - 48px) / 4 * 4 / 3); }
 .galerie-grid > img, .galerie-grid > .vid { aspect-ratio: auto; height: 100%; }
 @media (max-width: 1000px) { .galerie-grid { grid-auto-rows: calc((100cqw - 10px) / 2 * 4 / 3); } }
+
+/* Hero-Überschrift: goldener Glanz wie beim Logo */
+.hero h1 {
+  background: linear-gradient(105deg, #fff 0%, #fff 38%, #e3b64a 46%, #fff3c4 50%, #e3b64a 54%, #fff 62%, #fff 100%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: wm-shine 6s ease-in-out infinite;
+}
+@media (max-width: 1000px) {
+  .hero h1 { background-image: linear-gradient(105deg, #000 0%, #000 38%, #bb8509 46%, #f6dc8f 50%, #bb8509 54%, #000 62%, #000 100%); }
+}
+@media (prefers-reduced-motion: reduce) { .hero h1 { animation: none; } }
