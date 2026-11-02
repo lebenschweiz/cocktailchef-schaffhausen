@@ -151,18 +151,35 @@ if (bookLinks.length && typeof HTMLDialogElement === 'function') {
     <p>Welche Zonen möchten Sie behandeln lassen?</p>
     ${groups.map(([title, items]) => `<fieldset><legend>${title}</legend>${items.map(([z, p]) =>
       `<label><input type="checkbox" value="${esc(z)}"><span>${esc(z)}</span><em>${p}</em></label>`).join('')}</fieldset>`).join('')}
+    <fieldset class="q"><legend>Machen Sie zum ersten Mal eine Laser-Haarentfernung?</legend>
+      <div class="yn"><label><input type="radio" name="q1" value="Ja"><span>Ja</span></label><label><input type="radio" name="q1" value="Nein"><span>Nein</span></label></div></fieldset>
+    <fieldset class="q"><legend>Haben Sie irgendwelche Kontraindikationen?</legend>
+      <div class="yn"><label><input type="radio" name="q2" value="Ja"><span>Ja</span></label><label><input type="radio" name="q2" value="Nein"><span>Nein</span></label></div>
+      <input class="q2-text" type="text" placeholder="Welche? (optional)" hidden>
+      <a class="q-info" href="index.html#faq">Liste der Kontraindikationen ansehen</a></fieldset>
     <a class="btn wa-go" target="_blank" rel="noopener">Weiter zu WhatsApp</a>
     <small>Noch unsicher? Einfach ohne Auswahl weiter, Erika berät Sie gerne.</small>`;
   document.body.appendChild(dlg);
   const go = dlg.querySelector('.wa-go');
-  const boxes = [...dlg.querySelectorAll('input')];
+  const boxes = [...dlg.querySelectorAll('input[type=checkbox]')];
+  const q2text = dlg.querySelector('.q2-text');
+  const val = n => (dlg.querySelector(`input[name=${n}]:checked`) || {}).value;
   const update = () => {
     const chosen = boxes.filter(b => b.checked).map(b => b.value);
-    const text = chosen.length ? `${intro}\nZonen: ${chosen.join(', ')}` : intro;
+    const lines = [intro];
+    if (chosen.length) lines.push(`Zonen: ${chosen.join(', ')}`);
+    const q1 = val('q1'), q2 = val('q2');
+    q2text.hidden = q2 !== 'Ja';
+    if (q1) lines.push(`Zum ersten Mal Laser-Haarentfernung: ${q1}`);
+    if (q2) lines.push(`Kontraindikationen: ${q2}${q2 === 'Ja' && q2text.value.trim() ? ' (' + q2text.value.trim() + ')' : ''}`);
+    const text = lines.join('\n');
     go.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
     go.textContent = chosen.length ? `Weiter zu WhatsApp (${chosen.length})` : 'Weiter zu WhatsApp';
   };
   boxes.forEach(b => b.addEventListener('change', update));
+  dlg.querySelectorAll('input[type=radio]').forEach(r => r.addEventListener('change', update));
+  q2text.addEventListener('input', update);
+  dlg.querySelector('.q-info').addEventListener('click', () => dlg.close());
   update();
   dlg.querySelector('.close').addEventListener('click', () => dlg.close());
   dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
