@@ -1314,3 +1314,27 @@ img[data-zoom] { cursor: zoom-in; }
 .btn:not([href*="wa.me"]), .btn-outline, .c-tabs button { border-color: rgba(187,133,9,.55); }
 .btn:not([href*="wa.me"]):hover, .btn-outline:hover, .c-tabs button:hover { background: rgba(248,226,160,.45); border-color: rgba(187,133,9,.75); }
 .c-tabs button.on, .nav a.active, .mobile-nav a.active { background: linear-gradient(135deg, rgba(248,226,160,.9), rgba(232,192,92,.85)); border-color: rgba(187,133,9,.5); color: #3b342c; }
+
+/* Instagram & WhatsApp Knöpfe */
+.social a { width: 36px; height: 36px; border-radius: 50%; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, rgba(248,226,160,.9), rgba(232,192,92,.85)); box-shadow: inset 0 0 0 1px rgba(255,255,255,.7), 0 6px 16px rgba(187,133,9,.22);
+  transition: transform .3s, box-shadow .3s; }
+.social a::before { content: ""; position: absolute; inset: 0; opacity: 0; transition: opacity .35s; }
+.social a[aria-label="Instagram"]::before { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+.social a[aria-label="WhatsApp"]::before { background: #25d366; }
+.social a:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(47,42,37,.22); }
+.social a:hover::before { opacity: 1; }
+.social svg { position: relative; z-index: 1; width: 18px; height: 18px; transition: stroke .3s, fill .3s; }
+.social .ic-ig { fill: none; stroke: #3b342c; stroke-width: 1.8; }
+.social .ic-ig .dot { fill: #3b342c; stroke: none; }
+.social .ic-wa { fill: #3b342c; stroke: none; width: 19px; height: 19px; }
+.social a:hover .ic-ig { stroke: #fff; } .social a:hover .ic-ig .dot { fill: #fff; } .social a:hover .ic-wa { fill: #fff; }
+.header .social { gap: 10px; }
+@media (max-width: 1000px) { .social a { width: 34px; height: 34px; } .social svg { width: 17px; height: 17px; } }
+/* Fusszeile */
+.footer .soc a { display: inline-flex !important; align-items: center; gap: 9px; padding: 8px 16px 8px 10px; border-radius: 30px; margin: 0 6px 10px 0; background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 1px rgba(187,133,9,.35); text-decoration: none; transition: background .3s, color .3s, transform .3s; }
+.footer .soc svg { width: 18px; height: 18px; }
+.footer .soc .ic-ig { fill: none; stroke: currentColor; stroke-width: 1.8; } .footer .soc .ic-ig .dot { fill: currentColor; stroke: none; }
+.footer .soc .ic-wa { fill: currentColor; }
+.footer .soc a.soc-wa:hover { background: #25d366; color: #fff; transform: translateY(-2px); }
+.footer .soc a.soc-ig:hover { background: linear-gradient(45deg, #f9a03f, #e1306c 50%, #833ab4); color: #fff; transform: translateY(-2px); }
