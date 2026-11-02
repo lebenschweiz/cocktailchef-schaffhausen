@@ -649,3 +649,22 @@ img[data-zoom] { cursor: zoom-in; }
 .wordmark-hell .wm-name { font-weight: 300; }
 .wordmark-hell .wm-sub { color: #fff; }
 .header .wordmark { margin-right: 46px; }
+
+/* Logo Variante 1 */
+.wordmark { align-items: center; }
+.wordmark .wm-name { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 30px; letter-spacing: .3em; margin-right: -.3em; display: flex; align-items: flex-end; }
+.wordmark .wm-tri { width: .8em; height: .7em; margin: 0 .3em .07em 0; color: var(--gold); }
+.wordmark .wm-sub { display: flex; align-items: center; gap: 9px; font-weight: 400; font-size: 9px; letter-spacing: .55em; margin-right: -.55em; margin-top: 6px; color: #4f4538; }
+.wordmark .wm-sub i { display: block; width: 22px; height: 1px; background: var(--gold); position: static; }
+.wordmark-hell { color: #fff; }
+.wordmark-hell .wm-name { font-size: 32px; font-weight: 500; }
+.wordmark-hell .wm-tri { color: #fff; }
+.wordmark-hell .wm-sub { color: #fff; }
+.wordmark-hell .wm-sub i { background: #fff; }
+@media (max-width: 1000px) {
+  .header .wordmark .wm-name { font-size: 21px; }
+  .header .wordmark .wm-sub { font-size: 7px; gap: 6px; margin-top: 4px; }
+  .header .wordmark .wm-sub i { width: 14px; }
+}
+.header .wordmark .wm-name { font-size: 34px; } .header .wordmark .wm-sub { font-size: 10px; }
+@media (max-width: 1000px) { .header .wordmark .wm-name { font-size: 21px; } .header .wordmark .wm-sub { font-size: 7px; } }
