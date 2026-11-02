@@ -1264,3 +1264,12 @@ img[data-zoom] { cursor: zoom-in; }
 .l-arrow { pointer-events: none; }
 .leistungen li { cursor: pointer; }
 .bh-item { scroll-margin-top: 110px; }
+
+/* Knöpfe noch etwas kleiner */
+.btn, .btn-review, .btn-outline, .book-dialog .wa-go { padding: 10px 20px; font-size: 10.5px; letter-spacing: .14em; gap: 7px; }
+.btn[href*="wa.me"]::before { width: 13px; height: 13px; flex-basis: 13px; }
+.header .btn { padding: 9px 16px; font-size: 10px; }
+.btn-review svg, .btn-outline svg { width: 14px; height: 14px; }
+.mobile-nav a[href*="wa.me"] { padding: 11px 16px; font-size: 10.5px; }
+.to-top { width: 44px; height: 44px; }
+@media (max-width: 1000px) { .to-top { width: 40px; height: 40px; right: 27px; } }
