@@ -241,3 +241,14 @@ document.querySelectorAll('.v-card').forEach(c => {
   c.querySelector('.v-play').addEventListener('click', () => { v.controls = true; c.classList.add('playing'); v.play(); });
   v.addEventListener('ended', () => { c.classList.remove('playing'); v.controls = false; });
 });
+
+// Knopf "nach oben"
+(() => {
+  const b = document.createElement('button');
+  b.className = 'to-top'; b.type = 'button'; b.setAttribute('aria-label', 'Nach oben');
+  b.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg>';
+  b.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  document.body.appendChild(b);
+  const t = () => b.classList.toggle('show', window.scrollY > 600);
+  window.addEventListener('scroll', t, { passive: true }); t();
+})();

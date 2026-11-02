@@ -1060,3 +1060,12 @@ img[data-zoom] { cursor: zoom-in; }
 /* Behandlungen: Fotos in voller Höhe, nicht beschnitten */
 .bh-modern .bh-img img { height: auto !important; object-fit: contain; }
 .bh-item { align-items: center; }
+
+/* Knopf "nach oben" */
+.to-top { position: fixed; right: 26px; bottom: 26px; z-index: 60; width: 50px; height: 50px; border-radius: 50%; border: 1px solid rgba(255,255,255,.5); cursor: pointer;
+  background: linear-gradient(135deg, #d9a93a, #bb8509 55%, #8a6205); box-shadow: 0 10px 24px rgba(138,98,5,.35);
+  display: grid; place-items: center; opacity: 0; visibility: hidden; transform: translateY(14px); transition: opacity .35s, transform .35s, visibility .35s; }
+.to-top.show { opacity: 1; visibility: visible; transform: none; }
+.to-top:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(138,98,5,.45); }
+.to-top svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 1000px) { .to-top { width: 44px; height: 44px; right: 24px; bottom: 96px; } .to-top svg { width: 19px; height: 19px; } }
