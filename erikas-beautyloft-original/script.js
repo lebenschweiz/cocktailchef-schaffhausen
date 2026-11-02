@@ -113,28 +113,3 @@ if ('IntersectionObserver' in window) {
     io.observe(target);
   });
 }
-
-// «Jetzt buchen»: Auswahl zwischen WhatsApp und E-Mail
-const bookLinks = document.querySelectorAll('a[href^="https://wa.me/"][href*="?text="]');
-if (bookLinks.length) {
-  const mail = 'mailto:erika.hartung.2022@gmail.com?subject=' + encodeURIComponent('Terminanfrage') +
-    '&body=' + encodeURIComponent('Hallo Erika,\n\nich möchte gerne einen Termin buchen.\n\nBehandlung:\nWunschtermin:\nName:\nTelefon:\n\nViele Grüsse');
-  const dlg = document.createElement('dialog');
-  dlg.className = 'book-dialog';
-  dlg.innerHTML = `
-    <button class="close" aria-label="Schliessen">×</button>
-    <h2>Termin buchen</h2>
-    <p>Wie möchten Sie Erika erreichen?</p>
-    <a class="btn" href="${bookLinks[0].href}" target="_blank" rel="noopener">WhatsApp</a>
-    <a class="btn" href="${mail}">E-Mail</a>`;
-  document.body.appendChild(dlg);
-  dlg.querySelector('.close').addEventListener('click', () => dlg.close());
-  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
-  dlg.querySelectorAll('a').forEach(a => a.addEventListener('click', () => dlg.close()));
-  bookLinks.forEach(a => a.addEventListener('click', e => {
-    if (typeof dlg.showModal !== 'function') return; // ältere Browser: direkt WhatsApp
-    e.preventDefault();
-    header.classList.remove('open');
-    dlg.showModal();
-  }));
-}
