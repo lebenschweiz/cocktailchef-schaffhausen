@@ -668,3 +668,24 @@ img[data-zoom] { cursor: zoom-in; }
 }
 .header .wordmark .wm-name { font-size: 34px; } .header .wordmark .wm-sub { font-size: 10px; }
 @media (max-width: 1000px) { .header .wordmark .wm-name { font-size: 21px; } .header .wordmark .wm-sub { font-size: 7px; } }
+
+/* Preise im Menü-Stil */
+.preisliste { gap: 20px 70px; max-width: 1140px; }
+.price-box { background: none; border: 0; border-radius: 0; box-shadow: none; padding: 0; }
+.price-box::before { display: none; }
+.price-box h3 {
+  font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500;
+  font-size: 32px; letter-spacing: 0; text-align: left; color: #4f4538;
+  border: 0; padding: 0; margin: 0 0 12px;
+}
+.preisliste .row { align-items: baseline; gap: 10px; padding: 10px 0; border: 0; }
+.preisliste .row .dots { flex: 1; min-width: 20px; border-bottom: 1.5px dotted rgba(47, 42, 37, .35); transform: translateY(-4px); }
+.preisliste .row span:first-child { font-size: 16px; flex: 0 1 auto; }
+.preisliste .row span:last-child { font-size: 16px; font-weight: 500; color: var(--text); white-space: nowrap; }
+.preisliste .row small { text-align: left; }
+.pb-naegel { margin-top: 24px; }
+@media (max-width: 760px) {
+  .price-box h3 { font-size: 27px; }
+  .preisliste .row span:first-child, .preisliste .row span:last-child { font-size: 14px; }
+  .pb-naegel { margin-top: 0; }
+}
