@@ -692,3 +692,4 @@ img[data-zoom] { cursor: zoom-in; }
 /* Dreieck auf Höhe der Grossbuchstaben */
 .wordmark .wm-name { display: block; }
 .wordmark .wm-tri { display: inline-block; vertical-align: baseline; width: .76em; height: .66em; margin: 0 .3em 0 0; }
+.wordmark-foot .wm-name { font-size: 34px; } .wordmark-foot .wm-sub { font-size: 10px; }
