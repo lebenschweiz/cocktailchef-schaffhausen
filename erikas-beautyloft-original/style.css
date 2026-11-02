@@ -737,3 +737,32 @@ img[data-zoom] { cursor: zoom-in; }
   50% { text-shadow: 0 0 12px #fff, 0 0 2px #fff; }
 }
 @media (prefers-reduced-motion: reduce) { .promo, .promo::after, .promo-pct { animation: none; } }
+
+/* Bewertungen: elegantere Karten */
+.bewertungen .card {
+  position: relative; display: flex; flex-direction: column;
+  min-height: 0; padding: 54px 30px 28px; text-align: left;
+  border-radius: 16px; border: 1px solid rgba(187, 133, 9, .18);
+  box-shadow: 0 12px 34px rgba(47, 42, 37, .08);
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+.bewertungen .card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(47, 42, 37, .13); }
+.bewertungen .card::before {
+  content: "“"; position: absolute; top: 4px; left: 24px;
+  font-family: "Cormorant Garamond", serif; font-size: 96px; line-height: 1; color: var(--gold); opacity: .55;
+}
+.bewertungen .cards:not(.g-cards) .card h3 { order: 1; margin: 0 0 12px; font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; font-size: 26px; }
+.bewertungen .cards:not(.g-cards) .card p { order: 2; }
+.bewertungen .cards:not(.g-cards) .card .name {
+  order: 3; margin-top: auto; padding-top: 18px; border-top: 1px solid rgba(187, 133, 9, .25);
+  font-size: 13px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+}
+.bewertungen .card p { font-size: 13.5px; line-height: 1.7; letter-spacing: .2px; margin-bottom: 18px;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 8; overflow: hidden; }
+.bewertungen .card.open p { -webkit-line-clamp: unset; display: block; }
+.bewertungen .card .more { order: 2; align-self: flex-start; margin: -8px 0 16px; background: none; border: 0; padding: 0; font: inherit; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: #9a6c06; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.bewertungen .g-card { padding-top: 54px; }
+.bewertungen .g-card .g-head { order: 3; margin: auto 0 0; padding-top: 18px; border-top: 1px solid rgba(187, 133, 9, .25); }
+.bewertungen .g-card p { order: 1; flex: 0 0 auto; }
+.bewertungen .cards { align-items: stretch; }
+@media (max-width: 1000px) { .bewertungen .card { padding: 50px 24px 24px; } }

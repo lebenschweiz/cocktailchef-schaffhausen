@@ -190,3 +190,16 @@ if (bookLinks.length && typeof HTMLDialogElement === 'function') {
     dlg.showModal();
   }));
 }
+
+// Lange Bewertungen: «Weiterlesen»
+document.querySelectorAll('.bewertungen .card').forEach(card => {
+  const p = card.querySelector('p');
+  if (!p || p.scrollHeight <= p.clientHeight + 2) return;
+  const btn = document.createElement('button');
+  btn.type = 'button'; btn.className = 'more'; btn.textContent = 'Weiterlesen';
+  btn.addEventListener('click', () => {
+    const open = card.classList.toggle('open');
+    btn.textContent = open ? 'Weniger' : 'Weiterlesen';
+  });
+  p.after(btn);
+});
