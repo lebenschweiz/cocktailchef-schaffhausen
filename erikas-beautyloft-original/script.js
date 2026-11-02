@@ -157,12 +157,19 @@ if (bookLinks.length && typeof HTMLDialogElement === 'function') {
       <div class="yn"><label><input type="radio" name="q2" value="Ja"><span>Ja</span></label><label><input type="radio" name="q2" value="Nein"><span>Nein</span></label></div>
       <input class="q2-text" type="text" placeholder="Welche? (optional)" hidden>
       <a class="q-info" href="index.html#faq">Liste der Kontraindikationen ansehen</a></fieldset>
+    <fieldset class="q"><legend>Wann möchten Sie gerne einen Termin vereinbaren?</legend>
+      <div class="yn chips"><label><input type="radio" name="q3" value="So bald wie möglich"><span>So bald wie möglich</span></label><label><input type="radio" name="q3" value="Diese Woche"><span>Diese Woche</span></label><label><input type="radio" name="q3" value="Nächste Woche"><span>Nächste Woche</span></label><label><input type="radio" name="q3" value="Wunschdatum"><span>Wunschdatum</span></label></div>
+      <input class="q3-date" type="date" hidden>
+      <p class="q-sub">Bevorzugte Tageszeit</p>
+      <div class="yn chips"><label><input type="radio" name="q4" value="Vormittag"><span>Vormittag</span></label><label><input type="radio" name="q4" value="Nachmittag"><span>Nachmittag</span></label><label><input type="radio" name="q4" value="Abend"><span>Abend</span></label></div></fieldset>
     <a class="btn wa-go" target="_blank" rel="noopener">Weiter zu WhatsApp</a>
     <small>Noch unsicher? Einfach ohne Auswahl weiter, Erika berät Sie gerne.</small>`;
   document.body.appendChild(dlg);
   const go = dlg.querySelector('.wa-go');
   const boxes = [...dlg.querySelectorAll('input[type=checkbox]')];
   const q2text = dlg.querySelector('.q2-text');
+  const q3date = dlg.querySelector('.q3-date');
+  q3date.min = new Date().toISOString().slice(0, 10);
   const val = n => (dlg.querySelector(`input[name=${n}]:checked`) || {}).value;
   const update = () => {
     const chosen = boxes.filter(b => b.checked).map(b => b.value);
@@ -172,6 +179,11 @@ if (bookLinks.length && typeof HTMLDialogElement === 'function') {
     q2text.hidden = q2 !== 'Ja';
     if (q1) lines.push(`Zum ersten Mal Laser-Haarentfernung: ${q1}`);
     if (q2) lines.push(`Kontraindikationen: ${q2}${q2 === 'Ja' && q2text.value.trim() ? ' (' + q2text.value.trim() + ')' : ''}`);
+    const q3 = val('q3'), q4 = val('q4');
+    q3date.hidden = q3 !== 'Wunschdatum';
+    let when = q3 === 'Wunschdatum' ? (q3date.value ? q3date.value.split('-').reverse().join('.') : '') : (q3 || '');
+    if (q4) when = when ? `${when}, ${q4}` : q4;
+    if (when) lines.push(`Gewünschter Termin: ${when}`);
     const text = lines.join('\n');
     go.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
     go.textContent = chosen.length ? `Weiter zu WhatsApp (${chosen.length})` : 'Weiter zu WhatsApp';
@@ -179,6 +191,7 @@ if (bookLinks.length && typeof HTMLDialogElement === 'function') {
   boxes.forEach(b => b.addEventListener('change', update));
   dlg.querySelectorAll('input[type=radio]').forEach(r => r.addEventListener('change', update));
   q2text.addEventListener('input', update);
+  q3date.addEventListener('change', update);
   dlg.querySelector('.q-info').addEventListener('click', () => dlg.close());
   update();
   dlg.querySelector('.close').addEventListener('click', () => dlg.close());
