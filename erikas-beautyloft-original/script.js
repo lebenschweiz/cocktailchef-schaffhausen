@@ -113,3 +113,22 @@ if ('IntersectionObserver' in window) {
     io.observe(target);
   });
 }
+
+// Bild gross anzeigen (z. B. Zertifikat)
+const zoomImgs = document.querySelectorAll('img[data-zoom]');
+if (zoomImgs.length) {
+  const box = document.createElement('dialog');
+  box.className = 'lightbox';
+  box.innerHTML = '<button class="close" aria-label="Schliessen">×</button><img alt="">';
+  document.body.appendChild(box);
+  const big = box.querySelector('img');
+  const open = img => {
+    big.src = img.currentSrc || img.src; big.alt = img.alt;
+    if (typeof box.showModal === 'function') box.showModal(); else window.open(big.src, '_blank');
+  };
+  box.addEventListener('click', () => box.close());
+  zoomImgs.forEach(img => {
+    img.addEventListener('click', () => open(img));
+    img.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); } });
+  });
+}
