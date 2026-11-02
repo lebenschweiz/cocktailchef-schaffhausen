@@ -12,7 +12,7 @@ from urllib.parse import quote, unquote
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
-PAGES = ['index.html', 'behandlungen.html', 'vorher-nachher.html', 'galerie.html', 'kontakt.html', 'datenschutz.html']
+PAGES = ['index.html', 'behandlungen.html', 'vorher-nachher.html', 'galerie.html', 'kontakt.html', 'datenschutz.html', 'impressum.html']
 LANGS = {'en': ('English', 'en_GB', 0), 'ru': ('Русский', 'ru_RU', 1)}
 BASE = 'https://lebenschweiz.github.io/erikas-beautyloft/'
 ATTRS = ['alt', 'aria-label', 'title', 'placeholder']

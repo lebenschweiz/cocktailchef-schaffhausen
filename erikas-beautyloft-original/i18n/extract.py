@@ -1,6 +1,6 @@
 import json,glob,re
 from bs4 import BeautifulSoup, NavigableString, Comment
-PAGES=['index.html','behandlungen.html','vorher-nachher.html','galerie.html','kontakt.html','datenschutz.html']
+PAGES=['index.html','behandlungen.html','vorher-nachher.html','galerie.html','kontakt.html','datenschutz.html','impressum.html']
 ATTRS=['alt','aria-label','title','placeholder','content']
 def segs(path):
     soup=BeautifulSoup(open(path,encoding='utf-8').read(),'lxml')
