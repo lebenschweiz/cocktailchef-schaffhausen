@@ -263,3 +263,20 @@ document.querySelectorAll('.leistungen .media').forEach(m => {
   b.addEventListener('click', () => { v.muted = !v.muted; if (!v.muted) { v.volume = 1; v.play(); } set(); });
   set(); m.appendChild(b);
 });
+
+// Öffnungsstatus (Mo–Fr 8–20, Sa 9–14, Zeitzone Schweiz)
+(() => {
+  const els = document.querySelectorAll('.open-status'); if (!els.length) return;
+  const hours = { 1: [8, 20], 2: [8, 20], 3: [8, 20], 4: [8, 20], 5: [8, 20], 6: [9, 14] };
+  const update = () => {
+    let day, h, m;
+    try {
+      const p = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Zurich', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date());
+      const g = t => p.find(x => x.type === t).value;
+      day = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 }[g('weekday')]; h = +g('hour'); m = +g('minute');
+    } catch (e) { const d = new Date(); day = d.getDay(); h = d.getHours(); m = d.getMinutes(); }
+    const t = h + m / 60, r = hours[day], open = r && t >= r[0] && t < r[1];
+    els.forEach(el => { el.hidden = false; el.className = 'open-status ' + (open ? 'is-open' : 'is-closed'); el.textContent = open ? 'Jetzt geöffnet' : 'Geschlossen'; });
+  };
+  update(); setInterval(update, 60000);
+})();
