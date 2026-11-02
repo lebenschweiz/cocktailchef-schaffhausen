@@ -1161,3 +1161,37 @@ img[data-zoom] { cursor: zoom-in; }
 .sound-btn:hover { background: rgba(30,26,22,.85); }
 .sound-btn svg { width: 18px; height: 18px; fill: none; stroke: #fff; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .sound-btn svg path:first-child { fill: #fff; }
+
+/* Über mich modern */
+.ueber-modern { padding: 90px 0 80px; }
+.ueber-modern .grid { display: grid; grid-template-columns: 400px 1fr 170px; gap: 70px; align-items: center; max-width: 1180px; margin: 0 auto; padding: 0 30px; }
+.ueber-modern .portrait-wrap { position: relative; }
+.ueber-modern .portrait-wrap::before { content: ""; position: absolute; inset: 20px -20px -20px 20px; border: 1px solid rgba(187,133,9,.5); border-radius: 24px; }
+.ueber-modern .portrait { position: relative; width: 100%; height: 480px; border-radius: 24px; object-fit: cover; box-shadow: 0 18px 40px rgba(47,42,37,.16); }
+.ueber-modern .text { padding: 0; max-width: 560px; }
+.ueber-modern h2.title { text-align: left; margin-bottom: 22px; }
+.ueber-modern .text p { font-size: 15px; line-height: 1.75; color: #5d5246; margin-bottom: 18px; }
+.ueber-modern .text .lead-quote { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; font-size: 27px; line-height: 1.3; color: #4f4538; padding-left: 20px; border-left: 2px solid var(--gold); margin-bottom: 24px; }
+.ueber-modern .values { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 4px 0 22px; padding: 0; }
+.ueber-modern .values li { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 30px; border: 1px solid rgba(187,133,9,.45); background: rgba(255,255,255,.55); font-size: 11.5px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: #4f4538; }
+.ueber-modern .values li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.ueber-modern .text .promise { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; font-size: 23px; color: #9a6c06; margin: 6px 0 4px; }
+.ueber-modern .text .sign { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 34px; color: #4f4538; margin: 0; }
+.ueber-modern .text .sign::before { content: ""; display: inline-block; width: 36px; height: 1px; background: var(--gold); vertical-align: middle; margin-right: 12px; }
+.ueber-modern .cert-wrap { margin: 0; text-align: center; }
+.ueber-modern .cert { width: 100%; margin: 0; border-radius: 10px; box-shadow: 0 12px 28px rgba(47,42,37,.18); cursor: zoom-in; transition: transform .3s; }
+.ueber-modern .cert:hover { transform: translateY(-4px) rotate(-1deg); }
+.ueber-modern figcaption { margin-top: 12px; font-size: 10.5px; letter-spacing: .25em; text-transform: uppercase; color: #8a7d6c; }
+@media (max-width: 1100px) and (min-width: 1001px) { .ueber-modern .grid { grid-template-columns: 330px 1fr 140px; gap: 44px; } }
+@media (max-width: 1000px) {
+  .ueber-modern { padding: 50px 0 40px; }
+  .ueber-modern .grid { grid-template-columns: 1fr; gap: 34px; padding: 0 20px; }
+  .ueber-modern .portrait-wrap { margin-right: 14px; }
+  .ueber-modern .portrait-wrap::before { inset: 14px -14px -14px 14px; }
+  .ueber-modern .portrait { height: 380px; }
+  .ueber-modern .text { grid-row: auto; text-align: left; }
+  .ueber-modern .text p { font-size: 14px; }
+  .ueber-modern .text .lead-quote { font-size: 23px; }
+  .ueber-modern .cert-wrap { width: 170px; margin: 0 auto; }
+}
+.ueber-modern .text .promise { line-height: 1.3; }
