@@ -1056,3 +1056,7 @@ img[data-zoom] { cursor: zoom-in; }
 }
 .leistungen li span, .leistungen li:hover span { flex: 0 0 62px; }
 @media (max-width: 1000px) { .leistungen li span, .leistungen li:hover span { flex-basis: 44px; } }
+
+/* Behandlungen: Fotos in voller Höhe, nicht beschnitten */
+.bh-modern .bh-img img { height: auto !important; object-fit: contain; }
+.bh-item { align-items: center; }
