@@ -132,3 +132,44 @@ if (zoomImgs.length) {
     img.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); } });
   });
 }
+
+// «Jetzt buchen»: Zonen auswählen, dann WhatsApp mit fertiger Nachricht
+const bookLinks = document.querySelectorAll('a[href^="https://wa.me/"][href*="?text="]');
+if (bookLinks.length && typeof HTMLDialogElement === 'function') {
+  const phone = '41782235962';
+  const intro = 'Hallo, ich möchte einen Termin für eine Laser-Haarentfernung vereinbaren.';
+  const groups = [
+    ['Einzelne Zonen', [['Beine komplett', '110 CHF'], ['Beine bis & inkl. Knie', '90 CHF'], ['Bikinizone inkl. Intimbereich', '65 CHF'], ['Bikinizone', '40 CHF'], ['Achseln', '40 CHF'], ['Bauchregion', '40 CHF'], ['Arme komplett', '50 CHF']]],
+    ['Pakete', [['Intim komplett und Achseln', '100 CHF'], ['Intim komplett, Achseln und halbe Beine', '170 CHF'], ['Intim komplett, Achseln und ganze Beine', '190 CHF'], ['Ganzer Körper (5 Zonen)', '250 CHF']]]
+  ];
+  const esc = t => t.replace(/&/g, '&amp;');
+  const dlg = document.createElement('dialog');
+  dlg.className = 'book-dialog';
+  dlg.innerHTML = `
+    <button class="close" type="button" aria-label="Schliessen">×</button>
+    <h2>Termin buchen</h2>
+    <p>Welche Zonen möchten Sie behandeln lassen?</p>
+    ${groups.map(([title, items]) => `<fieldset><legend>${title}</legend>${items.map(([z, p]) =>
+      `<label><input type="checkbox" value="${esc(z)}"><span>${esc(z)}</span><em>${p}</em></label>`).join('')}</fieldset>`).join('')}
+    <a class="btn wa-go" target="_blank" rel="noopener">Weiter zu WhatsApp</a>
+    <small>Noch unsicher? Einfach ohne Auswahl weiter, Erika berät Sie gerne.</small>`;
+  document.body.appendChild(dlg);
+  const go = dlg.querySelector('.wa-go');
+  const boxes = [...dlg.querySelectorAll('input')];
+  const update = () => {
+    const chosen = boxes.filter(b => b.checked).map(b => b.value);
+    const text = chosen.length ? `${intro}\nZonen: ${chosen.join(', ')}` : intro;
+    go.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+    go.textContent = chosen.length ? `Weiter zu WhatsApp (${chosen.length})` : 'Weiter zu WhatsApp';
+  };
+  boxes.forEach(b => b.addEventListener('change', update));
+  update();
+  dlg.querySelector('.close').addEventListener('click', () => dlg.close());
+  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+  go.addEventListener('click', () => setTimeout(() => dlg.close(), 100));
+  bookLinks.forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    header.classList.remove('open');
+    dlg.showModal();
+  }));
+}

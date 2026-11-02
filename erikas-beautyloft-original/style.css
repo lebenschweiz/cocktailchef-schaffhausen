@@ -571,3 +571,36 @@ img[data-zoom] { cursor: zoom-in; }
 .lightbox::backdrop { background: rgba(0, 0, 0, .8); }
 .lightbox img { display: block; max-width: 92vw; max-height: 92vh; width: auto; height: auto; box-shadow: 0 10px 40px rgba(0, 0, 0, .4); }
 .lightbox .close { position: fixed; top: 12px; right: 18px; background: none; border: 0; color: #fff; font-size: 40px; line-height: 1; cursor: pointer; }
+
+/* Zonenauswahl beim Buchen */
+.book-dialog {
+  border: 0; border-radius: 14px; padding: 34px 32px 26px;
+  width: min(460px, calc(100% - 24px)); max-height: calc(100vh - 24px); overflow: auto;
+  font-family: var(--font); color: var(--text); background: #fff; text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .25);
+}
+.book-dialog::backdrop { background: rgba(36, 36, 36, .5); }
+.book-dialog h2 { font-size: 24px; font-weight: 400; letter-spacing: 1px; margin-bottom: 8px; }
+.book-dialog > p { font-size: 14px; margin-bottom: 18px; }
+.book-dialog fieldset { border: 0; margin: 0 0 16px; padding: 0; text-align: left; }
+.book-dialog legend { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+.book-dialog label {
+  display: flex; align-items: center; gap: 12px; cursor: pointer;
+  padding: 10px 12px; border: 1px solid rgba(187, 133, 9, .25); border-radius: 8px; margin-bottom: 6px;
+  font-size: 14px; transition: background .2s, border-color .2s;
+}
+.book-dialog label:has(input:checked) { background: #faf5ea; border-color: var(--gold); }
+.book-dialog input { width: 18px; height: 18px; accent-color: var(--gold); flex: 0 0 auto; }
+.book-dialog label span { flex: 1; }
+.book-dialog label em { font-style: normal; color: var(--gold); font-size: 13px; white-space: nowrap; }
+.book-dialog .wa-go { display: block; margin: 18px auto 10px; width: 100%; max-width: 280px; }
+.book-dialog small { display: block; font-size: 12px; color: #6b6b6b; }
+.book-dialog .close {
+  position: absolute; top: 10px; right: 14px; background: none; border: 0;
+  font-size: 28px; line-height: 1; color: var(--text); cursor: pointer;
+}
+.book-dialog .wa-go { position: sticky; bottom: 0; z-index: 1; }
+@media (max-width: 600px) {
+  .book-dialog { padding: 28px 18px 20px; }
+  .book-dialog label { padding: 8px 10px; }
+}
