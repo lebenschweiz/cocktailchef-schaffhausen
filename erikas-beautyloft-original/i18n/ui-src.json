@@ -1,0 +1,210 @@
+{
+"Schliessen": [
+"Close",
+"Закрыть"
+],
+"Hallo, ich möchte einen Termin für eine Laser-Haarentfernung vereinbaren.": [
+"Hello, I would like to book an appointment for laser hair removal.",
+"Здравствуйте, я хотела бы записаться на лазерную эпиляцию."
+],
+"Hallo, ich heisse {n} und möchte einen Termin für eine Laser-Haarentfernung vereinbaren.": [
+"Hello, my name is {n} and I would like to book an appointment for laser hair removal.",
+"Здравствуйте, меня зовут {n}, я хотела бы записаться на лазерную эпиляцию."
+],
+"Einzelne Zonen": [
+"Single zones",
+"Отдельные зоны"
+],
+"Pakete": [
+"Packages",
+"Комплексы"
+],
+"Achseln": [
+"Underarms",
+"Подмышки"
+],
+"Bikinizone": [
+"Bikini line",
+"Бикини"
+],
+"Bauchregion": [
+"Abdomen",
+"Живот"
+],
+"Arme komplett": [
+"Full arms",
+"Руки полностью"
+],
+"Bikinizone inkl. Intimbereich": [
+"Bikini incl. intimate area",
+"Глубокое бикини"
+],
+"Beine bis & inkl. Knie": [
+"Legs up to & incl. knees",
+"Ноги до колен включительно"
+],
+"Beine komplett": [
+"Full legs",
+"Ноги полностью"
+],
+"Intim komplett und Achseln": [
+"Full intimate area and underarms",
+"Глубокое бикини и подмышки"
+],
+"Intim komplett, Achseln und halbe Beine": [
+"Full intimate area, underarms and half legs",
+"Глубокое бикини, подмышки и голени"
+],
+"Intim komplett, Achseln und ganze Beine": [
+"Full intimate area, underarms and full legs",
+"Глубокое бикини, подмышки и ноги полностью"
+],
+"Ganzer Körper (5 Zonen)": [
+"Full body (5 zones)",
+"Всё тело (5 зон)"
+],
+"Termin buchen": [
+"Book an appointment",
+"Записаться"
+],
+"Wie heissen Sie?": [
+"What is your name?",
+"Как вас зовут?"
+],
+"Vorname und Nachname": [
+"First and last name",
+"Имя и фамилия"
+],
+"Welche Zonen möchten Sie behandeln lassen?": [
+"Which zones would you like to have treated?",
+"Какие зоны вы хотите обработать?"
+],
+"Machen Sie zum ersten Mal eine Laser-Haarentfernung?": [
+"Is this your first laser hair removal?",
+"Вы делаете лазерную эпиляцию впервые?"
+],
+"Ja": [
+"Yes",
+"Да"
+],
+"Nein": [
+"No",
+"Нет"
+],
+"Haben Sie irgendwelche Kontraindikationen?": [
+"Do you have any contraindications?",
+"Есть ли у вас противопоказания?"
+],
+"Welche? (optional)": [
+"Which ones? (optional)",
+"Какие? (необязательно)"
+],
+"Liste der Kontraindikationen ansehen": [
+"See the list of contraindications",
+"Посмотреть список противопоказаний"
+],
+"Wann möchten Sie gerne einen Termin vereinbaren?": [
+"When would you like your appointment?",
+"Когда вы хотели бы записаться?"
+],
+"So bald wie möglich": [
+"As soon as possible",
+"Как можно скорее"
+],
+"Diese Woche": [
+"This week",
+"На этой неделе"
+],
+"Nächste Woche": [
+"Next week",
+"На следующей неделе"
+],
+"Wunschdatum": [
+"Preferred date",
+"Выбрать дату"
+],
+"Bevorzugte Tageszeit": [
+"Preferred time of day",
+"Удобное время дня"
+],
+"Vormittag": [
+"Morning",
+"Утро"
+],
+"Nachmittag": [
+"Afternoon",
+"День"
+],
+"Abend": [
+"Evening",
+"Вечер"
+],
+"Weiter zu WhatsApp": [
+"Continue to WhatsApp",
+"Перейти в WhatsApp"
+],
+"Noch unsicher? Einfach ohne Auswahl weiter, Erika berät Sie gerne.": [
+"Not sure yet? Just continue without choosing, Erika will be happy to advise you.",
+"Ещё не решили? Просто продолжите без выбора, Эрика с радостью вас проконсультирует."
+],
+"Zonen": [
+"Zones",
+"Зоны"
+],
+"Zum ersten Mal Laser-Haarentfernung": [
+"First laser hair removal",
+"Лазерная эпиляция впервые"
+],
+"Kontraindikationen": [
+"Contraindications",
+"Противопоказания"
+],
+"Gewünschter Termin": [
+"Preferred appointment",
+"Желаемое время"
+],
+"Weiterlesen": [
+"Read more",
+"Читать дальше"
+],
+"Weniger": [
+"Less",
+"Свернуть"
+],
+"Nach oben": [
+"Back to top",
+"Наверх"
+],
+"Ton an": [
+"Sound on",
+"Звук вкл."
+],
+"Ton aus": [
+"Sound off",
+"Звук выкл."
+],
+"Ton einschalten": [
+"Turn sound on",
+"Включить звук"
+],
+"Ton ausschalten": [
+"Turn sound off",
+"Выключить звук"
+],
+"Jetzt geöffnet": [
+"Open now",
+"Сейчас открыто"
+],
+"Geschlossen": [
+"Closed",
+"Закрыто"
+],
+"Hallo, ich möchte gerne einen Gutschein bestellen.": [
+"Hello, I would like to order a gift card.",
+"Здравствуйте, я хотела бы заказать подарочный сертификат."
+],
+"Sprache": [
+"Language",
+"Язык"
+]
+}

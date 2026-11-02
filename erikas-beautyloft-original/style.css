@@ -1443,3 +1443,27 @@ img[data-zoom] { cursor: zoom-in; }
 .gs-mark { display: block; line-height: 1; }
 .gs-mark svg { display: inline-block; vertical-align: baseline; width: .74em; height: .64em; margin: 0 .3em 0 0; }
 .gs-mark svg { width: .78em; height: .64em; vertical-align: -.03em; overflow: visible; }
+
+/* Sprachumschalter */
+.lang-switch { display: flex; align-items: center; gap: 2px; margin-right: 14px; padding: 3px; border-radius: 30px; background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 1px rgba(187,133,9,.3); }
+.lang-switch a { padding: 5px 8px; border-radius: 20px; font-size: 10.5px; font-weight: 500; letter-spacing: .1em; color: #4f4538; text-decoration: none; line-height: 1; transition: background .3s, color .3s; }
+.lang-switch a:hover { color: #9a6c06; }
+.lang-switch a[aria-current] { background: linear-gradient(135deg, #f3dc9a, #d9b25a); color: #3d3326; }
+.header .bar > .lang-switch { margin-left: 8px; }
+.mobile-nav .lang-switch { display: none; }
+@media (max-width: 1000px) {
+  .header .bar > .lang-switch { display: none; }
+  .mobile-nav .lang-switch { display: inline-flex; margin: 14px auto 6px; padding: 4px; }
+  .mobile-nav .lang-switch a { padding: 8px 14px; font-size: 12px; border: 0; }
+}
+@media (max-width: 1000px) {
+  .mobile-nav .lang-switch { align-self: center; width: auto !important; max-width: max-content; }
+  .mobile-nav .lang-switch a { display: inline-block; width: auto !important; min-width: 0; flex: 0 0 auto; margin: 0 !important; border: 0 !important; box-shadow: none !important; padding: 8px 16px !important; }
+  .mobile-nav .lang-switch a[aria-current] { background: linear-gradient(135deg, #f3dc9a, #d9b25a) !important; }
+}
+.header .bar > .btn { white-space: nowrap; flex-shrink: 0; }
+@media (max-width: 1140px) and (min-width: 1001px) {
+  .header .bar > .lang-switch { margin-right: 8px; } .header .bar > .lang-switch a { padding: 5px 6px; }
+  .nav a { padding-left: 9px !important; padding-right: 9px !important; letter-spacing: .06em; }
+  .header .wordmark { margin-right: 20px !important; }
+}
