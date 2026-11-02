@@ -1362,3 +1362,11 @@ img[data-zoom] { cursor: zoom-in; }
 @media (max-width: 1000px) { .g-badge-mini { flex-wrap: nowrap; padding: 8px 14px; gap: 8px; } }
 .bewertungen.white .card { background: #fbf8f4; border: 1px solid rgba(187,133,9,.22); }
 .bewertungen.white { border-top: 1px solid rgba(187,133,9,.25); }
+
+/* Behandlungen: abwechselnd weiss und beige */
+.bh-modern .bh-item.bh-rev { position: relative; padding: 80px 0; margin-bottom: 0;
+  background: var(--beige); box-shadow: 0 0 0 100vmax var(--beige); clip-path: inset(0 -100vmax); }
+.bh-modern .bh-item:first-child { padding-bottom: 30px; }
+.page:has(.bh-modern) { padding-bottom: 0; }
+.bh-modern .bh-rev .bh-list li { border-color: rgba(187,133,9,.3); }
+@media (max-width: 1000px) { .bh-modern .bh-item.bh-rev { padding: 50px 0; } }
