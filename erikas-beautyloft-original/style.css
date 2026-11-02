@@ -1407,3 +1407,4 @@ img[data-zoom] { cursor: zoom-in; }
 }
 @media (prefers-reduced-motion: reduce) { .gs-card::after { animation: none; } }
 @media (max-width: 1000px) { .gs-wrap { padding: 0 20px; } }
+.bh-modern .bh-text > .btn { display: table; margin-left: auto; margin-right: auto; }
