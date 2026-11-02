@@ -234,3 +234,10 @@ document.querySelectorAll('.faq details').forEach(d => {
     }
   });
 });
+
+// Video-Bewertungen: eigener Play-Knopf
+document.querySelectorAll('.v-card').forEach(c => {
+  const v = c.querySelector('video');
+  c.querySelector('.v-play').addEventListener('click', () => { v.controls = true; c.classList.add('playing'); v.play(); });
+  v.addEventListener('ended', () => { c.classList.remove('playing'); v.controls = false; });
+});

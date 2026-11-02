@@ -891,3 +891,21 @@ img[data-zoom] { cursor: zoom-in; }
   .pb-zonen::after { content: ""; position: absolute; top: 6px; bottom: 6px; right: -35px; width: 1px; background: linear-gradient(transparent, var(--gold) 20%, var(--gold) 80%, transparent); }
 }
 @media (max-width: 1000px) { .preisliste::before, .preisliste::after { left: 16px; right: 16px; } }
+
+/* Video-Bewertungen */
+.videos-head { text-align: center; margin-top: 90px; }
+.videos-head h3 { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; font-size: 36px; color: #4f4538; }
+.bewertungen .videos { gap: 50px; margin-top: 36px; }
+.v-card { position: relative; margin: 0; }
+.v-card::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; border: 1px solid rgba(187, 133, 9, .55); border-radius: 22px; }
+.v-card video { position: relative; display: block; border-radius: 22px; box-shadow: 0 16px 36px rgba(47, 42, 37, .2); background: #000; }
+.v-play {
+  position: absolute; left: 50%; top: 50%; width: 74px; height: 74px; margin: -37px 0 0 -37px; border-radius: 50%; border: 0; cursor: pointer;
+  background: rgba(255, 255, 255, .9); box-shadow: 0 8px 24px rgba(0, 0, 0, .25); display: grid; place-items: center; transition: transform .25s;
+}
+.v-play::after { content: ""; position: absolute; inset: -8px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .8); animation: promo-ring 2s ease-out infinite; }
+.v-play svg { width: 30px; height: 30px; fill: var(--gold); margin-left: 4px; }
+.v-play:hover { transform: scale(1.08); }
+.v-card.playing .v-play { display: none; }
+.v-card figcaption { position: relative; margin-top: 30px; text-align: center; font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: #9a6c06; }
+@media (max-width: 1000px) { .bewertungen .videos { gap: 34px; } .v-card::before { inset: 12px -12px -12px 12px; } .videos-head h3 { font-size: 30px; } }
