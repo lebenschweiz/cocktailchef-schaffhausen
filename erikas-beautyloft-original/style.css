@@ -531,7 +531,7 @@ h1, h2, h3, p { margin: 0; font-weight: 400; }
 }
 
 /* Google-Bewertungen */
-.google { margin-top: 80px; }
+.google { margin-top: 40px; }
 .g-badge {
   display: flex; align-items: center; justify-content: center; gap: 12px;
   width: max-content; margin: 0 auto;
