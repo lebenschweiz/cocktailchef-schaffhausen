@@ -1238,3 +1238,24 @@ img[data-zoom] { cursor: zoom-in; }
 .header .btn { padding: 10px 18px; font-size: 10.5px; }
 .btn-review svg, .btn-outline svg { width: 15px; height: 15px; }
 .mobile-nav a[href*="wa.me"] { padding: 12px 18px; font-size: 11px; }
+
+/* Variante 4: Glas-Knöpfe */
+:root { --glass: rgba(255,255,255,.45); --glass-ring: inset 0 0 0 1px rgba(255,255,255,.85); }
+.btn[href*="wa.me"], .book-dialog .wa-go, .mobile-nav a[href*="wa.me"], .btn-review, .to-top {
+  background: var(--glass); color: var(--espresso);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  box-shadow: var(--glass-ring), 0 8px 24px rgba(47,42,37,.12);
+}
+.btn[href*="wa.me"]:hover, .book-dialog .wa-go:hover, .mobile-nav a[href*="wa.me"]:hover, .btn-review:hover, .to-top:hover {
+  background: rgba(255,255,255,.75); color: var(--espresso); transform: translateY(-3px);
+  box-shadow: var(--glass-ring), 0 12px 28px rgba(47,42,37,.16);
+}
+.btn:not([href*="wa.me"]), .btn-outline, .c-tabs button { background: transparent; border: 1px solid rgba(59,52,44,.35); }
+.btn:not([href*="wa.me"]):hover, .btn-outline:hover, .c-tabs button:hover { background: rgba(255,255,255,.55); border-color: rgba(255,255,255,.9); color: var(--espresso); box-shadow: 0 10px 22px rgba(47,42,37,.1); }
+.c-tabs button.on, .nav a.active, .mobile-nav a.active { background: var(--glass); border-color: rgba(255,255,255,.9); color: var(--espresso); box-shadow: 0 6px 16px rgba(47,42,37,.1); }
+.nav a:hover { border-color: rgba(59,52,44,.3); }
+.leistungen li:hover .l-arrow { background: rgba(255,255,255,.7); border-color: rgba(255,255,255,.95); }
+/* auf dem Hero-Video: weisser Text */
+.hero .btn[href*="wa.me"] { color: #3b342c; }
+.btn[href*="wa.me"], .book-dialog .wa-go, .mobile-nav a[href*="wa.me"], .btn-review, .to-top { box-shadow: var(--glass-ring), 0 0 0 1px rgba(59,52,44,.14), 0 8px 24px rgba(47,42,37,.12); }
+.white .btn[href*="wa.me"], .hero .btn[href*="wa.me"], .white .btn-review { background: rgba(244,239,233,.7); }
