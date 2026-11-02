@@ -1195,3 +1195,8 @@ img[data-zoom] { cursor: zoom-in; }
   .ueber-modern .cert-wrap { width: 170px; margin: 0 auto; }
 }
 .ueber-modern .text .promise { line-height: 1.3; }
+.ueber-modern .school { display: flex; align-items: center; gap: 16px; padding: 14px 20px 14px 14px; margin: 2px 0 22px; background: #fff; border: 1px solid rgba(187,133,9,.35); border-radius: 16px; box-shadow: 0 8px 22px rgba(47,42,37,.08); max-width: 470px; }
+.ueber-modern .school img { width: 54px; height: auto; flex: 0 0 54px; }
+.ueber-modern .school strong { display: block; font-size: 14px; font-weight: 600; letter-spacing: .2em; color: #4f4538; }
+.ueber-modern .school span { display: block; font-size: 12.5px; color: #5d5246; margin-top: 2px; }
+.ueber-modern .school small { display: block; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: #9a6c06; margin-top: 5px; }
