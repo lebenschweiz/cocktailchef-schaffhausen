@@ -1440,3 +1440,6 @@ img[data-zoom] { cursor: zoom-in; }
   .gs-ribbon { width: 22px; } .gs-bow { width: 80px; left: calc(21% + 11px); }
 }
 @media (prefers-reduced-motion: reduce) { .gs-body .gs-k { animation: none; } }
+.gs-mark { display: block; line-height: 1; }
+.gs-mark svg { display: inline-block; vertical-align: baseline; width: .74em; height: .64em; margin: 0 .3em 0 0; }
+.gs-mark svg { width: .78em; height: .64em; vertical-align: -.03em; overflow: visible; }
