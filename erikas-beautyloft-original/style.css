@@ -1273,3 +1273,8 @@ img[data-zoom] { cursor: zoom-in; }
 .mobile-nav a[href*="wa.me"] { padding: 11px 16px; font-size: 10.5px; }
 .to-top { width: 44px; height: 44px; }
 @media (max-width: 1000px) { .to-top { width: 40px; height: 40px; right: 27px; } }
+
+/* Knopf "nach oben" in Gold hervorgehoben */
+.to-top { background: linear-gradient(135deg, #e2b546, #bb8509 60%, #9a6c06); box-shadow: 0 0 0 1px rgba(255,255,255,.6) inset, 0 10px 24px rgba(138,98,5,.35); }
+.to-top svg { stroke: #fff; }
+.to-top:hover { background: linear-gradient(135deg, #ecc35a, #c99412 60%, #a77708); box-shadow: 0 0 0 1px rgba(255,255,255,.7) inset, 0 14px 30px rgba(138,98,5,.45); }
