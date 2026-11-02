@@ -1084,3 +1084,24 @@ img[data-zoom] { cursor: zoom-in; }
 .btn-outline:hover { text-decoration: none; background: var(--gold); color: #fff; }
 .g-review-cta { text-align: center; margin: 18px 0 8px; }
 @media (max-width: 1000px) { .map-card .map iframe { height: 340px; } .map-actions a { flex: 1 1 100%; } }
+
+/* Galerie: Mosaik mit runden Ecken */
+.galerie-grid { gap: 16px; grid-auto-flow: dense; overflow: visible; margin: 46px 0 90px; }
+.galerie-grid > img, .galerie-grid > .vid { width: 100%; height: 100%; aspect-ratio: 3 / 4; border-radius: 18px; overflow: hidden; clip-path: inset(0 round 18px);
+  box-shadow: 0 10px 26px rgba(47,42,37,.12); background: #f4efe9; }
+.galerie-grid > img { object-fit: cover; cursor: zoom-in; }
+.galerie-grid > .vid video { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; display: block; }
+.galerie-grid > :nth-child(7n+1) { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+.galerie-grid > img[src*="laser-01"] { object-fit: contain; background: #fff; }
+.galerie-grid img:hover, .galerie-grid .vid:hover video { transform: scale(1.05); filter: brightness(96%) contrast(105%); }
+.galerie-grid .vid::after { width: 54px; height: 54px; border: 0; border-radius: 50%; transform: translate(-50%, -50%);
+  background: rgba(187,133,9,.88) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6.5v11l9-5.5z' fill='%23fff'/%3E%3C/svg%3E") center / 24px no-repeat;
+  box-shadow: 0 0 0 6px rgba(255,255,255,.35), 0 8px 20px rgba(0,0,0,.25); }
+@media (max-width: 1000px) {
+  .galerie-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .galerie-grid > img, .galerie-grid > .vid { border-radius: 14px; clip-path: inset(0 round 14px); }
+  .galerie-grid > :nth-child(7n+1) { grid-row: span 2; }
+}
+.galerie-grid { container-type: inline-size; grid-auto-rows: calc((100cqw - 48px) / 4 * 4 / 3); }
+.galerie-grid > img, .galerie-grid > .vid { aspect-ratio: auto; height: 100%; }
+@media (max-width: 1000px) { .galerie-grid { grid-auto-rows: calc((100cqw - 10px) / 2 * 4 / 3); } }
