@@ -203,3 +203,34 @@ document.querySelectorAll('.bewertungen .card').forEach(card => {
   });
   p.after(btn);
 });
+
+// Vorher/Nachher-Vergleich mit Schieberegler
+const cmp = document.querySelector('.compare');
+if (cmp) {
+  const range = cmp.querySelector('.c-range');
+  const set = v => cmp.style.setProperty('--pos', v + '%');
+  range.addEventListener('input', () => set(range.value));
+  document.querySelectorAll('.c-tabs button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.c-tabs button').forEach(x => x.classList.toggle('on', x === b));
+    cmp.querySelector('.c-before').src = `img/vorher-nachher/split/${b.dataset.p}-vorher.jpg`;
+    cmp.querySelector('.c-after').src = `img/vorher-nachher/split/${b.dataset.p}-nachher.jpg`;
+    range.value = 50; set(50);
+  }));
+}
+
+// FAQ: Antworten weich auf- und zuklappen
+document.querySelectorAll('.faq details').forEach(d => {
+  const sum = d.querySelector('summary'), ans = d.querySelector('.answer');
+  if (!ans || !ans.animate) return;
+  sum.addEventListener('click', e => {
+    e.preventDefault();
+    if (d.open) {
+      const a = ans.animate([{ height: ans.offsetHeight + 'px', opacity: 1 }, { height: '0px', opacity: 0 }], { duration: 300, easing: 'ease' });
+      a.onfinish = () => { d.open = false; };
+    } else {
+      document.querySelectorAll('.faq details[open]').forEach(o => { if (o !== d) o.open = false; });
+      d.open = true;
+      ans.animate([{ height: '0px', opacity: 0 }, { height: ans.offsetHeight + 'px', opacity: 1 }], { duration: 350, easing: 'ease' });
+    }
+  });
+});
