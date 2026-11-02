@@ -689,3 +689,6 @@ img[data-zoom] { cursor: zoom-in; }
   .preisliste .row span:first-child, .preisliste .row span:last-child { font-size: 14px; }
   .pb-naegel { margin-top: 0; }
 }
+/* Dreieck auf Höhe der Grossbuchstaben */
+.wordmark .wm-name { display: block; }
+.wordmark .wm-tri { display: inline-block; vertical-align: baseline; width: .76em; height: .66em; margin: 0 .3em 0 0; }
