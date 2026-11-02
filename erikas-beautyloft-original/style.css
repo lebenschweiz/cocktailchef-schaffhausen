@@ -945,3 +945,32 @@ img[data-zoom] { cursor: zoom-in; }
 }
 @media (min-width: 1001px) { .leistungen .grid { grid-template-columns: 1fr 500px; padding-right: 20px; } .leistungen .media { width: 500px; height: 430px; } }
 .leistungen .media video { background: #6d625a url(img/leistungen-poster.jpg) center / cover; }
+
+/* Knöpfe: modern */
+.btn {
+  position: relative; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 15px 32px; border-radius: 40px; border: 1px solid var(--gold);
+  background: transparent; color: #4f4538; box-shadow: none; filter: none;
+  font-size: 12px; font-weight: 500; letter-spacing: .22em;
+  transition: background .3s, color .3s, transform .3s, box-shadow .3s;
+}
+.btn:hover { background: var(--gold); color: #fff; transform: translateY(-2px); box-shadow: 0 10px 24px rgba(187, 133, 9, .3); filter: none; }
+/* Buchen-Knöpfe: gold gefüllt mit Glanz */
+.btn[href*="wa.me"], .book-dialog .wa-go {
+  border: 0; color: #fff;
+  background: linear-gradient(135deg, #d9ab3c 0%, #bb8509 55%, #9a6c06 100%);
+  box-shadow: 0 8px 22px rgba(187, 133, 9, .35);
+}
+.btn[href*="wa.me"]::before {
+  content: ""; width: 16px; height: 16px; flex: 0 0 16px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.6'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.btn[href*="wa.me"]::after, .book-dialog .wa-go::after {
+  content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .45), transparent);
+  transform: skewX(-20deg); animation: btn-shine 3.5s ease-in-out infinite;
+}
+.btn[href*="wa.me"]:hover, .book-dialog .wa-go:hover { background: linear-gradient(135deg, #e2b546 0%, #c48c0b 55%, #a07408 100%); color: #fff; box-shadow: 0 14px 30px rgba(187, 133, 9, .45); }
+@keyframes btn-shine { 0%, 60% { left: -60%; } 100% { left: 130%; } }
+.header .btn { padding: 12px 24px; }
+@media (prefers-reduced-motion: reduce) { .btn::after { animation: none !important; } }
