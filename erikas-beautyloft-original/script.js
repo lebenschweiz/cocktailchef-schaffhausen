@@ -139,7 +139,7 @@ if (bookLinks.length && typeof HTMLDialogElement === 'function') {
   const phone = '41782235962';
   const intro = 'Hallo, ich möchte einen Termin für eine Laser-Haarentfernung vereinbaren.';
   const groups = [
-    ['Einzelne Zonen', [['Beine komplett', '110 CHF'], ['Beine bis & inkl. Knie', '90 CHF'], ['Bikinizone inkl. Intimbereich', '65 CHF'], ['Bikinizone', '40 CHF'], ['Achseln', '40 CHF'], ['Bauchregion', '40 CHF'], ['Arme komplett', '50 CHF']]],
+    ['Einzelne Zonen', [['Achseln', '40 CHF'], ['Bikinizone', '40 CHF'], ['Bauchregion', '40 CHF'], ['Arme komplett', '50 CHF'], ['Bikinizone inkl. Intimbereich', '65 CHF'], ['Beine bis & inkl. Knie', '90 CHF'], ['Beine komplett', '110 CHF']]],
     ['Pakete', [['Intim komplett und Achseln', '100 CHF'], ['Intim komplett, Achseln und halbe Beine', '170 CHF'], ['Intim komplett, Achseln und ganze Beine', '190 CHF'], ['Ganzer Körper (5 Zonen)', '250 CHF']]]
   ];
   const esc = t => t.replace(/&/g, '&amp;');
