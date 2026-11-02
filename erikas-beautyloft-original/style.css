@@ -1299,3 +1299,18 @@ img[data-zoom] { cursor: zoom-in; }
 @keyframes cert-glow { 0%, 100% { box-shadow: 0 12px 28px rgba(47,42,37,.18), 0 0 0 0 rgba(226,181,70,0); } 50% { box-shadow: 0 12px 28px rgba(47,42,37,.18), 0 0 26px 6px rgba(226,181,70,.55); } }
 @keyframes cert-shine { 0%, 40% { background-position: 150% 0; } 80%, 100% { background-position: -50% 0; } }
 @media (prefers-reduced-motion: reduce) { .ueber-modern .cert, .ueber-modern .cert-wrap::after { animation: none; } }
+
+/* Knöpfe: warmes helles Gold (Glas mit Goldton) */
+.btn[href*="wa.me"], .book-dialog .wa-go, .mobile-nav a[href*="wa.me"], .btn-review,
+.white .btn[href*="wa.me"], .hero .btn[href*="wa.me"], .white .btn-review {
+  background: linear-gradient(135deg, rgba(248,226,160,.95) 0%, rgba(232,192,92,.92) 55%, rgba(214,166,52,.92) 100%);
+  color: #3b342c; box-shadow: inset 0 0 0 1px rgba(255,255,255,.7), 0 8px 22px rgba(187,133,9,.28);
+}
+.btn[href*="wa.me"]:hover, .book-dialog .wa-go:hover, .mobile-nav a[href*="wa.me"]:hover, .btn-review:hover {
+  background: linear-gradient(135deg, rgba(251,233,178,1) 0%, rgba(238,201,106,1) 55%, rgba(222,176,62,1) 100%);
+  color: #3b342c; box-shadow: inset 0 0 0 1px rgba(255,255,255,.85), 0 12px 28px rgba(187,133,9,.38);
+}
+.btn-review svg { fill: #3b342c; }
+.btn:not([href*="wa.me"]), .btn-outline, .c-tabs button { border-color: rgba(187,133,9,.55); }
+.btn:not([href*="wa.me"]):hover, .btn-outline:hover, .c-tabs button:hover { background: rgba(248,226,160,.45); border-color: rgba(187,133,9,.75); }
+.c-tabs button.on, .nav a.active, .mobile-nav a.active { background: linear-gradient(135deg, rgba(248,226,160,.9), rgba(232,192,92,.85)); border-color: rgba(187,133,9,.5); color: #3b342c; }
