@@ -1023,3 +1023,36 @@ img[data-zoom] { cursor: zoom-in; }
 @media (prefers-reduced-motion: reduce) {
   .wordmark .wm-name, .wordmark .wm-sub, .wordmark .wm-tri, .wordmark .wm-sub i { animation: none; }
 }
+
+/* Leistungen ohne weisse Felder: elegante Zeilen mit Goldlinien */
+.leistungen .grid { align-items: center; }
+.leistungen ul { gap: 0; border-top: 1px solid rgba(187,133,9,.45); }
+.leistungen li, .leistungen li:hover {
+  background: none; border: 0; border-radius: 0; box-shadow: none; transform: none;
+  padding: 34px 6px; gap: 26px; border-bottom: 1px solid rgba(187,133,9,.45);
+}
+.leistungen li::before { content: ""; position: absolute; left: 0; bottom: -1px; height: 2px; width: 0; background: linear-gradient(90deg, #d9a93a, #bb8509, #8a6205); transition: width .5s ease; }
+.leistungen li:hover::before { width: 100%; }
+.leistungen li span, .leistungen li:hover span {
+  flex: 0 0 auto; width: auto; height: auto; border: 0; border-radius: 0; background: none;
+  font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 46px; line-height: 1; color: var(--gold);
+}
+.leistungen li a { transition: color .3s; }
+.leistungen li:hover a { color: #9a6c06; }
+.leistungen li a small { display: block; margin-top: 8px; font-family: "Montserrat", sans-serif; font-style: normal; font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: #8a7d6c; }
+.leistungen li a::after { border-radius: 0; }
+.l-arrow { width: 46px; height: 46px; border: 1px solid var(--gold); border-radius: 50%; display: grid; place-items: center; transition: transform .3s, background .3s; }
+.l-arrow svg { width: 20px; height: 20px; }
+.leistungen li:hover .l-arrow { background: var(--gold); }
+.leistungen li:hover .l-arrow svg { stroke: #fff; }
+.leistungen .center { margin-top: 60px; }
+@media (max-width: 1000px) {
+  .leistungen li, .leistungen li:hover { padding: 22px 2px; gap: 16px; }
+  .leistungen li span, .leistungen li:hover span { font-size: 34px; }
+  .leistungen li a { font-size: 22px; }
+  .leistungen li a small { font-size: 9.5px; letter-spacing: .14em; }
+  .l-arrow { width: 38px; height: 38px; }
+  .l-arrow svg { width: 17px; height: 17px; }
+}
+.leistungen li span, .leistungen li:hover span { flex: 0 0 62px; }
+@media (max-width: 1000px) { .leistungen li span, .leistungen li:hover span { flex-basis: 44px; } }
