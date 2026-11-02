@@ -875,3 +875,19 @@ img[data-zoom] { cursor: zoom-in; }
 .faq details[open] .plus::after { transform: rotate(0deg); }
 .faq .answer { overflow: hidden; }
 .only-women { display: inline-block; vertical-align: middle; margin-left: 10px; padding: 4px 10px; border: 1px solid var(--gold); border-radius: 20px; font-family: "Montserrat", sans-serif; font-style: normal; font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: #9a6c06; }
+
+/* Preise: goldene Akzente */
+.preisliste { position: relative; padding-top: 34px; padding-bottom: 30px; }
+.preisliste::before, .preisliste::after {
+  content: ""; position: absolute; left: 30px; right: 30px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold) 15%, var(--gold) 85%, transparent);
+}
+.preisliste::before { top: 0; } .preisliste::after { bottom: 0; }
+.price-box h3::after { content: ""; display: block; width: 56px; height: 2px; margin-top: 10px; background: linear-gradient(90deg, var(--gold), #e2b546); }
+.preisliste .row .dots { border-bottom-color: rgba(187, 133, 9, .55); }
+.preisliste .row span:last-child { color: #8a6106; }
+@media (min-width: 1001px) {
+  .pb-zonen { position: relative; }
+  .pb-zonen::after { content: ""; position: absolute; top: 6px; bottom: 6px; right: -35px; width: 1px; background: linear-gradient(transparent, var(--gold) 20%, var(--gold) 80%, transparent); }
+}
+@media (max-width: 1000px) { .preisliste::before, .preisliste::after { left: 16px; right: 16px; } }
