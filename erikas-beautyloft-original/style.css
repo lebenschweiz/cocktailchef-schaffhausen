@@ -1231,3 +1231,10 @@ img[data-zoom] { cursor: zoom-in; }
 @media (prefers-reduced-motion: reduce) { .btn-review::after, .mobile-nav a[href*="wa.me"]::after { animation: none; } }
 .ueber-modern .school { display: block; padding: 0; background: none; border: 0; box-shadow: none; margin: 0 0 22px; }
 .ueber-modern .school img { width: 72px; mix-blend-mode: multiply; }
+
+/* Knöpfe etwas kleiner */
+.btn, .btn-review, .btn-outline, .book-dialog .wa-go { padding: 12px 24px; font-size: 11px; letter-spacing: .16em; gap: 8px; }
+.btn[href*="wa.me"]::before { width: 14px; height: 14px; flex-basis: 14px; }
+.header .btn { padding: 10px 18px; font-size: 10.5px; }
+.btn-review svg, .btn-outline svg { width: 15px; height: 15px; }
+.mobile-nav a[href*="wa.me"] { padding: 12px 18px; font-size: 11px; }
