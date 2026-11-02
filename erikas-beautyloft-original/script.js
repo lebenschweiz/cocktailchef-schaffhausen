@@ -83,7 +83,7 @@ document.querySelectorAll('form[data-mail]').forEach(form => {
 const animTargets = {
   reveal: '.warum-head',
   glide: '.kontakt .title',
-  expand: '.header .logo, .header .nav, .header .btn, .title, .lead, main .btn, .leistungen li, .leistungen .media, .ueber .portrait, .ueber .text, .ueber .cert, .warum .cols > div, .preisliste .row, .card, .g-intro, .g-badge, .videos video, .faq details, .vn .slider, .form, .contact-lines, .map, .footer .grid > *, .behandlungen > div, .kicker, .page-title, .galerie-grid > *, .vn-grid img'
+  expand: '.header .logo, .header .nav, .header .btn, .title, .lead, main .btn, .leistungen li, .leistungen .media, .ueber .portrait, .ueber .text, .ueber .cert, .warum .cols > div, .price-box, .card, .g-intro, .g-badge, .videos video, .faq details, .vn .slider, .form, .contact-lines, .map, .footer .grid > *, .behandlungen > div, .kicker, .page-title, .galerie-grid > *, .vn-grid img'
 };
 if ('IntersectionObserver' in window) {
   document.documentElement.classList.add('anim');
