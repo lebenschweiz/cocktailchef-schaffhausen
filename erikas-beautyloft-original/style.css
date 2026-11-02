@@ -1467,3 +1467,10 @@ img[data-zoom] { cursor: zoom-in; }
   .nav a { padding-left: 9px !important; padding-right: 9px !important; letter-spacing: .06em; }
   .header .wordmark { margin-right: 20px !important; }
 }
+
+/* Sprachumschalter: rechts am Rand, ausserhalb der Kopfzeile */
+@media (min-width: 1001px) {
+  .header .bar > .lang-switch { position: fixed; right: 0; top: 62%; transform: translateY(-50%); z-index: 60; margin: 0; flex-direction: column; gap: 2px; padding: 5px 4px; border-radius: 14px 0 0 14px;
+    background: rgba(255,255,255,.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 6px 22px rgba(79,69,56,.16), inset 0 0 0 1px rgba(187,133,9,.3); }
+  .header .bar > .lang-switch a { padding: 7px 8px !important; font-size: 11px; }
+}
