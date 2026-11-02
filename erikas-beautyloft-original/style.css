@@ -714,3 +714,26 @@ img[data-zoom] { cursor: zoom-in; }
   .hero-note { color: var(--text); border-color: var(--gold); background: none; font-size: 11px; letter-spacing: .18em; margin: 14px auto 4px; }
 }
 @media (max-width: 1000px) { .hero-note { font-size: 10px; letter-spacing: .14em; padding: 8px 16px; } }
+
+/* Plakette: Leuchten und Glanz */
+.promo { overflow: visible; animation: promo-pulse 1.6s ease-in-out infinite, promo-glow 1.6s ease-in-out infinite; }
+.promo::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  border: 3px solid #e2b546; opacity: 0;
+  animation: promo-ring 1.6s ease-out infinite;
+}
+.promo-pct, .promo-txt { position: relative; z-index: 1; }
+.promo-pct { animation: promo-blink 1.6s ease-in-out infinite; }
+@keyframes promo-glow {
+  0%, 100% { box-shadow: 0 10px 30px rgba(0, 0, 0, .35), 0 0 0 0 rgba(226, 181, 70, .0), inset 0 0 0 5px rgba(255, 255, 255, .25); }
+  50% { box-shadow: 0 10px 30px rgba(0, 0, 0, .35), 0 0 34px 10px rgba(240, 196, 80, .75), inset 0 0 0 5px rgba(255, 255, 255, .45); }
+}
+@keyframes promo-ring {
+  0% { transform: scale(1); opacity: .9; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+@keyframes promo-blink {
+  0%, 100% { text-shadow: none; }
+  50% { text-shadow: 0 0 12px #fff, 0 0 2px #fff; }
+}
+@media (prefers-reduced-motion: reduce) { .promo, .promo::after, .promo-pct { animation: none; } }
