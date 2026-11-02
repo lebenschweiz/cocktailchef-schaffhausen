@@ -1,6 +1,6 @@
 /* Erika's Beauty Loft – Nachbau der bisherigen Website */
 :root {
-  --beige: #d3c9c2;
+  --beige: #e4dcd6;
   --text: #242424;
   --line: #afa7a2;
   --gold: #bb8509;
@@ -1118,3 +1118,4 @@ img[data-zoom] { cursor: zoom-in; }
   .hero h1 { background-image: linear-gradient(105deg, #000 0%, #000 38%, #bb8509 46%, #f6dc8f 50%, #bb8509 54%, #000 62%, #000 100%); }
 }
 @media (prefers-reduced-motion: reduce) { .hero h1 { animation: none; } }
+.avatar { background: #c9b9ad; }
