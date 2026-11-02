@@ -1290,3 +1290,12 @@ img[data-zoom] { cursor: zoom-in; }
 .footer .hours small { display: block; }
 .footer .links a.active { color: #9a6c06; font-weight: 500; }
 @media (max-width: 1000px) { .footer .brand { text-align: center; margin-bottom: 26px; } }
+
+/* Zertifikat: sanftes goldenes Leuchten und Glanz */
+.ueber-modern .cert-wrap { position: relative; }
+.ueber-modern .cert-wrap::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: calc(100% - 30px); border-radius: 10px; pointer-events: none; overflow: hidden;
+  background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,.75) 50%, transparent 65%) no-repeat; background-size: 250% 100%; background-position: 150% 0; animation: cert-shine 4.5s ease-in-out infinite; }
+.ueber-modern .cert { animation: cert-glow 3s ease-in-out infinite; }
+@keyframes cert-glow { 0%, 100% { box-shadow: 0 12px 28px rgba(47,42,37,.18), 0 0 0 0 rgba(226,181,70,0); } 50% { box-shadow: 0 12px 28px rgba(47,42,37,.18), 0 0 26px 6px rgba(226,181,70,.55); } }
+@keyframes cert-shine { 0%, 40% { background-position: 150% 0; } 80%, 100% { background-position: -50% 0; } }
+@media (prefers-reduced-motion: reduce) { .ueber-modern .cert, .ueber-modern .cert-wrap::after { animation: none; } }
