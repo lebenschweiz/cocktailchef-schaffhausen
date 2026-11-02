@@ -1069,3 +1069,18 @@ img[data-zoom] { cursor: zoom-in; }
 .to-top:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(138,98,5,.45); }
 .to-top svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 @media (max-width: 1000px) { .to-top { width: 44px; height: 44px; right: 24px; bottom: 96px; } .to-top svg { width: 19px; height: 19px; } }
+
+/* Karte und "Bewertung schreiben" */
+.map-card { position: relative; }
+.map-card .map { position: relative; border-radius: 22px; overflow: hidden; border: 1px solid rgba(187,133,9,.5); box-shadow: 0 18px 40px rgba(47,42,37,.16); background: #efe9e3; }
+.map-card .map iframe { display: block; height: 440px; filter: grayscale(.35) sepia(.15); }
+.map-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+.btn-review, .btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 13px 24px; border-radius: 40px; font-size: 12px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; text-decoration: none; transition: transform .25s, box-shadow .25s, background .25s, color .25s; }
+.btn-review svg, .btn-outline svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linejoin: round; }
+.btn-review { color: #fff; background: linear-gradient(135deg, #d9a93a, #bb8509 55%, #8a6205); box-shadow: 0 10px 24px rgba(138,98,5,.3); }
+.btn-review svg { fill: #fff; stroke: none; }
+.btn-review:hover { text-decoration: none; transform: translateY(-2px); box-shadow: 0 14px 30px rgba(138,98,5,.4); }
+.btn-outline { color: #4f4538; border: 1px solid var(--gold); }
+.btn-outline:hover { text-decoration: none; background: var(--gold); color: #fff; }
+.g-review-cta { text-align: center; margin: 18px 0 8px; }
+@media (max-width: 1000px) { .map-card .map iframe { height: 340px; } .map-actions a { flex: 1 1 100%; } }
