@@ -507,3 +507,25 @@ h1, h2, h3, p { margin: 0; font-weight: 400; }
 @media (prefers-reduced-motion: reduce) {
   .anim [data-anim] { opacity: 1 !important; transform: none !important; clip-path: none !important; }
 }
+
+/* Auswahl beim Buchen */
+.book-dialog {
+  border: 0;
+  border-radius: 12px;
+  padding: 36px 40px 32px;
+  width: min(360px, calc(100% - 32px));
+  text-align: center;
+  font-family: var(--font);
+  color: var(--text);
+  background: #fff;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .25);
+}
+.book-dialog::backdrop { background: rgba(36, 36, 36, .45); }
+.book-dialog h2 { font-size: 24px; letter-spacing: 1px; margin-bottom: 10px; }
+.book-dialog p { font-size: 14px; margin-bottom: 24px; }
+.book-dialog .btn { display: block; margin: 0 auto 14px; width: 200px; }
+.book-dialog .close {
+  position: absolute; top: 10px; right: 14px;
+  background: none; border: 0; font-size: 26px; line-height: 1;
+  color: var(--text); cursor: pointer;
+}
