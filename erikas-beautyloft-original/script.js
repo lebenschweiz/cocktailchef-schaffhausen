@@ -252,3 +252,14 @@ document.querySelectorAll('.v-card').forEach(c => {
   const t = () => b.classList.toggle('show', window.scrollY > 600);
   window.addEventListener('scroll', t, { passive: true }); t();
 })();
+
+// Ton an/aus für das Leistungen-Video
+document.querySelectorAll('.leistungen .media').forEach(m => {
+  const v = m.querySelector('video'); if (!v) return;
+  const on = '<svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>';
+  const off = '<svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg>';
+  const b = document.createElement('button'); b.type = 'button'; b.className = 'sound-btn';
+  const set = () => { b.innerHTML = (v.muted ? off : on) + '<span>' + (v.muted ? 'Ton an' : 'Ton aus') + '</span>'; b.setAttribute('aria-label', v.muted ? 'Ton einschalten' : 'Ton ausschalten'); };
+  b.addEventListener('click', () => { v.muted = !v.muted; if (!v.muted) { v.volume = 1; v.play(); } set(); });
+  set(); m.appendChild(b);
+});
