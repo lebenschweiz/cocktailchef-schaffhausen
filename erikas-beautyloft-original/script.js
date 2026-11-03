@@ -1,3 +1,6 @@
+// Immer über HTTPS
+if (location.protocol === 'http:' && /erikas-beautyloft\.ch$/.test(location.hostname)) location.replace('https:' + location.href.slice(5));
+
 // Übersetzungen (DE ist die Grundsprache, EN/RU kommen aus i18n/ui.js)
 const T = s => ((window.I18N_UI || {})[s]) || s;
 
