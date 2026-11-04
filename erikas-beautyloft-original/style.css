@@ -1480,3 +1480,12 @@ img[data-zoom] { cursor: zoom-in; }
 .footer .legal { display: inline-flex; gap: 18px; flex-wrap: wrap; }
 /* Fusszeile: WhatsApp & Instagram gelb wie oben */
 .footer .soc a { background: linear-gradient(135deg, rgba(248,226,160,.95), rgba(232,192,92,.9)) !important; color: #3b342c !important; box-shadow: inset 0 0 0 1px rgba(255,255,255,.7), 0 6px 16px rgba(187,133,9,.22) !important; }
+
+/* Kontaktformular: direkter Versand */
+.form .hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.form button[disabled] { opacity: .6; cursor: wait; }
+.form-note { margin: 12px 0 0; font-size: 14px; line-height: 1.5; }
+.form-note:empty { display: none; }
+.form-note.ok { color: #2e6b3a; }
+.form-note.err { color: #a33a2c; }
+.form-note a { color: inherit; text-decoration: underline; }

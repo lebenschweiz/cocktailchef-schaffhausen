@@ -72,16 +72,45 @@ document.querySelectorAll('.galerie-grid .vid').forEach(box => {
   });
 });
 
-// Formulare öffnen eine fertige E-Mail an Erika
+// Formulare senden die Anfrage direkt an info@ (über FormSubmit), ohne E-Mail-Programm
 document.querySelectorAll('form[data-mail]').forEach(form => {
-  form.addEventListener('submit', e => {
+  const btn = form.querySelector('button[type="submit"]');
+  const note = document.createElement('p');
+  note.className = 'form-note';
+  note.setAttribute('role', 'status');
+  form.appendChild(note);
+  form.addEventListener('submit', async e => {
     e.preventDefault();
+    if (form.website && form.website.value) return; // Spam-Falle
     const data = new FormData(form);
-    const lines = [];
-    for (const [k, v] of data) if (v) lines.push(`${k}: ${v}`);
-    const subject = encodeURIComponent(form.dataset.mail);
-    const body = encodeURIComponent(lines.join('\n'));
-    window.location.href = `mailto:info@erikas-beautyloft.ch?subject=${subject}&body=${body}`;
+    const payload = { _subject: form.dataset.mail, _template: 'table', _captcha: 'false' };
+    for (const [k, v] of data) if (v && k !== 'website') payload[k] = v;
+    if (payload.email) payload._replyto = payload.email;
+    payload.sprache = document.documentElement.lang;
+    btn.disabled = true;
+    const label = btn.textContent;
+    btn.textContent = T('Wird gesendet …');
+    note.className = 'form-note';
+    note.textContent = '';
+    try {
+      const r = await fetch('https://formsubmit.co/ajax/info@erikas-beautyloft.ch', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || String(j.success) === 'false') throw new Error(j.message || r.status);
+      form.reset();
+      note.classList.add('ok');
+      note.textContent = T('Vielen Dank! Ihre Nachricht wurde gesendet. Wir melden uns so schnell wie möglich.');
+    } catch (err) {
+      note.classList.add('err');
+      note.innerHTML = T('Die Nachricht konnte leider nicht gesendet werden. Bitte schreiben Sie uns direkt an') +
+        ' <a href="mailto:info@erikas-beautyloft.ch">info@erikas-beautyloft.ch</a> ' + T('oder per WhatsApp.');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = label;
+    }
   });
 });
 
