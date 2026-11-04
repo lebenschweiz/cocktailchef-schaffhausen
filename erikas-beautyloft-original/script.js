@@ -81,7 +81,7 @@ document.querySelectorAll('form[data-mail]').forEach(form => {
     for (const [k, v] of data) if (v) lines.push(`${k}: ${v}`);
     const subject = encodeURIComponent(form.dataset.mail);
     const body = encodeURIComponent(lines.join('\n'));
-    window.location.href = `mailto:erika.hartung.2022@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:info@erikas-beautyloft.ch?subject=${subject}&body=${body}`;
   });
 });
 
