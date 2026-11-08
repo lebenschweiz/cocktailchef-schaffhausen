@@ -490,14 +490,16 @@ footer{border-top:1px solid var(--line);padding:50px 0 34px;color:var(--muted);f
   form{grid-template-columns:1fr}
   .contact-card{padding:26px}
   .search{min-width:0;flex:1 1 100%}
-  .menu-grid{grid-template-columns:1fr 1fr;gap:10px}
-  .drink{flex-direction:column;gap:6px;padding:14px 12px 30px;border-radius:14px}
-  .drink svg{flex:0 0 auto;height:46px!important;width:auto}
-  .drink h3{font-size:1rem;line-height:1.15;hyphens:auto;overflow-wrap:anywhere}
-  .drink p{font-size:.76rem;line-height:1.4}
-  .drink .no{font-size:.68rem}
-  .badge-free{top:10px;right:10px;font-size:.6rem;padding:3px 7px}
-  .has-photo{left:12px;right:auto;bottom:10px;font-size:.66rem}
+  .menu-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+  .drink{flex-direction:column;gap:4px;padding:10px 8px 26px;border-radius:12px;min-width:0}
+  .drink > div{min-width:0}
+  .drink svg{flex:0 0 auto;height:40px!important;width:auto}
+  .drink h3{font-size:.86rem;line-height:1.15;hyphens:auto;overflow-wrap:anywhere}
+  .drink p{font-size:.66rem;line-height:1.35;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .drink .no{font-size:.6rem}
+  .badge-free{top:8px;right:6px;font-size:.5rem;padding:2px 5px;letter-spacing:.04em}
+  .has-photo{left:8px;right:auto;bottom:7px;font-size:.6rem}
+  .has-photo .txt{display:none}
   .tabs{width:100%}.tab{flex:1;padding:11px 10px}
   .orbit-chip{font-size:.72rem;padding:7px 11px}
   .press{right:-14px;width:84px;height:84px}
@@ -913,8 +915,8 @@ function render(){
     <article class="drink" data-no="${d.no}" style="animation-delay:${Math.min(i*35,500)}ms;--glow:${layers(d)[0]}26">
       ${glassSVG(d)}
       <div><div class="no">NR. ${d.no}</div><h3>${d.name}</h3><p>${d.ing.join(", ")}</p></div>
-      ${photo(d)?'<span class="has-photo">📷 Foto ansehen</span>':''}
-      ${d.free?'<span class="badge-free">0 %</span>':''}
+      ${photo(d)?'<span class="has-photo">📷<span class="txt"> Foto ansehen</span></span>':''}
+      ${d.free?'<span class="badge-free">Alkoholfrei</span>':''}
     </article>`).join("");
   document.getElementById("empty").style.display = list.length?"none":"block";
 }
