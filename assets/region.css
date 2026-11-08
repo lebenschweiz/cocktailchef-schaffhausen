@@ -1,0 +1,50 @@
+:root{--bg:#0d0b08;--card:#1c1812;--line:rgba(255,220,120,.14);--text:#f6efe2;--muted:#b9ad97;--gold:#ffcc1a;--gold-2:#ff9f1c;--radius:22px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.08;letter-spacing:-.01em}
+.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;font-weight:600;font-size:.96rem;border:1px solid transparent;transition:transform .25s}
+.btn:hover{transform:translateY(-3px)}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#1a1204}
+.btn-ghost{border-color:var(--line);background:rgba(255,255,255,.03)}
+header{border-bottom:1px solid var(--line);padding:10px 0}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{height:70px;width:auto;clip-path:ellipse(45% 43.5% at 50% 50%)}
+.logo span{font-weight:600;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);padding-left:12px;border-left:1px solid var(--line)}
+.hero{padding:70px 0 60px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:var(--gold-2);filter:blur(110px);opacity:.3;top:-200px;right:-160px;pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:44px;align-items:center}
+.hero h1{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:900;margin:14px 0 20px}
+.hero h1 em{font-style:normal;background:linear-gradient(100deg,var(--gold),var(--gold-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:1.12rem;color:var(--muted);max-width:560px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-img{border-radius:28px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+section{padding:70px 0;border-top:1px solid var(--line)}
+section h2{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:900;margin:10px 0 18px}
+.text{max-width:720px}
+.text p{color:var(--muted);margin-bottom:14px;font-size:1.05rem}
+.places{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.places li{list-style:none;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:.92rem}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}
+.card{padding:26px;border-radius:var(--radius);background:var(--card);border:1px solid var(--line)}
+.card .ico{font-size:2rem;margin-bottom:12px}
+.card h3{font-size:1.25rem;margin-bottom:8px}
+.card p{color:var(--muted);font-size:.95rem}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.steps .card h3::before{counter-increment:s;content:"0" counter(s) "  ";color:var(--gold)}
+.others{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.others a{padding:12px 20px;border-radius:999px;border:1px solid var(--line);font-weight:600}
+.others a:hover{border-color:rgba(255,204,26,.5);color:var(--gold)}
+.final{text-align:center}
+.final .lead{margin:0 auto}
+.final .cta{justify-content:center}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:.85rem;text-align:center}
+footer nav{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin-bottom:10px}
+footer a:hover{color:var(--gold)}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-img{max-width:420px;aspect-ratio:4/3}.cards{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr}}
+@media (max-width:560px){.logo img{height:56px}.logo span{display:none}.cards{grid-template-columns:1fr}header .btn{padding:10px 16px;font-size:.88rem}section{padding:56px 0}}
