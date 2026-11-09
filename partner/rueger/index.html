@@ -1316,6 +1316,7 @@ form.addEventListener("submit",async e=>{
     });
     if(!r.ok) throw new Error(await r.text());
     form.reset();
+    window.dataLayer=window.dataLayer||[]; dataLayer.push({event:"anfrage_gesendet", anlass:d.event_type}); // Conversion für Google Tag Manager / Google Ads
     showStatus("ok","Danke, "+d.name.replace(/[<>&]/g,"")+"! 🥂 Deine Anfrage ist bei uns angekommen – wir melden uns bald.");
   }catch(err){
     showStatus("err",`Das Senden hat leider nicht geklappt. Bitte versuch es nochmal oder <a href="${mailtoLink(d)}">schreib uns direkt per E-Mail</a>.`);
