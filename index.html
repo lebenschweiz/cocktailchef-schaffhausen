@@ -2,6 +2,18 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WN3GJJWS');</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cocktailchef Schweiz – für dein Event in der Schweiz</title>
 <meta name="description" content="Die automatische Cocktailanlage für dein Event in der Schweiz – über 25 Cocktails auf Knopfdruck, mit und ohne Alkohol.">
@@ -508,6 +520,10 @@ footer{border-top:1px solid var(--line);padding:50px 0 34px;color:var(--muted);f
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WN3GJJWS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <div class="cursor-glow" id="glow"></div>
 
@@ -1279,6 +1295,7 @@ form.addEventListener("submit",async e=>{
     });
     if(!r.ok) throw new Error(await r.text());
     form.reset();
+    dataLayer.push({event:"anfrage_gesendet", anlass:d.event_type}); // Conversion für Google Tag Manager
     showStatus("ok","Danke, "+d.name.replace(/[<>&]/g,"")+"! 🥂 Deine Anfrage ist bei uns angekommen – wir melden uns bald.");
   }catch(err){
     showStatus("err",`Das Senden hat leider nicht geklappt. Bitte versuch es nochmal oder <a href="${mailtoLink(d)}">schreib uns direkt per E-Mail</a>.`);
