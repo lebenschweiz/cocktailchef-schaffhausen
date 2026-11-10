@@ -79,7 +79,7 @@ document.querySelectorAll('form[data-mail]').forEach(form => {
   note.className = 'form-note';
   note.setAttribute('role', 'status');
   form.appendChild(note);
-  form.addEventListener('submit', async e => {
+  form.addEventListener('submit', e => {
     e.preventDefault();
     if (form.website && form.website.value) return; // Spam-Falle
     const data = new FormData(form);
@@ -92,26 +92,32 @@ document.querySelectorAll('form[data-mail]').forEach(form => {
     btn.textContent = T('Wird gesendet …');
     note.className = 'form-note';
     note.textContent = '';
-    try {
-      const r = await fetch('https://formsubmit.co/ajax/83d63466e1501305149e42d0325545d1', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      const j = await r.json().catch(() => ({}));
-      if (!r.ok || String(j.success) === 'false') throw new Error(j.message || r.status);
+    const done = () => { btn.disabled = false; btn.textContent = label; };
+    const thanks = () => {
       form.reset();
-      if (window.adsConversion) adsConversion('formular');
-      note.classList.add('ok');
+      note.className = 'form-note ok';
       note.textContent = T('Vielen Dank! Ihre Nachricht wurde gesendet. Wir melden uns so schnell wie möglich.');
-    } catch (err) {
-      note.classList.add('err');
+      done();
+    };
+    const fail = () => {
+      note.className = 'form-note err';
       note.innerHTML = T('Die Nachricht konnte leider nicht gesendet werden. Bitte schreiben Sie uns direkt an') +
         ' <a href="mailto:info@erikas-beautyloft.ch">info@erikas-beautyloft.ch</a> ' + T('oder per WhatsApp.');
-    } finally {
-      btn.disabled = false;
-      btn.textContent = label;
-    }
+      done();
+    };
+    // FormSubmit antwortet oft langsam: nach kurzer Zeit schon danken, Versand läuft weiter (keepalive)
+    let shown = false;
+    const timer = setTimeout(() => { shown = true; thanks(); }, 1500);
+    fetch('https://formsubmit.co/ajax/83d63466e1501305149e42d0325545d1', {
+      method: 'POST',
+      keepalive: true,
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(r => r.json().catch(() => ({})).then(j => {
+      if (!r.ok || String(j.success) === 'false') throw new Error(j.message || r.status);
+      clearTimeout(timer);
+      if (!shown) thanks();
+    })).catch(() => { clearTimeout(timer); if (!shown) fail(); });
   });
 });
 
