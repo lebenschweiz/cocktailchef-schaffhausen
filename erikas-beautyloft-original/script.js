@@ -93,7 +93,7 @@ document.querySelectorAll('form[data-mail]').forEach(form => {
     note.className = 'form-note';
     note.textContent = '';
     try {
-      const r = await fetch('https://formsubmit.co/ajax/info@erikas-beautyloft.ch', {
+      const r = await fetch('https://formsubmit.co/ajax/83d63466e1501305149e42d0325545d1', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(payload)
@@ -101,6 +101,7 @@ document.querySelectorAll('form[data-mail]').forEach(form => {
       const j = await r.json().catch(() => ({}));
       if (!r.ok || String(j.success) === 'false') throw new Error(j.message || r.status);
       form.reset();
+      if (window.adsConversion) adsConversion('formular');
       note.classList.add('ok');
       note.textContent = T('Vielen Dank! Ihre Nachricht wurde gesendet. Wir melden uns so schnell wie möglich.');
     } catch (err) {
