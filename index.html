@@ -716,7 +716,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="#so-gehts">So geht's</a>
       <a href="#events" hidden>Events</a>
       <a href="#karte">Cocktailkarte</a>
-      <a href="#galerie" hidden>Galerie</a>
+      <a href="#galerie">Galerie</a>
       <a href="#liefergebiet">Liefergebiet</a>
       <a href="#faq">FAQ</a>
       <a href="#kontakt">Kontakt</a>
@@ -902,7 +902,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- GALERIE -->
-<section id="galerie" hidden><!-- vorübergehend ausgeblendet: "hidden" entfernen zum Einblenden -->
+<section id="galerie">
   <svg class="wave top" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H1440V20C1200 60 960 0 720 25S240 55 0 20Z" fill="#0d0b08"/></svg>
   <div class="wrap">
     <div class="sec-head center reveal">
@@ -1029,7 +1029,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="#top" class="logo"><img class="logo-img" src="assets/logo.png" alt="Cocktailchef Logo"><span class="logo-loc">Schweiz</span></a>
       <nav>
         <a href="#karte">Cocktailkarte</a>
-        <a href="#galerie" hidden>Galerie</a>
+        <a href="#galerie">Galerie</a>
         <a href="#liefergebiet">Liefergebiet</a>
         <a href="#faq">FAQ</a>
         <a href="#kontakt">Standort</a>
@@ -1473,9 +1473,23 @@ const G=[
   ["events","assets/anstossen.jpg","Prost! Gäste stossen an"],
   ["events","assets/anlage-4.jpg","Bunte Drinks für alle Gäste"],
   ["events","assets/galerie/weihnachten.jpg","Weihnachtlicher Cocktail"],
+  ["events","assets/galerie/cc-kunden-36.jpg","Anstossen mit Freunden"],
+  ["events","assets/galerie/cc-kunden-19.jpg","Prost auf den Abend"],
+  ["events","assets/galerie/cc-kunden-35.jpg","Die ganze Runde feiert mit"],
+  ["events","assets/galerie/cc-kunden-07.jpg","Cocktails zum Anstossen"],
+  ["events","assets/galerie/cc-kunden-37.jpg","Bunte Drinks für alle"],
+  ["events","assets/galerie/cc-kunden-50.jpg","Frisch aus der Anlage"],
+  ["events","assets/galerie/cc-cocktails-47.jpg","Gute Laune im Glas"],
   ["anlage","assets/anlage-1.jpg","Die Cocktailchef-Anlage"],
   ["anlage","assets/anlage-2.jpg","Frisch gemixt in Sekunden"],
   ["anlage","assets/anlage-3.jpg","Der Ausschank in Aktion"],
+  ["anlage","assets/galerie/cc-anlage-75.jpg","Die Anlage – kompakt und mobil"],
+  ["anlage","assets/galerie/cc-cocktails-06.jpg","Der Cocktail läuft frisch ins Glas"],
+  ["anlage","assets/galerie/cc-anlage-84.jpg","Glas drunter, Knopf drücken"],
+  ["cocktails","assets/galerie/cc-cocktails-26.jpg","Bunte Auswahl auf einen Blick"],
+  ["cocktails","assets/galerie/cc-cocktails-30.jpg","Frisch gemixt und eisgekühlt"],
+  ["cocktails","assets/galerie/cc-cocktails-31.jpg","Mit und ohne Alkohol"],
+  ["cocktails","assets/galerie/cc-cocktails-img_9891.jpg","Drei Cocktails, drei Farben"],
   ...[...PHOTOS].sort((a,b)=>a-b).map(n=>["cocktails",`assets/cocktails/${n}.jpg`,`Nr. ${n} · ${DRINKS.find(d=>d.no===n).name}`])
 ].map(([cat,src,title])=>({cat,src,title,thumb:"assets/galerie/thumbs/"+src.replace("assets/","").replace("/","-")}));
 const gGrid=document.getElementById("gGrid"), gFilter=document.getElementById("gFilter"), gPrev=document.getElementById("gPrev"), gNext=document.getElementById("gNext"), gCount=document.getElementById("gCount");
