@@ -847,7 +847,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 // ---------- DATA ----------
 const COLORS = {
-  "Tequila":"#f3e6c4","Wodka":"#eef3f7","Weißer Rum":"#f5f0e6","Brauner Rum":"#b5651d",
+  "Tequila":"#f3e6c4","Wodka":"#eef3f7","Weisser Rum":"#f5f0e6","Brauner Rum":"#b5651d",
   "Blue Curacao":"#1fa2ff","Kokoslikör":"#fff8ec","Pfirsichlikör":"#ffb38a","Bitterlikör":"#8c1c13",
   "Ananas":"#ffd23f","Orange":"#ff9f1c","Zitrone":"#fff176","Maracuja":"#ffb703","Grenadine":"#e63946",
   "Cola":"#3b1f0f","Apfel-Kirsch":"#c9184a","Wild Berry":"#9d4edd","Pink Grapefruit":"#ff8fab"
@@ -857,20 +857,20 @@ const D = (no,name,ing,free=false)=>({no,name,ing:ing.split(", "),free});
 const DRINKS = [
   D(1,"Tequila Sunrise","Tequila, Orange, Zitrone, Grenadine"),
   D(2,"Sex On The Beach","Wodka, Pfirsichlikör, Ananas, Orange, Zitrone, Grenadine"),
-  D(3,"Hauscocktail","Weißer Rum, Blue Curacao, Kokoslikör, Ananas, Maracuja, Zitrone"),
+  D(3,"Hauscocktail","Weisser Rum, Blue Curacao, Kokoslikör, Ananas, Maracuja, Zitrone"),
   D(4,"Siboney","Brauner Rum, Ananas, Maracuja, Zitrone"),
   D(5,"Night in Blue","Blue Curacao, Kokoslikör, Ananas"),
   D(6,"Big John","Brauner Rum, Ananas, Orange, Maracuja, Zitrone"),
   D(7,"El Mariachi","Tequila, Wodka, Maracuja, Zitrone, Grenadine"),
   D(8,"Green Eyes","Wodka, Blue Curacao, Orange"),
-  D(9,"Hot Legs","Brauner Rum, Weißer Rum, Blue Curacao, Kokoslikör, Ananas, Zitrone"),
+  D(9,"Hot Legs","Brauner Rum, Weisser Rum, Blue Curacao, Kokoslikör, Ananas, Zitrone"),
   D(10,"Ice Man","Wodka, Blue Curacao, Ananas, Zitrone"),
-  D(11,"Cocktailchef Spezial","Weißer Rum, Wodka, Maracuja, Orange, Zitrone"),
-  D(12,"Piña Colada","Weißer Rum, Kokoslikör, Ananas, Orange"),
+  D(11,"Cocktailchef Spezial","Weisser Rum, Wodka, Maracuja, Orange, Zitrone"),
+  D(12,"Piña Colada","Weisser Rum, Kokoslikör, Ananas, Orange"),
   D(13,"Planter’s Punch","Brauner Rum, Ananas, Orange, Zitrone, Grenadine"),
-  D(14,"Sunny Fizz","Weißer Rum, Kokoslikör, Ananas, Maracuja, Zitrone"),
-  D(15,"Pangalaktischer Donnergurgler","Weißer Rum, Wodka, Blue Curacao, Ananas, Orange, Grenadine"),
-  D(38,"Long Island CC Spezial","Tequila, Weißer Rum, Wodka, Cola, Zitrone"),
+  D(14,"Sunny Fizz","Weisser Rum, Kokoslikör, Ananas, Maracuja, Zitrone"),
+  D(15,"Pangalaktischer Donnergurgler","Weisser Rum, Wodka, Blue Curacao, Ananas, Orange, Grenadine"),
+  D(38,"Long Island CC Spezial","Tequila, Weisser Rum, Wodka, Cola, Zitrone"),
   D(44,"Red Piña Colada","Brauner Rum, Kokoslikör, Apfel-Kirsch, Orange, Zitrone"),
   D(53,"Drachenglut","Wodka, Ananas, Apfel-Kirsch, Maracuja, Zitrone, Grenadine"),
   D(60,"Bitter CC Spezial","Bitterlikör, Wodka, Wild Berry, Zitrone"),
@@ -890,7 +890,7 @@ const PHOTOS = new Set([1,2,3,4,5,6,7,8,9,10,11,12,14,44,53,18,21,22,23,58]);
 const photo = d => PHOTOS.has(d.no) ? `../../assets/cocktails/${d.no}.jpg` : null;
 
 // Pick 3 visual layers from the most colourful ingredients
-const PRIORITY = ["Grenadine","Apfel-Kirsch","Blue Curacao","Cola","Bitterlikör","Wild Berry","Brauner Rum","Pink Grapefruit","Pfirsichlikör","Orange","Maracuja","Ananas","Zitrone","Kokoslikör","Tequila","Weißer Rum","Wodka"];
+const PRIORITY = ["Grenadine","Apfel-Kirsch","Blue Curacao","Cola","Bitterlikör","Wild Berry","Brauner Rum","Pink Grapefruit","Pfirsichlikör","Orange","Maracuja","Ananas","Zitrone","Kokoslikör","Tequila","Weisser Rum","Wodka"];
 function layers(d){
   const sorted = [...d.ing].sort((a,b)=>PRIORITY.indexOf(a)-PRIORITY.indexOf(b));
   const c = sorted.slice(0,3).map(i=>COLORS[i]);
@@ -932,7 +932,7 @@ function render(){
   document.getElementById("empty").style.display = list.length?"none":"block";
 }
 // chips
-const chipIngs = ["Ananas","Maracuja","Kokoslikör","Blue Curacao","Grenadine","Brauner Rum","Weißer Rum","Wodka","Tequila","Apfel-Kirsch"];
+const chipIngs = ["Ananas","Maracuja","Kokoslikör","Blue Curacao","Grenadine","Brauner Rum","Weisser Rum","Wodka","Tequila","Apfel-Kirsch"];
 const chips = document.getElementById("chips");
 chips.innerHTML = chipIngs.map(i=>`<button class="chip" data-ing="${i}"><i style="background:${COLORS[i]}"></i>${i}</button>`).join("");
 chips.addEventListener("click",e=>{
@@ -1196,23 +1196,7 @@ musicBtn.addEventListener("click",()=>{
   if(Music.audible){Music.stop();silentAudio.pause()} else {Music.start();silentAudio.play().catch(()=>{})}
   setMusicUI(Music.playing);
 });
-// Beim Aufruf direkt starten. Browser erlauben Ton oft erst nach der ersten
-// Interaktion – dann startet die Musik beim ersten Tippen/Klicken/Tastendruck.
-function autoMusic(){
-  if(musicTouched) return;
-  try{ Music.start(); setMusicUI(true) }catch(e){}
-}
-autoMusic();
-const unlockEvents=["pointerdown","touchend","click","keydown"];
-function unlockMusic(e){
-  if(e.target.closest&&e.target.closest("#music")) return; // der Musik-Knopf regelt das selbst
-  if(musicTouched||!Music.playing) return removeUnlock();
-  Music.start(); silentAudio.play().catch(()=>{});
-  // Erst entfernen, wenn der Ton wirklich läuft (Safari akzeptiert nur bestimmte Events)
-  setTimeout(()=>{ if(Music.audible) removeUnlock() },150);
-}
-function removeUnlock(){unlockEvents.forEach(t=>removeEventListener(t,unlockMusic,true))}
-unlockEvents.forEach(t=>addEventListener(t,unlockMusic,true));
+// Musik startet nur, wenn jemand den Musik-Knopf drückt (kein Autostart).
 // Musik ausblenden, solange das Video mit Ton laeuft
 mv.addEventListener("play",()=>Music.duck(!mv.muted));
 mv.addEventListener("volumechange",()=>{ if(!mv.paused) Music.duck(!mv.muted) });
