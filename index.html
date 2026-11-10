@@ -331,6 +331,14 @@ section{padding:120px 0;position:relative}
   border:1px solid var(--line);overflow:hidden;transition:transform .35s,border-color .35s
 }
 .step:hover{transform:translateY(-8px);border-color:rgba(255,204,26,.45)}
+/* Imagefilm als Hintergrund von "So geht's" */
+.sec-video{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+.sec-video video{width:100%;height:100%;object-fit:cover;opacity:.55}
+.sec-video::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,var(--bg) 0%,rgba(13,11,8,.62) 18%,rgba(13,11,8,.62) 82%,var(--bg) 100%)}
+#so-gehts > .wrap{position:relative;z-index:1}
+#so-gehts .step{background:rgba(28,24,18,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+#so-gehts .sec-head p,#so-gehts .stat span{text-shadow:0 2px 12px rgba(0,0,0,.6)}
 .step::before{
   content:"";position:absolute;inset:auto -40% -60% auto;width:240px;height:240px;border-radius:50%;
   background:radial-gradient(circle,rgba(255,204,26,.18),transparent 70%);transition:transform .5s
@@ -772,6 +780,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- SO GEHTS -->
 <section id="so-gehts">
+  <div class="sec-video" aria-hidden="true">
+    <video id="bgVideo" muted loop playsinline preload="none" poster="assets/imagefilm-poster.jpg"></video>
+  </div>
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">So einfach geht's</span>
@@ -1249,6 +1260,22 @@ function burst(){
     machine.appendChild(c); setTimeout(()=>c.remove(),1700);
   }
 }
+
+// ---------- HINTERGRUND-VIDEO "So geht's" ----------
+// Lädt erst, wenn der Abschnitt in die Nähe kommt; Handy bekommt die kleinere Datei.
+// Bei "Bewegung reduzieren" oder Datensparmodus bleibt nur das Standbild.
+(()=>{
+  const v=document.getElementById("bgVideo"); if(!v) return;
+  const calm=matchMedia("(prefers-reduced-motion: reduce)").matches||(navigator.connection&&navigator.connection.saveData);
+  if(calm||!("IntersectionObserver" in window)) return;
+  let loaded=false;
+  new IntersectionObserver(es=>{
+    if(es[0].isIntersecting){
+      if(!loaded){v.src=matchMedia("(max-width: 640px)").matches?"assets/imagefilm-640.mp4":"assets/imagefilm-960.mp4";loaded=true}
+      v.play().catch(()=>{});
+    } else if(loaded) v.pause();
+  },{rootMargin:"200px 0px"}).observe(v.closest("section"));
+})();
 
 // ---------- WORD ROTATOR ----------
 const words=["Hochzeiten","Geburtstage","Firmenfeiern","Gartenpartys","Vereinsfeste","Weihnachtsfeiern"];
